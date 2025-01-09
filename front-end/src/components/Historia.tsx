@@ -1,15 +1,32 @@
+import '../styles/historia.css'
+
 export function Historia() {
   return (
-    <section className="py-10 text-center">
-      <h2 className="text-2xl font-bold mb-4">Conheça Nossa História</h2>
-      <div>
-        <img
-          src="loja.jpg"
-          alt="Foto da Loja"
-          className="w-full h-64 object-cover mb-4"
-        />
-        <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Sobre Nós</button>
-      </div>
-    </section>
+    <div className="historia">
+  {/* Título */}
+  <h1 className="historia-title">Nossa História</h1>
+
+  {/* Retângulo com conteúdo */}
+  <div className="historia-container">
+    {/* Foto da loja */}
+    <img 
+      src="/loja.jpg" 
+      alt="Foto da Loja" 
+      className="historia-image" 
+    />
+
+    {/* Conteúdo à direita */}
+    <div className="historia-content">
+      <h2>Nome da Loja</h2>
+      <h3>
+        Desde 2020 realizando sonhos
+        <br />
+        Mais de 600 veículos vendidos
+      </h3>
+      <button className="historia-button">Sobre Nós</button>
+    </div>
+  </div>
+</div>
+
   );
 }

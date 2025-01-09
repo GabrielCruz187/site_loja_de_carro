@@ -15,24 +15,7 @@ const VeiculosDestaque = () => {
         {/* Card 1 */}
         <div className="veiculo-card">
           <img src="s10.jpg" alt="Carro 1" />
-          <div className="veiculo-card-content">
-            <h3 className="veiculo-card-title">S10</h3>
-            <p className="veiculo-card-text">R$ 35.000</p>
-            <p className="veiculo-card-text">Ano: 2021</p>
-          </div>
-        </div>
-
-        <div className="veiculo-card">
-          <img src="s10.jpg" alt="Carro 1" />
-          <div className="veiculo-card-content">
-            <h3 className="veiculo-card-title">S10</h3>
-            <p className="veiculo-card-text">R$ 35.000</p>
-            <p className="veiculo-card-text">Ano: 2021</p>
-          </div>
-        </div>
-
-        <div className="veiculo-card">
-          <img src="s10.jpg" alt="Carro 1" />
+          <div className="veiculo-card-hover">Ver Carro!</div>
           <div className="veiculo-card-content">
             <h3 className="veiculo-card-title">S10</h3>
             <p className="veiculo-card-text">R$ 35.000</p>
@@ -42,10 +25,10 @@ const VeiculosDestaque = () => {
 
      
 
-
         {/* Card 2 */}
         <div className="veiculo-card">
           <img src="jeep.jpg" alt="Carro 2" />
+          <div className="veiculo-card-hover">Ver Carro!</div>
           <div className="veiculo-card-content">
             <h3 className="veiculo-card-title">Jeep</h3>
             <p className="veiculo-card-text">R$ 40.000</p>
@@ -56,6 +39,7 @@ const VeiculosDestaque = () => {
         {/* Card 3 */}
         <div className="veiculo-card">
           <img src="up.jpg" alt="Carro 3" />
+          <div className="veiculo-card-hover">Ver Carro!</div>
           <div className="veiculo-card-content">
             <h3 className="veiculo-card-title">Up</h3>
             <p className="veiculo-card-text">R$ 45.000</p>

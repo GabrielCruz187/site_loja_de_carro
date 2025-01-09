@@ -1,6 +1,37 @@
 /* styles/globals.css */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    background-color:grey;
-    
-  }
-  
+  background-color: #374151;
+  line-height: 1.5;
+  overflow-x: hidden; /* Previne que a tela se estenda para o lado */
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px; /* Limita a largura do conteúdo */
+  margin: 0 auto;
+}
+
+h1 {
+  color: white;
+}
+
+h1:hover {
+  color: #f97316;
+}
+
+header {
+  width: 100%;
+  max-width: 100%; /* Garante que o cabeçalho ocupe toda a largura da tela */
+}
+
+banner{
+  max-width: 100vh;
+}
