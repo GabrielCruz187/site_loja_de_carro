@@ -25,7 +25,7 @@ export default function Home() {
         <Feedback />
         <Localizacao />
       </main>
-      <Footer />
+      
     </div>
   );
 }

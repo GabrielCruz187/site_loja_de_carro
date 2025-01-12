@@ -1,9 +1,8 @@
 header {
   background-color: black;
   color: white;
-  width: 100%;
-  max-width: 100vw; /* Garante que o cabeçalho não ultrapasse a largura da tela */
-  margin: 0 auto; /* Centraliza o cabeçalho */
+  padding: 20px 8%;
+
 }
 
 .container {

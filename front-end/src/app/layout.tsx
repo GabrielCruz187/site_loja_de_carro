@@ -16,9 +16,7 @@ export default function RootLayout({
       <body className="bg-gray-100 text-gray-900">
         <Header /> {/* Usa o componente Header */}
         <main className="container mx-auto py-8 px-6">{children}</main>
-        <footer className="bg-black text-white py-4 text-center">
-          <p>© 2024 Catálogo de Carros - Todos os direitos reservados.</p>
-        </footer>
+       <Header></Header>
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
-import '../styles/veiculos-destaque.css';
+import Link from 'next/link'; // Importação correta do Link
+import '../styles/veiculos-destaque.css'; // Estilos para o componente
 
 const VeiculosDestaque = () => {
   return (
@@ -7,7 +8,9 @@ const VeiculosDestaque = () => {
       {/* Título e Botão */}
       <div className="veiculos-destaque-header">
         <h1 className="veiculos-destaque-title">Explore os carros mais incríveis</h1>
-        <button className="veiculos-destaque-button">Ver Estoque</button>
+        <Link href="/estoque" passHref>
+          <button className="veiculos-destaque-button">Ver Estoque</button>
+        </Link>
       </div>
 
       {/* Cards de Carros */}
@@ -22,8 +25,6 @@ const VeiculosDestaque = () => {
             <p className="veiculo-card-text">Ano: 2021</p>
           </div>
         </div>
-
-     
 
         {/* Card 2 */}
         <div className="veiculo-card">
@@ -46,11 +47,7 @@ const VeiculosDestaque = () => {
             <p className="veiculo-card-text">Ano: 2022</p>
           </div>
         </div>
-
-        </div>
-      
-
-      
+      </div>
 
       {/* Bolinhas de Controle */}
       <div className="bolinhas-controle">
