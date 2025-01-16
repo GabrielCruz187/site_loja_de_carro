@@ -1,0 +1,89 @@
+/* Estoque.css */
+.estoque-page {
+    padding: 2rem;
+    background-color: #1E1E1E;
+    color: white;
+  }
+  
+  .estoque-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .estoque-header h1 {
+    font-size: 2rem;
+    color: white;
+  }
+  
+  .estoque-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .filtro-input {
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    outline: none;
+    width: 30%;
+  }
+  
+  .pagination-top,
+  .pagination-bottom {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+  
+  .pagination-circle {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: #6b7280;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .pagination-circle.active {
+    background-color: #f97316;
+  }
+  
+  .pagination-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d1d5db;
+  }
+  
+  .estoque-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    .filtro-input {
+      width: 45%;
+    }
+  
+    .estoque-cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .filtro-input {
+      width: 100%;
+    }
+  
+    .estoque-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+  
