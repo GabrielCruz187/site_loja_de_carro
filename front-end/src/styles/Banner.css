@@ -9,7 +9,6 @@
   padding: 2rem; /* Espaçamento interno */
   box-sizing: border-box;
   gap: 2rem;
-  box-shadow: 0 0 40px 10px rgb(218, 214, 214);
 }
 
 .banner-text {
