@@ -5,8 +5,13 @@ import "../styles/Estoque.css";
 import { Card } from "../components/Card";
 import Header from "@/components/Header";
 
+// Importando os ícones do Lucide
+import { ChevronDown, ChevronUp, Check } from "lucide-react";
+
 export default function Estoque() {
   const [currentPage, setCurrentPage] = useState(1);
+  const [isChecked, setIsChecked] = useState(false); // Estado para controlar o checkbox
+  const [selectedOption, setSelectedOption] = useState<string>("Filtrar por:"); // Estado para a opção selecionada
 
   // Mock de dados do estoque
   const carros = [
@@ -29,46 +34,82 @@ export default function Estoque() {
 
   const totalPages = Math.ceil(carros.length / carrosPorPagina);
 
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked); // Alterna o valor do checkbox
+  };
+
+  const handleOptionSelect = (option: string) => {
+    setSelectedOption(option); // Define a opção selecionada
+    setIsChecked(false); // Fecha a lista de opções
+  };
+
   return (
     <div className="estoque-page">
-        <Header></Header>
-      {/* Cabeçalho */}
-      <header className="estoque-header">
-       
-      </header>
+      <Header />
 
       {/* Filtros */}
-      <div className="estoque-filters">
-        <input type="text" placeholder="Ordenar por:" className="filtro-input" />
-        <input
-          type="text"
-          placeholder="Filtrar veículos"
-          className="filtro-input"
-        />
-        <div className="pagination-top">
-          {[...Array(totalPages)].map((_, index) => (
-            <button
-              key={index}
-              className={`pagination-circle ${
-                currentPage === index + 1 ? "active" : ""
-              }`}
-              onClick={() => setCurrentPage(index + 1)}
-            >
-              {index + 1}
-            </button>
-          ))}
-          <span className="pagination-dots">...</span>
+      <div className="select">
+        <div id="category-select">
+          <input
+            type="checkbox"
+            id="options-view-button"
+            onChange={handleCheckboxChange} // Chama a função ao mudar o estado
+          />
+
+          <div id="select-button">
+            <div id="selected-value">{selectedOption}</div> {/* Exibe a opção selecionada */}
+            <div id="chevrons">
+              <ChevronDown size={20} style={{ display: isChecked ? "none" : "block" }} />
+              <ChevronUp size={20} style={{ display: isChecked ? "block" : "none" }} />
+            </div>
+          </div>
         </div>
+
+        {/* Lista de opções abaixo de "Filtrar por:" */}
+        {isChecked && (
+          <ul id="options">
+            <li className="option" onClick={() => handleOptionSelect("Mais Relevantes")}>
+              <input
+                type="radio"
+                name="category"
+                value="Mais Relevante"
+                data-label="Mais Relevantes"
+              />
+              <span className="label">Mais Relevantes</span>
+              <Check size={20} />
+            </li>
+
+            <li className="option" onClick={() => handleOptionSelect("Menor Preço")}>
+              <input
+                type="radio"
+                name="category"
+                value="low Price"
+                data-label="Menor Preço"
+              />
+              <span className="label">Menor Preço</span>
+              <Check size={20} />
+            </li>
+
+            <li className="option" onClick={() => handleOptionSelect("Maior Preço")}>
+              <input
+                type="radio"
+                name="category"
+                value="High Price"
+                data-label="Maior Preço"
+              />
+              <span className="label">Maior Preço</span>
+              <Check size={20} />
+            </li>
+          </ul>
+        )}
       </div>
+
+      
 
       {/* Cards */}
       <div className="estoque-cards">
         {carrosExibidos.map((carro) => (
-          <Card
-            key={carro.id}
-            titulo={carro.titulo}
-            descricao={carro.descricao}
-          />
+          <Card key={carro.id} titulo={carro.titulo} descricao={carro.descricao} />
         ))}
       </div>
 
@@ -77,9 +118,7 @@ export default function Estoque() {
         {[...Array(totalPages)].map((_, index) => (
           <button
             key={index}
-            className={`pagination-circle ${
-              currentPage === index + 1 ? "active" : ""
-            }`}
+            className={`pagination-circle ${currentPage === index + 1 ? "active" : ""}`}
             onClick={() => setCurrentPage(index + 1)}
           >
             {index + 1}
@@ -88,5 +127,7 @@ export default function Estoque() {
         <span className="pagination-dots">...</span>
       </div>
     </div>
+
+
   );
 }

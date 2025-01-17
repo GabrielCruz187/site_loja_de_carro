@@ -1,4 +1,3 @@
-
 import Image from 'next/image';
 import '../styles/Header.css'; // Importe o arquivo CSS
 
@@ -8,7 +7,7 @@ export default function Header() {
       <div className="container">
         {/* Logo */}
         <div className="logo">
-          <Image src="/logo.jpg" alt="Logo" width={100} height={40} />
+          <Image src="/logo.jpg" alt="Logo" width={100} height={100} />
         </div>
 
         {/* Navegação */}
@@ -19,7 +18,7 @@ export default function Header() {
           <a href="#" className="nav-item">Contato</a>
         </nav>
 
-        {/* Pesquisa */}
+        {/* Barra de Pesquisa */}
         <div className="search">
           <input
             type="text"
@@ -30,23 +29,13 @@ export default function Header() {
             <span className="search-icon">🔍</span>
           </button>
         </div>
-        
       </div>
 
-      <div className="white"></div>
-      <div className="orange"></div>
-      </header>
-     
-
-      
-      
+      {/* Linhas abaixo do cabeçalho */}
+      <div className="header-lines">
+        <div className="white-line"></div>
+        <div className="orange-line"></div>
+      </div>
+    </header>
   );
-  
 }
-
-
-
-
-
-
-    
