@@ -1,0 +1,32 @@
+/* Estilos para o Footer */
+footer {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center; /* Centraliza o conteúdo do footer */
+  align-items: center;
+  padding: 20px 8%;
+  position: relative; /* Necessário para posicionamento absoluto do texto */
+}
+
+footer .logo {
+  position: absolute; /* Posiciona a logo fora do fluxo normal */
+  left: 20; /* Garante que a logo fique totalmente à esquerda */
+  top: 50%;
+  transform: translateY(-50%); /* Centraliza verticalmente a logo */
+}
+
+footer .footer-text {
+  font-size: 0.9rem;
+  color: #d4d4d4;
+  text-align: center;
+  width: 100%; /* Garante que o texto ocupe toda a largura */
+  position: absolute; /* Centraliza o texto dentro do footer */
+  left: 50%;
+  transform: translateX(-50%); /* Centraliza o texto horizontalmente */
+}
+
+/* Definindo a altura do footer */
+footer {
+  height: 130px; /* Ajuste conforme necessário */
+}

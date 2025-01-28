@@ -1,9 +1,8 @@
 .veiculos-destaque {
-  margin-top: 4rem;
-  margin-left: 2rem;
-  margin-right: 2rem;
-  max-width: 1200px;
- 
+  margin: 0; /* Remove as margens externas */
+  padding: 0 2rem; /* Adiciona um pouco de padding lateral */
+  width: 100%; /* Faz o container ocupar toda a largura da tela */
+  max-width: none; /* Remove a restrição de largura máxima */
 }
 
 .veiculos-destaque-header {
@@ -15,35 +14,36 @@
 }
 
 .veiculos-destaque-title {
-  font-size: 1.75rem;
+  font-size: 2rem;
   font-weight: 600;
   color: white;
 }
 
 .veiculos-destaque-button {
-  background-color: #f97316;
+  background-color: #FC6700;
   color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
+  padding: 0.7rem 3.5rem;
+  border-radius: 0.5rem;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-size: 1.1rem;
 }
 
 .veiculos-destaque-button:hover {
-  background-color: #ea580c;
+  background-color: #cf4e08;
 }
 
 .veiculos-destaque-cards {
   display: flex;
   gap: 1rem;
   overflow-x: auto;
-  padding-bottom: 1rem;
+  margin-bottom: 5rem;
 }
 
 .veiculo-card {
   width: 16rem; /* Aumentado para 256px */
-  background-color: #4b5563;
+  background-color: #252529;
   border-radius: 0.5rem;
   flex-shrink: 0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -100,23 +100,4 @@
 
 .veiculo-card:hover .veiculo-card-hover {
   opacity: 1;
-}
-
-.bolinhas-controle {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-
-.bolinha {
-  width: 0.75rem; /* 12px */
-  height: 0.75rem; /* 12px */
-  background-color: #9ca3af;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.bolinha:hover {
-  background-color: #6b7280;
 }

@@ -1,34 +1,36 @@
+/* Estilos gerais do Header */
 header {
   background-color: black;
   color: white;
   padding: 42px 8%;
-  position: relative; /* Necessário para a logo e linhas */
+  position: relative;
   display: flex;
+  align-items: center;
+  height: 130px;
 }
 
 .container {
   display: flex;
-  justify-content: flex-start; /* Alinha a logo e navegação à esquerda */
   align-items: center;
   width: 100%;
 }
 
-.nav {
+.header-nav {
   display: flex;
-  gap: 5rem; /* Distância entre os itens */
-  justify-content: flex-start; /* Alinha os itens da navegação à esquerda */
-  margin-left: 4rem; /* Espaçamento pequeno após a logo */
+  gap: 5rem;
+  justify-content: flex-start;
+  margin-top: center;
 }
 
-.nav-item {
+.header-nav-item {
   text-decoration: none;
   color: white;
-  font-size: 1.400rem; /* Aumenta o tamanho da fonte */
+  font-size: 1.400rem;
   transition: color 0.3s ease;
 }
 
-.nav-item:hover {
-  color: #FC6700; /* Cor laranja */
+.header-nav-item:hover {
+  color: #FC6700;
 }
 
 /* Barra de pesquisa */
@@ -36,7 +38,8 @@ header {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-left: auto; /* Empurra a pesquisa para a direita */
+  position: absolute;
+  right: 4%;
 }
 
 .search-input {
@@ -58,29 +61,33 @@ header {
   color: white;
 }
 
-/* Logo no canto esquerdo */
+/* Logo totalmente à esquerda */
 .logo {
   position: absolute;
-  top: 15px; /* Ajuste conforme a altura do cabeçalho */
-  left: 3%; /* Ajuste conforme necessário para alinhar corretamente */
+  left: 10px; /* Coloca a logo no canto esquerdo da tela */
+  top: 50%;
+  transform: translateY(-50%); /* Centraliza a logo verticalmente */
+  margin-left: 20px;
 }
 
-/* Adicionando as linhas abaixo da logo, dentro do cabeçalho */
+/* Linhas abaixo do cabeçalho */
 .header-lines {
-  width: 100vw; /* Garantir que as bordas ocupem toda a largura da tela */
-  position: absolute; /* As linhas vão ficar abaixo da logo */
-  top: 100%; /* Coloca as linhas logo abaixo do cabeçalho */
+  width: 100vw;
+  position: absolute;
+  top: 100%;
   left: 0;
 }
 
 .white-line {
-  width: 100vw; /* Garantir que a linha branca ocupe toda a largura da tela */
-  height: 4px; /* Espessura da linha branca */
+  width: 100vw;
+  height: 4px;
   background-color: white;
 }
 
 .orange-line {
-  width: 100vw; /* Garantir que a linha laranja ocupe toda a largura da tela */
-  height: 8px; /* Espessura da linha laranja */
-  background-color: #FC6700; /* Cor da linha laranja */
+  width: 100vw;
+  height: 8px;
+  background-color: #FC6700;
 }
+
+/* Responsividade */

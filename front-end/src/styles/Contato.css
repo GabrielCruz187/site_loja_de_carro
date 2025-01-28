@@ -1,0 +1,68 @@
+/* Estilo para a página Contato */
+.pagina-title {
+    text-align: center; /* Centraliza o título da página */
+    font-size: 3rem; /* Tamanho maior para o título */
+    font-weight: bold;
+    margin-top: 3rem; /* Espaçamento superior */
+    color: white; /* Cor do título */
+  }
+  
+  /* Container para redes sociais e mapa lado a lado */
+  .main-container {
+    display: flex; /* Usando flexbox para alinhar os itens lado a lado */
+    margin: 3rem;
+    gap: 0; /* Remove o espaçamento entre os itens */
+    height: 30rem; /* Define a altura do container para garantir que o mapa e as redes sociais tenham a mesma altura */
+  }
+  
+  /* Redes sociais */
+  .redes-contato {
+    background-color: #252529; /* Cor de fundo */
+    padding: 2rem; /* Espaçamento interno */
+    text-align: center; /* Centraliza o conteúdo */
+    flex: 1; /* Faz a seção ocupar metade do espaço disponível */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    align-items: center; /* Centraliza o conteúdo horizontalmente */
+  }
+  
+  .redes-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 3rem; /* Ajusta o espaçamento entre o título e os ícones */
+    text-align: center; /* Centraliza o título dentro do container */
+    color: white; /* Cor do texto */
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center; /* Centraliza os ícones */
+    gap: 3rem; /* Espaçamento entre os ícones */
+  }
+  
+  .social-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .social-icon:hover {
+    transform: scale(1.1); /* Efeito de aumento ao passar o mouse */
+  }
+  
+  /* Mapa da localização */
+  .map-container {
+    flex: 1; /* Faz a seção do mapa ocupar metade do espaço disponível */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Faz o mapa ocupar todo o espaço disponível */
+    text-align: center;
+  }
+  
+  .map-container iframe {
+    width: 100%;
+    height: 100%; /* Garante que o mapa ocupe toda a altura disponível do container */
+  }
+  

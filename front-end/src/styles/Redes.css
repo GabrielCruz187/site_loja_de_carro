@@ -1,0 +1,30 @@
+.redes {
+  margin: 4rem 2rem;
+  color: white;
+  text-align: center; /* Alinha o conteúdo à esquerda */
+}
+
+.redes-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem; /* Espaço entre o título e os ícones */
+  text-align: center;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem; /* Espaço entre os ícones */
+}
+
+.social-icon {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+

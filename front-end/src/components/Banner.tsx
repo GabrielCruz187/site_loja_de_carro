@@ -25,12 +25,6 @@ const Banner = () => {
   return (
 
     <div className="banner-wrapper">
-      {/* Título na esquerda */}
-      <div className="banner-text">
-        <h1 className="banner-title">Realizando Sonhos em Quatro Rodas</h1>
-        <p className="banner-subtitle">Descubra o carro dos seus sonhos conosco!</p>
-      </div>
-
       {/* Imagens animadas na direita */}
       <div className="banner-images">
         <AnimatePresence>
@@ -42,7 +36,7 @@ const Banner = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.5 }}
           />
         </AnimatePresence>
       </div>

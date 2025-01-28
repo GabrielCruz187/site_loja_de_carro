@@ -3,8 +3,6 @@ import '../styles/historia.css'
 export function Historia() {
   return (
     <div className="historia">
-  {/* Título */}
-  <h1 className="historia-title">Nossa História</h1>
 
   {/* Retângulo com conteúdo */}
   <div className="historia-container">
@@ -17,11 +15,11 @@ export function Historia() {
 
     {/* Conteúdo à direita */}
     <div className="historia-content">
-      <h2>Nome da Loja</h2>
+      <strong><h2>Conheça nossa história</h2></strong>
       <h3>
-        Desde 2020 realizando sonhos
+      Um legado se constrói com uma história,
         <br />
-        Mais de 600 veículos vendidos
+        Conheça a nossa
       </h3>
       <button className="historia-button">Sobre Nós</button>
     </div>

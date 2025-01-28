@@ -13,22 +13,9 @@ export function Localizacao() {
           width="100%"
           height="400"
           style={{ border: 0 }}
-          allowFullScreen=""
+          allowFullScreen
           loading="lazy"
         ></iframe>
-      </div>
-
-      {/* Redes sociais */}
-      <div className="social-icons">
-        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-          <img src="/instagram-icon.svg" alt="Instagram" className="social-icon" />
-        </a>
-        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-          <img src="/facebook-icon.svg" alt="Facebook" className="social-icon" />
-        </a>
-        <a href="https://wa.me/123456789" target="_blank" rel="noopener noreferrer">
-          <img src="/whatsapp-icon.svg" alt="WhatsApp" className="social-icon" />
-        </a>
       </div>
     </section>
   );

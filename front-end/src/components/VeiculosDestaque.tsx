@@ -1,13 +1,14 @@
 import React from 'react';
 import Link from 'next/link'; // Importação correta do Link
 import '../styles/veiculos-destaque.css'; // Estilos para o componente
+import Card from '@/components/Card'; // Importa o componente Card
 
 const VeiculosDestaque = () => {
   return (
     <section className="veiculos-destaque">
       {/* Título e Botão */}
       <div className="veiculos-destaque-header">
-        <h1 className="veiculos-destaque-title">Explore os carros mais incríveis</h1>
+        <h1 className="veiculos-destaque-title">Carros em Destaque</h1>
         <Link href="/estoque" passHref>
           <button className="veiculos-destaque-button">Ver Estoque</button>
         </Link>
@@ -16,44 +17,29 @@ const VeiculosDestaque = () => {
       {/* Cards de Carros */}
       <div className="veiculos-destaque-cards">
         {/* Card 1 */}
-        <div className="veiculo-card">
-          <img src="s10.jpg" alt="Carro 1" />
-          <div className="veiculo-card-hover">Ver Carro!</div>
-          <div className="veiculo-card-content">
-            <h3 className="veiculo-card-title">S10</h3>
-            <p className="veiculo-card-text">R$ 35.000</p>
-            <p className="veiculo-card-text">Ano: 2021</p>
-          </div>
-        </div>
-
+        <Card
+          titulo="S10"
+          descricao="R$ 35.000 | Ano: 2021"
+          imagem="s10.jpg"
+        />
         {/* Card 2 */}
-        <div className="veiculo-card">
-          <img src="jeep.jpg" alt="Carro 2" />
-          <div className="veiculo-card-hover">Ver Carro!</div>
-          <div className="veiculo-card-content">
-            <h3 className="veiculo-card-title">Jeep</h3>
-            <p className="veiculo-card-text">R$ 40.000</p>
-            <p className="veiculo-card-text">Ano: 2020</p>
-          </div>
-        </div>
-
+        <Card
+          titulo="Jeep"
+          descricao="R$ 40.000 | Ano: 2020"
+          imagem="jeep.jpg"
+        />
         {/* Card 3 */}
-        <div className="veiculo-card">
-          <img src="up.jpg" alt="Carro 3" />
-          <div className="veiculo-card-hover">Ver Carro!</div>
-          <div className="veiculo-card-content">
-            <h3 className="veiculo-card-title">Up</h3>
-            <p className="veiculo-card-text">R$ 45.000</p>
-            <p className="veiculo-card-text">Ano: 2022</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Bolinhas de Controle */}
-      <div className="bolinhas-controle">
-        <span className="bolinha"></span>
-        <span className="bolinha"></span>
-        <span className="bolinha"></span>
+        <Card
+          titulo="Up"
+          descricao="R$ 45.000 | Ano: 2022"
+          imagem="up.jpg"
+        />
+        {/* Card 4 */}
+        <Card
+          titulo="Up"
+          descricao="R$ 45.000 | Ano: 2022"
+          imagem="up.jpg"
+        />
       </div>
     </section>
   );

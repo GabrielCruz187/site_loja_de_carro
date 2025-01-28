@@ -8,9 +8,10 @@
 }
 
 body {
+  font-family: Inter, sans-serif;
   background-color: #1E1E1E;
   line-height: 1.5;
-  overflow-x: hidden; /* Previne que a tela se estenda para o lado */
+  overflow-x: hidden;
 }
 
 .container {
@@ -19,17 +20,24 @@ body {
   margin: 0 auto;
 }
 
+header, footer {
+  width: 100%;  /* Garante que header e footer ocupem toda a largura da tela */
+  max-width: 100%; /* Garantir que a largura máxima seja 100% */
+}
+
 h1 {
   color: white;
 }
 
-h1:hover {
-  color: #f97316;
-}
-
 header {
-  width: 100%;
-  max-width: 100%; /* Garante que o cabeçalho ocupe toda a largura da tela */
+  padding: 1rem 0;
+  color: white;
+  text-align: center;
 }
 
-
+/* Rodapé */
+footer {
+  padding: 1rem 0;
+  color: white;
+  text-align: center;
+}

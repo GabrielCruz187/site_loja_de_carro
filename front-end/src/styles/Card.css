@@ -1,25 +1,84 @@
-.card {
-    background-color: #1f2937;
-    padding: 1.5rem;
+/* Estilo principal para o card */
+.card-carro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     border-radius: 8px;
+    padding: 16px;
+    background-color: #252529;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .card-carro:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Imagem do card */
+  .card-imagem {
+    width: 100%;
+    height: auto;
+    margin-bottom: 16px;
+  }
+  
+  .imagem-carro {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  
+  /* Detalhes do card */
+  .card-detalhes {
+    text-align: center;
+  }
+  
+  .titulo-carro {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
     color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
-  .card h2 {
-    margin-bottom: 0.5rem;
-    font-size: 1.25rem;
-    color: #f97316;
-  }
-  
-  .card p {
+  .descricao-carro {
     font-size: 1rem;
-    color: #d1d5db;
+    color: white;
   }
   
-  .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  .preco {
+    margin-top: 8px; /* Espaço extra acima do preço, se necessário */
+    color: white;
   }
+
+  /* Contêiner principal para os cards */
+  .CardCarro-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cards por linha */
+    grid-auto-rows: auto; /* Ajusta a altura automaticamente */
+    gap: 20px; /* Espaçamento entre os cards */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; /* Centraliza o wrapper */
+    padding: 20px;
+    background-color: #252529;
+    overflow-x: auto; /* Para rolagem horizontal */
+  }
+  
+  /* Estilo para o contêiner com rolagem horizontal */
+  .CardCarro-wrapper-horizontal {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px;
+  }
+  
+  .CardCarro-wrapper-horizontal .card-carro {
+    flex: 0 0 calc(16.66% - 20px); /* 6 cards por linha horizontal */
+    box-sizing: border-box;
+  }
+  
+
+  
   
