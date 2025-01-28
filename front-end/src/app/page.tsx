@@ -6,6 +6,7 @@ import {Feedback} from '@/components/Feedback';
 import {Localizacao} from '@/components/Localizacao';
 import {Footer} from '@/components/Footer';
 import '../styles/globals.css';
+import Link from 'next/link';
 
 
 
@@ -24,6 +25,13 @@ export default function Home() {
         <Historia />
         <Feedback />
         <Localizacao />
+        <nav>
+          <ul>
+            <li>
+              <Link href="/admin">Painel Administrativo</Link>
+            </li>
+          </ul>
+        </nav>
       </main>
       
     </div>

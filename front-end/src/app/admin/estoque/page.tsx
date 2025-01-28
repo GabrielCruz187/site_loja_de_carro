@@ -1,31 +1,73 @@
-import { useEffect, useState } from 'react';
+'use client';
 
-interface Car {
-  name: string;
-  model: string;
-  price: string;
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import AddCarro from '../../../components/AddCarro'
+
+interface Carro {
+  _id: string;
+  modelo: string;
+  descricao: string;
+  preco: number;
+  ano: number;
 }
 
-export default function EstoquePage() {
-  const [cars, setCars] = useState<Car[]>([]);
+const EstoquePage = () => {
+  const [carros, setCarros] = useState<Carro[]>([]);
+
+  // Função para carregar carros da API
+  const fetchCarros = async () => {
+    try {
+      const response = await axios.get('http://localhost:3001/carros');
+      setCarros(response.data);
+    } catch (err) {
+      console.error('Erro ao carregar carros:', err);
+    }
+  };
+
+  const handleEdit = (id: string) => {
+    console.log(`Editar carro com ID: ${id}`);
+    // Lógica para edição
+  };
+
+  const handleDelete = async (id: string) => {
+    try {
+      await axios.delete(`http://localhost:3001/carros/${id}`);
+      fetchCarros(); // Recarregar lista após exclusão
+    } catch (err) {
+      console.error('Erro ao excluir carro:', err);
+    }
+  };
 
   useEffect(() => {
-    // Fazendo uma chamada para a API (ou backend) para buscar todos os carros
-    fetch('/api/cars')
-      .then((response) => response.json())
-      .then((data) => setCars(data.cars)); // Aqui você vai ter que adaptar de acordo com a sua API
+    fetchCarros();
   }, []);
 
   return (
     <div>
-      <h1>Estoque de Carros</h1>
+      <h2>Gerenciamento de Estoque de Carros</h2>
+
+      <AddCarro /> {/* Componente para adicionar carros */}
+
+      <h3>Lista de Carros</h3>
       <ul>
-        {cars.map((car, index) => (
-          <li key={index}>
-            {car.name} - {car.model} - R$ {car.price}
+        {carros.map(carro => (
+          <li key={carro._id}>
+            <h4>{carro.modelo}</h4>
+            <p>{carro.descricao}</p>
+            <p>{carro.preco}</p>
+            <p>{carro.ano}</p>
+            {/* Botões de editar e excluir */}
+            <button onClick={() => handleEdit(carro._id)}>Editar</button>
+            <button onClick={() => handleDelete(carro._id)}>Excluir</button>
           </li>
         ))}
       </ul>
     </div>
   );
-}
+};
+
+export default EstoquePage;
+
+
+
