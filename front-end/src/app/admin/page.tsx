@@ -1,14 +1,25 @@
 // src/app/admin/page.tsx
-import AddCarForm from '@/components/AddCarForm';
+import Link from 'next/link';
 
-export default function AdminPage() {
-    return (
-      <div>
-        <h1>Painel Administrativo</h1>
-        <h2>Adicionar Carro</h2>
-        <AddCarForm />
-       
-      </div>
-    );
-  }
+const AdminPage = () => {
+  return (
+    <div>
+      <h1>Painel de Administração</h1>
+      <nav>
+        <ul>
+          <li>
+            <Link href="/admin/estoque">Gerenciar Estoque de Carros</Link>
+          </li>
+          <li>
+            <Link href="/admin/usuarios">Gerenciar Usuários</Link>
+          </li>
+          {/* Outros links de administração */}
+        </ul>
+      </nav>
+    </div>
+  );
+};
+
+export default AdminPage;
+
   
