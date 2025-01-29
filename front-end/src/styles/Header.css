@@ -6,7 +6,7 @@ header {
   position: relative;
   display: flex;
   align-items: center;
-  height: 130px;
+  height: 150px;
 }
 
 .container {
@@ -44,7 +44,7 @@ header {
 
 .search-input {
   background-color: white;
-  color: #d1d5db;
+  color: black;
   padding: 0.5rem;
   border-radius: 1.375rem;
   border: none;
@@ -65,7 +65,7 @@ header {
 .logo {
   position: absolute;
   left: 10px; /* Coloca a logo no canto esquerdo da tela */
-  top: 50%;
+  top: 53%;
   transform: translateY(-50%); /* Centraliza a logo verticalmente */
   margin-left: 20px;
 }

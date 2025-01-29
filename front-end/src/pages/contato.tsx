@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/Contato.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { MapPin, Building, Mail, Phone } from "lucide-react";
 
 const Contato = () => {
   return (
@@ -13,36 +14,29 @@ const Contato = () => {
         {/* Título principal da página */}
         <h1 className="pagina-title">Contato</h1>
 
-        {/* Container principal para redes sociais e mapa lado a lado */}
+        {/* Container principal para o mapa e informações de contato */}
         <div className="main-container">
-          {/* Redes sociais */}
-          <div className="redes-contato">
-            <h2 className="redes-title">Acesse nossas redes sociais</h2>
-            <div className="social-icons">
-              <a
-                href="https://www.instagram.com/ala.automoveis/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src="/instagram.png" alt="Instagram" className="social-icon" />
-              </a>
-              <a
-                href="https://www.facebook.com/ala.automoveis/?locale=pt_BR"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src="/facebook.png" alt="Facebook" className="social-icon" />
-              </a>
-              <a
-                href="https://wa.me/5554996357891"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src="/whatsapp.png" alt="WhatsApp" className="social-icon" />
-              </a>
+          {/* Container para informações de contato */}
+          <div className="info-contato">
+            <h2 className="info-title">Informações de Contato</h2>
+            <div className="info-item">
+              <Phone size={24} />
+              <p>(54) 99635-7891</p>
+            </div>
+            <div className="info-item">
+              <Mail size={24} />
+              <p>contato@empresa.com</p>
+            </div>
+            <div className="info-item">
+              <MapPin size={24} />
+              <p>R. Pedro Augustin, 464 - Centro, Não-Me-Toque - RS</p>
+            </div>
+            <div className="info-item">
+              <Building size={24} />
+              <p>Seg-Sex: 08h - 18h | Sáb: 08h - 12h</p>
             </div>
           </div>
-
+          
           {/* Mapa da localização */}
           <div className="map-container">
             <iframe
@@ -53,6 +47,34 @@ const Contato = () => {
               allowFullScreen
               loading="lazy"
             ></iframe>
+          </div>
+        </div>
+
+        {/* Redes sociais movidas para fora do container */}
+        <div className="redes-contato-externo">
+          <h2 className="redes-title">Acesse nossas redes sociais</h2>
+          <div className="social-icons">
+            <a
+              href="https://www.instagram.com/ala.automoveis/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="/instagram.png" alt="Instagram" className="social-icon" />
+            </a>
+            <a
+              href="https://www.facebook.com/ala.automoveis/?locale=pt_BR"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="/facebook.png" alt="Facebook" className="social-icon" />
+            </a>
+            <a
+              href="https://wa.me/5554996357891"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="/whatsapp.png" alt="WhatsApp" className="social-icon" />
+            </a>
           </div>
         </div>
       </main>

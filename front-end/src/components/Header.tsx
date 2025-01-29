@@ -12,7 +12,9 @@ export default function Header() {
     <header className="header">
       <div className="container">
         <div className="logo">
-          <Image src="/logo.jpg" alt="Logo" width={100} height={100} />
+          <Link href="/"> 
+            <Image src="/ala.jpg" alt="Logo" width={120} height={120} />
+          </Link>
         </div>
         <div className="search">
           <input

@@ -1,15 +1,16 @@
+'use client';
 import Image from 'next/image';
+import Link from 'next/link'; // Importe o Link
 import '../styles/Footer.css'; // Importe o arquivo CSS do Footer
 
 export default function Footer() {
   return (
     <footer>
-      {/* Logo no canto esquerdo */}
       <div className="logo">
-        <Image src="/logo.jpg" alt="Logo" width={100} height={100} />
+        <Link href="/"> 
+          <Image src="/ala.jpg" alt="Logo" width={120} height={120} />
+        </Link>
       </div>
-
-      {/* Texto de direitos reservados no centro */}
       <div className="footer-text">© Todos os direitos reservados</div>
     </footer>
   );

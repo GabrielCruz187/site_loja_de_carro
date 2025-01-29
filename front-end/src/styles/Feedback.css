@@ -1,87 +1,80 @@
-/* Estilos para a seção de feedback */
 .feedback {
-    margin-top: 4rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
-    text-align: center;
-    max-width: 1200px;
-  }
-  
-  .feedback-title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 2rem;
-  }
-  
-  /* Estilo dos cards de feedback */
-  .feedback-cards {
-    display: flex;
-    gap: 1rem;
-    overflow-x: auto;
-    padding-bottom: 1rem;
-  }
-  
-  .feedback-card {
-    width: 18rem; /* Tamanho do card */
-    background-color: #4b5563; /* Cor de fundo dos cards */
-    padding: 1rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    color: white;
-    flex-shrink: 0;
-    text-align: left;
-    transition: transform 0.3s ease;
-  }
-  
-  .feedback-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .feedback-text {
-    font-size: 1rem;
-    font-weight: 400;
-    color: white;
-  }
-  
-  .feedback-city {
-    font-size: 0.875rem;
-    color: #d1d5db;
-    margin-top: 0.5rem;
-  }
-  
-  /* Controle das bolinhas para navegação */
-  .bolinhas-controle {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
-  
-  .bolinha {
-    width: 0.75rem;
-    height: 0.75rem;
-    background-color: #9ca3af;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .bolinha:hover {
-    background-color: #6b7280;
-  }
-  
-  /* Responsividade */
-  @media (max-width: 768px) {
-    .feedback-cards {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .feedback-card {
-      width: 100%;
-      max-width: 400px;
-      margin-bottom: 1rem;
-    }
-  }
-  
+  text-align: center;
+}
+
+.feedback-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.feedback-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.feedback-card {
+  background: #252529;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 450px;
+  text-align: center;
+  transition: all 0.3s ease-in-out; /* Transição suave para o efeito de relevo */
+}
+
+/* Animação de relevo (efeito de elevação ao passar o mouse) */
+.feedback-card:hover {
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Eleva o card */
+  transform: translateY(-5px); /* Move ligeiramente para cima */
+}
+
+.feedback-image {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.feedback-name {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 5px;
+}
+
+.feedback-text {
+  font-size: 1.1rem;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.feedback-city {
+  font-size: 1rem;
+  color: white;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: #252529;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #FC6700;
+}

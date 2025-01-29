@@ -11,8 +11,8 @@ footer {
 
 footer .logo {
   position: absolute; /* Posiciona a logo fora do fluxo normal */
-  left: 20; /* Garante que a logo fique totalmente à esquerda */
-  top: 50%;
+  left: 10px; /* Garante que a logo fique totalmente à esquerda */
+  top: 53%;
   transform: translateY(-50%); /* Centraliza verticalmente a logo */
 }
 
@@ -28,5 +28,5 @@ footer .footer-text {
 
 /* Definindo a altura do footer */
 footer {
-  height: 130px; /* Ajuste conforme necessário */
+  height: 150px; /* Ajuste conforme necessário */
 }
