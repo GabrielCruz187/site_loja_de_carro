@@ -6,7 +6,7 @@
   width: 100%;
   max-width: 1980px; /* Limita a largura do banner */
   margin: 0 auto;
-  padding: 5rem; /* Espaçamento interno */
+  padding: 2rem; /* Espaçamento interno */
   box-sizing: border-box;
 }
 
