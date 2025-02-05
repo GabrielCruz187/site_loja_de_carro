@@ -31,5 +31,23 @@ app.listen(PORT, () => {
         console.log(`Método: ${req.method}, URL: ${req.url}, Body:`, req.body);
         next();
     });
+
+    app.get('/api/carros', async (req, res) => {
+        try {
+          const searchTerm = req.query.search;
+          if (!searchTerm) {
+            return res.json([]);
+          }
+      
+          const carros = await Carro.find({
+            modelo: { $regex: searchTerm, $options: 'i' }, // Faz uma busca por nome ignorando maiúsculas/minúsculas
+          });
+      
+          res.json(carros);
+        } catch (error) {
+          res.status(500).json({ message: 'Erro ao buscar carros' });
+        }
+      });
+         
     
 });

@@ -17,6 +17,10 @@ const CarroSchema = new mongoose.Schema({
     foto: {
         type: String, // URL da foto do carro
         required: false
+    },
+    destaque: {
+        type: Boolean,
+        default: false // Por padrão, o carro não será um destaque
     }
 });
 

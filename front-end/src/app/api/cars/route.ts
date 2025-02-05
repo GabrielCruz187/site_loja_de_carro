@@ -1,11 +1,17 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
-export async function POST(request: Request) {
-  const carData = await request.json();
-
-  // Salve o carro no banco de dados (aqui só estamos simulando)
-  // Você pode integrar isso com um banco de dados real, como o PostgreSQL
-  console.log('Carro Adicionado:', carData);
-
-  return NextResponse.json({ message: 'Carro adicionado com sucesso' }, { status: 201 });
+export async function GET() {
+  try {
+    const response = await fetch("http://localhost:3001/api/carros"); // Ajuste a URL conforme necessário
+    if (!response.ok) throw new Error("Erro ao buscar carros");
+    const data = await response.json();
+    return NextResponse.json(data);
+  } 
+  catch (error) {
+    let errorMessage = "Erro desconhecido";
+    if (error instanceof Error) {
+      errorMessage = error.message;
+    }
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
+  }
 }

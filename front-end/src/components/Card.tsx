@@ -2,23 +2,24 @@ import React from "react";
 import "../styles/Card.css";
 
 interface CardCarroProps {
-  titulo: string;
-  descricao: string;
-  imagem: string; // Caminho da imagem
+  modelo: string;
+  marca: string;
+  ano: number;
+  foto: string; // Caminho da imagem
 }
 
-const CardCarro: React.FC<CardCarroProps> = ({ titulo, descricao, imagem }) => {
+const CardCarro: React.FC<CardCarroProps> = ({ modelo, marca, ano, foto }) => {
   return (
     <div className="card-carro">
       {/* Imagem do carro */}
       <div className="card-imagem">
-        <img src={imagem} alt={titulo} className="imagem-carro" />
+        <img src={foto} alt={modelo} className="imagem-carro" />
       </div>
 
       {/* Detalhes do carro */}
       <div className="card-detalhes">
-        <h3 className="titulo-carro">{titulo}</h3>
-        <p className="descricao-carro">{descricao}</p>
+        <h3 className="titulo-carro">{modelo}</h3>
+        <p className="descricao-carro">{marca} - {ano}</p>
         <h4 className="preco">Preço: R$</h4>
       </div>
     </div>

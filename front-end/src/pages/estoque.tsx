@@ -1,44 +1,73 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Estoque.css";
 import CardCarro from "../components/Card";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer"; // Importação do Footer
+import Footer from "@/components/Footer";
 import { ChevronDown, ChevronUp, Check } from "lucide-react";
 
+// Defina um tipo para os carros
+interface Carro {
+  _id: string;
+  modelo: string;
+  marca: string;
+  ano: number;
+  foto: string;
+}
+
 export default function Estoque() {
+  // Tipando o estado corretamente como array de Carro
+  const [carros, setCarros] = useState<Carro[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  
   const [currentPage, setCurrentPage] = useState(1);
   const [dropdownOpen, setDropdownOpen] = useState<"filter" | "order" | null>(null);
   const [selectedFilter, setSelectedFilter] = useState<string>("Filtrar por:");
   const [selectedOrder, setSelectedOrder] = useState<string>("Ordenar por:");
 
-  // Mock de dados do estoque com imagens
-  const carros = [
-    { id: 1, titulo: "Carro 1", descricao: "Descrição do carro 1", imagem: "/s10.jpg" },
-    { id: 2, titulo: "Carro 2", descricao: "Descrição do carro 2", imagem: "/s10.jpg" },
-    { id: 3, titulo: "Carro 3", descricao: "Descrição do carro 3", imagem: "/s10.jpg" },
-    { id: 4, titulo: "Carro 4", descricao: "Descrição do carro 4", imagem: "/s10.jpg" },
-    { id: 5, titulo: "Carro 5", descricao: "Descrição do carro 5", imagem: "/s10.jpg" },
-    { id: 6, titulo: "Carro 6", descricao: "Descrição do carro 6", imagem: "/s10.jpg" },
-    { id: 7, titulo: "Carro 7", descricao: "Descrição do carro 7", imagem: "/s10.jpg" },
-    { id: 8, titulo: "Carro 8", descricao: "Descrição do carro 8", imagem: "/s10.jpg" },
-    { id: 9, titulo: "Carro 9", descricao: "Descrição do carro 9", imagem: "/s10.jpg" },
-    { id: 10, titulo: "Carro 10", descricao: "Descrição do carro 10", imagem: "/s10.jpg" },
-    { id: 11, titulo: "Carro 11", descricao: "Descrição do carro 11", imagem: "/s10.jpg" },
-    { id: 12, titulo: "Carro 12", descricao: "Descrição do carro 12", imagem: "/s10.jpg" },
-    { id: 13, titulo: "Carro 13", descricao: "Descrição do carro 13", imagem: "/s10.jpg" },
-    { id: 14, titulo: "Carro 14", descricao: "Descrição do carro 14", imagem: "/s10.jpg" },
-    { id: 15, titulo: "Carro 15", descricao: "Descrição do carro 15", imagem: "/s10.jpg" },
-    { id: 16, titulo: "Carro 16", descricao: "Descrição do carro 16", imagem: "/s10.jpg" },
-    { id: 17, titulo: "Carro 17", descricao: "Descrição do carro 17", imagem: "/s10.jpg" },
-    { id: 18, titulo: "Carro 18", descricao: "Descrição do carro 18", imagem: "/s10.jpg" },
-  ];
-
-  const carrosPorPagina = 12; // 5 linhas x 4 cards por linha
+  const carrosPorPagina = 12; 
   const totalPages = Math.ceil(carros.length / carrosPorPagina);
+
   const carrosExibidos = carros.slice(
     (currentPage - 1) * carrosPorPagina,
     currentPage * carrosPorPagina
   );
+
+  useEffect(() => {
+    async function fetchCarros() {
+      try {
+        console.log("Buscando carros..."); // Adicione este log
+        const response = await fetch("http://localhost:3001/api/carros");
+        if (!response.ok) throw new Error("Erro ao buscar carros");
+
+        const data: Carro[] = await response.json(); // Esperando um array de Carro
+
+        // Aplicar a filtragem e ordenação
+        let filteredAndSortedCars = [...data];
+
+        // Filtro de "Menor Preço", "Maior Preço" etc. pode ser implementado aqui se necessário
+        if (selectedFilter === "Menor Preço") {
+          filteredAndSortedCars = filteredAndSortedCars.sort((a, b) => a.ano - b.ano);
+        } else if (selectedFilter === "Maior Preço") {
+          filteredAndSortedCars = filteredAndSortedCars.sort((a, b) => b.ano - a.ano);
+        }
+
+        // Ordenação por "Marca", "Modelo", etc.
+        if (selectedOrder === "Marca") {
+          filteredAndSortedCars = filteredAndSortedCars.sort((a, b) => a.marca.localeCompare(b.marca));
+        } else if (selectedOrder === "Carro") {
+          filteredAndSortedCars = filteredAndSortedCars.sort((a, b) => a.modelo.localeCompare(b.modelo));
+        }
+
+        setCarros(filteredAndSortedCars); // Atualizando o estado com os dados filtrados e ordenados
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchCarros();
+  }, [selectedFilter, selectedOrder]); // Recarregar os carros sempre que o filtro ou ordem mudar
 
   const toggleDropdown = (dropdown: "filter" | "order") => {
     setDropdownOpen(dropdownOpen === dropdown ? null : dropdown);
@@ -65,8 +94,8 @@ export default function Estoque() {
     <div className="estoque-page">
       <Header />
 
+      {/* Filtro */}
       <div className="select">
-        {/* Filtro */}
         <div id="category-select">
           <input
             type="checkbox"
@@ -129,47 +158,35 @@ export default function Estoque() {
                 <span className="label">Carro</span>
                 <Check size={20} />
               </li>
-              <li className="opcao" onClick={() => handleSelectOption("order", "Moto")}>
-                <input type="radio" name="order" value="Moto" />
-                <span className="label">Moto</span>
+              <li className="opcao" onClick={() => handleSelectOption("order", "Ano")}>
+                <input type="radio" name="order" value="Ano" />
+                <span className="label">Ano</span>
                 <Check size={20} />
               </li>
             </ul>
           )}
         </div>
+      </div>
 
-        {/* Barra de paginação à direita */}
-        <div className="pagination-right">
-          <div className="pagination-bottom">
-            {[...Array(totalPages)].map((_, index) => (
-              <button
-                key={index}
-                className={`pagination-circle ${currentPage === index + 1 ? "active" : ""}`}
-                onClick={() => {
-                  setCurrentPage(index + 1);
-                  scrollToTop(); // Chama a função para rolar até o topo
-                }}
-              >
-                {index + 1}
-              </button>
-            ))}
-          </div>
+      {/* Exibindo os carros */}
+      {loading ? (
+        <p>Carregando carros...</p>
+      ) : (
+        <div className="estoque-cards">
+          {carrosExibidos.map((carro: Carro) => (
+            <CardCarro
+              key={carro._id}
+              modelo={carro.modelo}
+              marca={carro.marca}
+              ano={carro.ano}
+              foto={`http://localhost:3001/${carro.foto}`} // Ajuste o caminho se necessário
+            />
+          ))}
         </div>
-      </div>
+      )}
 
-      <div className="estoque-cards">
-        {carrosExibidos.map((carro) => (
-          <CardCarro
-            key={carro.id}
-            titulo={carro.titulo}
-            descricao={carro.descricao}
-            imagem={carro.imagem}
-          />
-        ))}
-      </div>
-
-      {/* Nova barra de paginação abaixo dos cards */}
-      <div className="pagination-down">
+      {/* Paginação */}
+      <div className="pagination-right">
         <div className="pagination-bottom">
           {[...Array(totalPages)].map((_, index) => (
             <button
@@ -185,7 +202,10 @@ export default function Estoque() {
           ))}
         </div>
       </div>
-      <Footer /> {/* Adicionando o Footer aqui */}
+
+      <Footer />
     </div>
   );
 }
+
+

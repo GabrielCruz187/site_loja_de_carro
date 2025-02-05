@@ -16,10 +16,14 @@ router.get('/carros', async (req, res) => {
 // Rota para adicionar um novo carro
 router.post('/carros', async (req, res) => {
     try {
+        console.log("Dados recebidos:", req.body); // Log dos dados recebidos
+
         const novoCarro = new Carro(req.body);
-        await novoCarro.save();
+        await novoCarro.save(); // Tentando salvar no banco
+        console.log("Carro salvo com sucesso:", novoCarro); // Log após salvar
         res.status(201).json(novoCarro);
     } catch (err) {
+        console.error("Erro ao salvar carro:", err); // Log de erro
         res.status(400).send('Erro ao adicionar carro.');
     }
 });
@@ -46,5 +50,26 @@ router.delete('/carros/:id', async (req, res) => {
     }
 });
 
+// Rota para atualizar o status de destaque do carro
+router.put('/carros/:id/destaque', async (req, res) => {
+    try {
+        const { destaque } = req.body;
+        const carroAtualizado = await Carro.findByIdAndUpdate(
+            req.params.id,
+            { destaque },
+            { new: true }
+        );
+
+        if (!carroAtualizado) {
+            return res.status(404).send({ error: 'Carro não encontrado.' });
+        }
+
+        res.status(200).send(carroAtualizado);
+    } catch (error) {
+        res.status(400).send({ error: 'Erro ao atualizar destaque do carro.' });
+    }   
+}); // <-- Aqui estava o erro! Essa chave estava faltando.
+
 module.exports = router;
+
 

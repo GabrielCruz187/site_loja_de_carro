@@ -1,25 +1,18 @@
 // src/app/admin/page.tsx
-import Link from 'next/link';
-
-const AdminPage = () => {
+export default function AdminPage() {
   return (
-    <div>
-      <h1>Painel de Administração</h1>
-      <nav>
-        <ul>
-          <li>
-            <Link href="/admin/estoque">Gerenciar Estoque de Carros</Link>
-          </li>
-          <li>
-            <Link href="/admin/usuarios">Gerenciar Usuários</Link>
-          </li>
-          {/* Outros links de administração */}
-        </ul>
-      </nav>
-    </div>
+    <main className="p-4">
+      <h1 className="text-2xl font-bold">Painel Administrativo</h1>
+      <p>Gerencie os carros da loja aqui.</p>
+      <ul className="mt-4">
+        <li>
+          <Link href="/admin/estoque" className="text-blue-500">
+            Gerenciar Estoque
+          </Link>
+        </li>
+      </ul>
+    </main>
   );
-};
-
-export default AdminPage;
+}
 
   

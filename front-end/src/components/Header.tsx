@@ -1,12 +1,35 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import '../styles/Header.css';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+
+  useEffect(() => {
+    const fetchCars = async () => {
+      if (searchTerm.length > 2) { // Só busca se tiver mais de 2 caracteres
+        try {
+          const response = await fetch(`http://localhost:3001/api/carros?search=${searchTerm}`);
+          const data = await response.json();
+          setSearchResults(data);
+        } catch (error) {
+          console.error('Erro ao buscar carros:', error);
+        }
+      } else {
+        setSearchResults([]); // Limpa a busca se o usuário apagar
+      }
+    };
+
+    // Delay para evitar requisições em excesso
+    const timeout = setTimeout(fetchCars, 500);
+
+    return () => clearTimeout(timeout);
+  }, [searchTerm]);
 
   return (
     <header className="header">
@@ -21,10 +44,25 @@ export default function Header() {
             type="text"
             placeholder="Pesquisar"
             className="search-input"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
           <button className="search-button" aria-label="Pesquisar">
             <span className="search-icon">🔍</span>
           </button>
+          {/* Resultados da pesquisa */}
+          {searchTerm.length > 2 && searchResults.length > 0 && (
+            <ul className="search-results">
+              {searchResults.map((carro) => (
+                <li key={carro._id}>
+                  <Link href={`/estoque/${carro._id}`}>
+                    <Image src={`http://localhost:3001/${carro.foto}`} alt={carro.modelo} width={50} height={50} />
+                    <span>{carro.modelo} - {carro.marca} ({carro.ano})</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
         <nav className={`header-nav ${isMenuOpen ? 'active' : ''}`}>
           <Link href="/" className="header-nav-item">Home</Link>
@@ -40,3 +78,5 @@ export default function Header() {
     </header>
   );
 }
+
+
