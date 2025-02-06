@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import '../styles/Header.css';
+import { Search } from "lucide-react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,7 +49,7 @@ export default function Header() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <button className="search-button" aria-label="Pesquisar">
-            <span className="search-icon">🔍</span>
+            <span className="search-icon"><Search></Search></span>
           </button>
           {/* Resultados da pesquisa */}
           {searchTerm.length > 2 && searchResults.length > 0 && (

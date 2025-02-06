@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import "../styles/Card.css";
+import Link from 'next/link';
 
 interface CardCarroProps {
   modelo: string;
@@ -30,7 +31,7 @@ const CardCarro: React.FC<CardCarroProps> = ({ modelo, marca, ano, foto }) => {
         <p className="descricao-carro">{marca} - {ano}</p>
         <h4 className="preco">Preço: R$</h4>
       </div>
-    </div>
+    <Link>
   );
 };
 

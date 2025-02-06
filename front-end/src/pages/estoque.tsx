@@ -158,13 +158,31 @@ export default function Estoque() {
                 <span className="label">Carro</span>
                 <Check size={20} />
               </li>
-              <li className="opcao" onClick={() => handleSelectOption("order", "Ano")}>
-                <input type="radio" name="order" value="Ano" />
-                <span className="label">Ano</span>
+              <li className="opcao" onClick={() => handleSelectOption("order", "Moto")}>
+                <input type="radio" name="order" value="Moto" />
+                <span className="label">Moto</span>
                 <Check size={20} />
               </li>
             </ul>
           )}
+        </div>
+
+        {/* Barra de paginação à direita */}
+        <div className="pagination-right">
+          <div className="pagination-bottom">
+            {[...Array(totalPages)].map((_, index) => (
+              <button
+                key={index}
+                className={`pagination-circle ${currentPage === index + 1 ? "active" : ""}`}
+                onClick={() => {
+                  setCurrentPage(index + 1);
+                  scrollToTop(); // Chama a função para rolar até o topo
+                }}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 

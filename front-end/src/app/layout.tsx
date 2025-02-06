@@ -5,8 +5,7 @@ import { Historia } from '@/components/Historia';
 import { Feedback } from '@/components/Feedback';
 import { Localizacao } from '@/components/Localizacao';
 import { Redes } from '@/components/Redes';
-import '../styles/globals.css'; // Estilos globais
-import Header from '@/components/Header';
+import '../styles/globals.css';
 
 export const metadata = {
   title: 'Catálogo de Carros',
@@ -20,13 +19,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main className="container mx-auto py-8 px-6">
           {children}
+          <Banner />
+          <VeiculosDestaque />
+          <Historia />
+          <Feedback />
+          <Localizacao />
+          <Redes />
         </main>
-        <Banner />
-        <VeiculosDestaque />
-        <Historia />
-        <Feedback />
-        <Localizacao />
-        <Redes />
         <Footer />
       </body>
     </html>
