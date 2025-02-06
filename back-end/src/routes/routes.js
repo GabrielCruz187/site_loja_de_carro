@@ -1,4 +1,4 @@
-// src/routes/routes.js
+
 const express = require('express');
 const Carro = require('../models/Carro');
 const router = express.Router();
@@ -17,6 +17,9 @@ router.get('/carros', async (req, res) => {
 router.post('/carros', async (req, res) => {
     try {
         console.log("Dados recebidos:", req.body); // Log dos dados recebidos
+
+        
+
 
         const novoCarro = new Carro(req.body);
         await novoCarro.save(); // Tentando salvar no banco
@@ -71,5 +74,3 @@ router.put('/carros/:id/destaque', async (req, res) => {
 }); // <-- Aqui estava o erro! Essa chave estava faltando.
 
 module.exports = router;
-
-

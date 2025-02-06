@@ -15,13 +15,16 @@ const AdicionarCarro = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    
+
     // Enviar dados para o backend (exemplo de requisição POST)
     const res = await fetch('http://localhost:3001/api/carros', {
       method: "POST",
+    
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ marca, modelo, ano, foto }),
+      body: JSON.stringify({ marca, modelo, ano, foto:`/${foto}` }),
     });
 
     if (res.ok) {

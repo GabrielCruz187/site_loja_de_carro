@@ -1,11 +1,12 @@
 import React from "react";
+import Image from "next/image";
 import "../styles/Card.css";
 
 interface CardCarroProps {
   modelo: string;
   marca: string;
   ano: number;
-  foto: string; // Caminho da imagem
+  foto: string; // Caminho da imagem relativo à pasta 'public'
 }
 
 const CardCarro: React.FC<CardCarroProps> = ({ modelo, marca, ano, foto }) => {
@@ -13,7 +14,14 @@ const CardCarro: React.FC<CardCarroProps> = ({ modelo, marca, ano, foto }) => {
     <div className="card-carro">
       {/* Imagem do carro */}
       <div className="card-imagem">
-        <img src={foto} alt={modelo} className="imagem-carro" />
+        <Image 
+          src={foto} // Acessa imagens dentro de /public/uploads
+          alt={modelo} 
+          width={500} 
+          height={300} 
+          className="imagem-carro" 
+          
+        />
       </div>
 
       {/* Detalhes do carro */}
