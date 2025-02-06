@@ -102,42 +102,6 @@ export default function Estoque() {
           )}
         </div>
 
-        {/* Ordenação */}
-        <div id="category-selecionar">
-          <input
-            type="checkbox"
-            id="options-view-button2"
-            onChange={() => toggleDropdown("order")}
-            checked={dropdownOpen === "order"}
-          />
-          <div id="select-botão" onClick={() => toggleDropdown("order")}>
-            <div id="selecionar-value">{selectedOrder}</div>
-            <div id="chevrons2">
-              <ChevronDown size={20} style={{ display: dropdownOpen === "order" ? "none" : "block" }} />
-              <ChevronUp size={20} style={{ display: dropdownOpen === "order" ? "block" : "none" }} />
-            </div>
-          </div>
-          {dropdownOpen === "order" && (
-            <ul id="opcoes">
-              <li className="opcao" onClick={() => handleSelectOption("order", "Marca")}>
-                <input type="radio" name="order" value="Marca" />
-                <span className="label">Marca</span>
-                <Check size={20} />
-              </li>
-              <li className="opcao" onClick={() => handleSelectOption("order", "Carro")}>
-                <input type="radio" name="order" value="Carro" />
-                <span className="label">Carro</span>
-                <Check size={20} />
-              </li>
-              <li className="opcao" onClick={() => handleSelectOption("order", "Moto")}>
-                <input type="radio" name="order" value="Moto" />
-                <span className="label">Moto</span>
-                <Check size={20} />
-              </li>
-            </ul>
-          )}
-        </div>
-
         {/* Barra de paginação à direita */}
         <div className="pagination-right">
           <div className="pagination-bottom">

@@ -171,20 +171,6 @@
   letter-spacing: 0.0225rem;
 }
 
-#select-botão {
-  width: 250px; /* Aumenta a largura do container */
-  height: 50px; /* Aumenta a altura */
-  margin-top: 0.5rem;
-  display: flex;
-  padding: 0.75rem;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: .375rem;
-  border: 1px solid #302A2A;
-  background-color: #302A2A;
-  position: relative;
-
-}
 
 #selecionar-value {
   color: #AFABB6;
@@ -205,104 +191,12 @@
   display: none;
 }
 
-#options-view-button2:focus + #select-botão,
-#options-view-button2:checked + #selected-botão {
-  outline: 1px solid #AFABB6
-}
-
-#category-selecionar:has(#options-view-button2:checked) label,
-#options-view-button2:checked + #select-botão #chevrons {
-  color: #AFABB6
-}
-
-#options-view-button2:checked + #select-botão #chevrons2
-[data-lucide="chevron-down"] {
-  display: none;
-}
-
-#options-view-button2:checked + #select-botão #chevrons2
-[data-lucide="chevron-up"] {
-  display: block;
-}
-
 #category-selecionar {
   position: relative;
   width: 250px;
 }
 
-#options-view-button2 {
-  all: unset;
-  position: absolute;
-  inset: 0;
-  cursor: pointer;
-  z-index: 3;
-  width: 100%;
-  height: 100%;
-}
-
-#opcoes {
-  position: absolute; /* Garante que os dropdowns não afetem o layout dos cards */
-  top: calc(100% + 10px); /* Cria uma margem de 10px abaixo do botão para separar o dropdown */
-  z-index: 10; /* Garante que o dropdown fique sobre outros elementos */
-  border-radius: 0.375rem;
-  border: 1px solid #302A2A;
-  background: #302A2A;
-  width: 100%; /* Ocupa a largura total do botão */
-  max-width: 250px;
-  max-height: 180px;
-  overflow-y: auto;
-  padding: 0.5rem 0;
-  display: none; /* Oculta por padrão */
-}
-
-.opcao {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.65rem;
-  width: 100%;
-  border-bottom: 1px solid #3d3a3a;
-  margin-bottom: 0;
-  position: relative;
-}
-
-.opcao label {
-  color: #AFABB6;
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-}
-
-.opcao svg {
-  width: 1rem;
-  height: 1rem;
-  margin-left: auto;
-  display: none;
-}
-
-.opcao:has(input:checked),
-.opcao:hover { 
-  border-bottom: 1px solid #252529;
-  background-color: #252529;
-}
-
-.opcao:has(input:focus) { 
-  outline: 1px solid #FC6700;
-}
-
-.opcao:has(input:checked) [data-lucide="check"] { 
-  display: block;
-}
-
-.opcao input[type="radio"] {
-  all: unset;
-  position: absolute;
-  inset: 0;
-  cursor: pointer;
-}
-
-#options-view-button:checked + #select-button + #options,
-#options-view-button2:checked + #select-botão + #opcoes {
+#options-view-button:checked + #select-button + #options {
   display: block; /* Torna visível o dropdown */
 }
 

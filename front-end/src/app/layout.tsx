@@ -1,4 +1,4 @@
-import Header from '@/components/Header'; // Importe seu Header
+import Header from '@/components/Header'; 
 import Footer from '@/components/Footer';
 import Banner from '@/components/Banner';
 import VeiculosDestaque from '@/components/VeiculosDestaque';
@@ -6,7 +6,7 @@ import { Historia } from '@/components/Historia';
 import { Feedback } from '@/components/Feedback';
 import { Localizacao } from '@/components/Localizacao';
 import { Redes } from '@/components/Redes';
-import '../styles/globals.css'; // Estilos globais
+import '../styles/globals.css';
 
 export const metadata = {
   title: 'Catálogo de Carros',

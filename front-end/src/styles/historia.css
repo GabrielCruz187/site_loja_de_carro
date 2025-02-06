@@ -51,16 +51,13 @@
 .historia-button {
   background-color: #FC6700;
   color: white;
-  padding: 0.75rem 5rem; /* Botão menor */
+  padding: 0.7rem 3.5rem;
   border-radius: 0.5rem;
-  font-size: 1.2rem; /* Fonte menor */
-  font-weight: bold;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 1rem; /* Adiciona espaçamento superior para garantir que fique abaixo do h3 */
-  max-width: 700px; /* Limita a largura do botão */
-  display: block; /* Faz o botão ocupar toda a linha */
+  font-size: 1.1rem;
+  padding: 0.75rem 5rem; /* Botão menor */
 }
 
 

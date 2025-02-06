@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import '../styles/Header.css';
+import { Search } from "lucide-react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,7 +24,7 @@ export default function Header() {
             className="search-input"
           />
           <button className="search-button" aria-label="Pesquisar">
-            <span className="search-icon">🔍</span>
+            <span className="search-icon"><Search></Search></span>
           </button>
         </div>
         <nav className={`header-nav ${isMenuOpen ? 'active' : ''}`}>
