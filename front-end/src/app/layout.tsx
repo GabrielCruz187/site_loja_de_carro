@@ -1,3 +1,4 @@
+import Header from '@/components/Header'; 
 import Footer from '@/components/Footer';
 import Banner from '@/components/Banner';
 import VeiculosDestaque from '@/components/VeiculosDestaque';
@@ -12,20 +13,24 @@ export const metadata = {
   description: 'Explore o melhor catálogo de carros da região',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="pt-BR">
       <body className="bg-gray-100 text-gray-900">
-        <Header />
-        <main className="container mx-auto py-8 px-6">
-          {children}
-          <Banner />
-          <VeiculosDestaque />
-          <Historia />
-          <Feedback />
-          <Localizacao />
-          <Redes />
-        </main>
+        <Header /> {/* Usa o componente Header */}
+        <main className="container mx-auto py-8 px-6">{children}</main>
+        <main>
+        <Banner />
+        <VeiculosDestaque />
+        <Historia />
+        <Feedback />
+        <Localizacao />
+        <Redes />
+      </main>
         <Footer />
       </body>
     </html>

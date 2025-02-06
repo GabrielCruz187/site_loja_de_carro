@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import "../styles/Card.css";
-import Link from 'next/link';
 
 interface CardCarroProps {
   modelo: string;
@@ -21,7 +21,6 @@ const CardCarro: React.FC<CardCarroProps> = ({ modelo, marca, ano, foto }) => {
           width={500} 
           height={300} 
           className="imagem-carro" 
-          
         />
       </div>
 
@@ -30,9 +29,15 @@ const CardCarro: React.FC<CardCarroProps> = ({ modelo, marca, ano, foto }) => {
         <h3 className="titulo-carro">{modelo}</h3>
         <p className="descricao-carro">{marca} - {ano}</p>
         <h4 className="preco">Preço: R$</h4>
+
+        {/* Link para mais detalhes do carro */}
+        <Link href={`/estoque/${modelo.toLowerCase().replace(/\s/g, "-")}`}>
+         
+        </Link>
       </div>
-    <Link>
+    </div>
   );
 };
 
 export default CardCarro;
+
