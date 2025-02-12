@@ -1,6 +1,7 @@
-"use client";
+'use client'
 
 import { useState, useEffect } from "react";
+import '@/styles/editar.css';
 
 interface Car {
   _id: string;
@@ -22,6 +23,8 @@ export default function EditarCarro() {
       setCarros(data);
     }
     fetchCarros();
+
+    document.body.style.background = ""; // Clear background style
   }, []);
 
   const handleEditClick = (carro: Car) => {
@@ -47,27 +50,24 @@ export default function EditarCarro() {
       body: JSON.stringify(carroSelecionado),
     });
 
-    if (response.ok) {
-      const updatedCarro = await response.json(); // Aguarda a resposta da API
-      setCarros((prevCarros) =>
-        prevCarros.map((carro) =>
-          carro._id === updatedCarro._id ? updatedCarro : carro
-        )
-      );
-    }
-  
+    setCarros((prevCarros) =>
+      prevCarros.map((carro) =>
+        carro._id === carroSelecionado._id ? carroSelecionado : carro
+      )
+    );
+
     setCarroSelecionado(null);
   };
 
   return (
-    <main className="p-4">
-      <h1 className="text-2xl font-bold">Editar Carros</h1>
-      <p>Selecione um carro para editar.</p>
+    <main className="main">
+      <h1 className="Titulo1">Editar Carros</h1>
+      <p className="Texto">Selecione um carro para editar.</p>
       <ul>
         {carros.map((carro) => (
           <li
             key={carro._id}
-            className="flex justify-between items-center p-2 border-b cursor-pointer"
+            className="Selecionar"
             onClick={() => handleEditClick(carro)}
           >
             <span>
@@ -79,8 +79,8 @@ export default function EditarCarro() {
 
       {/* Formulário de edição */}
       {carroSelecionado && (
-        <div className="mt-4 p-4 border rounded bg-gray-100">
-          <h2 className="text-xl font-bold mb-2">
+        <div className="Formulario">
+          <h2 className="Editar">
             Editar {carroSelecionado.modelo}
           </h2>
           <input
@@ -88,44 +88,44 @@ export default function EditarCarro() {
             name="modelo"
             value={carroSelecionado.modelo}
             onChange={handleChange}
-            className="block w-full p-2 border mb-2"
+            className="Modelo"
           />
           <input
             type="text"
             name="marca"
             value={carroSelecionado.marca}
             onChange={handleChange}
-            className="block w-full p-2 border mb-2"
+            className="Marca"
           />
           <input
             type="number"
             name="ano"
             value={carroSelecionado.ano}
             onChange={handleChange}
-            className="block w-full p-2 border mb-2"
+            className="Numero"
           />
 
           {/* Checkbox para destacar carro */}
-          <div className="flex items-center mb-2">
+          <div className="Checkbox">
             <input
               type="checkbox"
               name="destaque"
               checked={carroSelecionado.destaque}
               onChange={handleChange}
-              className="mr-2"
+              className="Destaque"
             />
             <label>Destacar na página principal</label>
           </div>
 
           <button
             onClick={handleSave}
-            className="bg-blue-500 text-white px-4 py-2 rounded"
+            className="Salvar"
           >
             Salvar
           </button>
           <button
             onClick={() => setCarroSelecionado(null)}
-            className="bg-red-500 text-white px-4 py-2 rounded ml-2"
+            className="Cancelar"
           >
             Cancelar
           </button>
@@ -134,6 +134,3 @@ export default function EditarCarro() {
     </main>
   );
 }
-
-
-

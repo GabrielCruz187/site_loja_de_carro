@@ -1,0 +1,77 @@
+.main {
+  background-color: #252529;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 2.6rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Titulo1 {
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+
+.Texto {
+  color: white;
+  font-size: 20px;
+  text-align: left; /* Alinha o texto à esquerda */
+  font-weight: normal; /* Define o peso da fonte como normal */
+  width: 100%;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinha os inputs e os rótulos à esquerda */
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+form div label {
+  text-align: left; /* Alinha o texto do rótulo à esquerda */
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 28px;
+  background: white;
+  color: #252529;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #ccc;
+}
+
+button {
+  background: #28a745;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  background: #218838;
+  transform: scale(1.05);
+}

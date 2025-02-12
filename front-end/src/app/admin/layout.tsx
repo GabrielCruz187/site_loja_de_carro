@@ -1,31 +1,20 @@
-import { ReactNode } from "react";
+import AdminFooter from '@/components/AdminFooter';
+import AdminHeader from '@/components/AdminHeader';
 
-interface AdminLayoutProps {
-  children: ReactNode; // Definindo que o layout espera um prop 'children' do tipo ReactNode
-}
-
-const AdminLayout = ({ children }: AdminLayoutProps) => {
+export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="admin-layout">
-      <header className="admin-header">
-        <h1>Painel Administrativo</h1>
-        {/* Adicione aqui links de navegação do painel */}
-      </header>
-      <div className="admin-main">
-        <aside className="admin-sidebar">
-          {/* Menu lateral de navegação */}
-        </aside>
-        <main className="admin-content">{children}</main>
-      </div>
-    </div>
+    <html lang="pt-BR">
+      <body>
+        <AdminHeader />
+        <div className="admin-bg">
+          <div className="admin-main">
+            <aside className="admin-sidebar">
+            </aside>
+            <main className="admin-content">{children}</main>
+          </div>
+        </div>
+        <AdminFooter />
+      </body>
+    </html>
   );
-};
-
-export default AdminLayout;
-
-
-
-
-
-
-  
+}

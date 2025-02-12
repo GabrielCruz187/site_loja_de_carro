@@ -1,42 +1,20 @@
-'use client';
-
-import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import '../styles/Header.css';
+import '@/styles/AdminHeader.css';
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  return (
+return (
     <header className="header">
       <div className="container">
+      <h1 className='Titulo'>Painel Administrativo</h1>
+        <div className='Voltar'>
+        <Link href="/admin/estoque" className="header-nav-item">Voltar</Link>
+        </div>
         <div className="logo">
           <Link href="/"> 
             <Image src="/ala.jpg" alt="Logo" width={120} height={120} />
           </Link>
         </div>
-        <div className="search">
-          <input
-            type="text"
-            placeholder="Pesquisar"
-            className="search-input"
-          />
-          <button className="search-button" aria-label="Pesquisar">
-            <span className="search-icon">🔍</span>
-          </button>
-        </div>
-        <nav className={`header-nav ${isMenuOpen ? 'active' : ''}`}>
-          <Link href="/" className="header-nav-item">Home</Link>
-          <Link href="/estoque" className="header-nav-item">Estoque</Link>
-          <Link href="/sobre" className="header-nav-item">Sobre Nós</Link>
-          <Link href="/contato" className="header-nav-item">Contato</Link>
-        </nav>
-        <div className="header-lines">
-          <div className="white-line"></div>
-          <div className="orange-line"></div>
-        </div>
       </div>
     </header>
-  );
-}
+)}

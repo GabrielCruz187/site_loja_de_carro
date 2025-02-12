@@ -35,11 +35,19 @@ export default function Header() {
   return (
     <header className="header">
       <div className="container">
+        {/* Botão do menu hamburguer */}
+        <button className="hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <div className={`bar ${isMenuOpen ? 'open' : ''}`}></div>
+          <div className={`bar ${isMenuOpen ? 'open' : ''}`}></div>
+          <div className={`bar ${isMenuOpen ? 'open' : ''}`}></div>
+        </button>
+
         <div className="logo">
           <Link href="/"> 
             <Image src="/ala.jpg" alt="Logo" width={120} height={120} />
           </Link>
         </div>
+
         <div className="search">
           <input
             type="text"
@@ -49,8 +57,9 @@ export default function Header() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <button className="search-button" aria-label="Pesquisar">
-            <span className="search-icon"><Search></Search></span>
+            <span className="search-icon"><Search /></span>
           </button>
+
           {/* Resultados da pesquisa */}
           {searchTerm.length > 2 && searchResults.length > 0 && (
             <ul className="search-results">
@@ -65,12 +74,15 @@ export default function Header() {
             </ul>
           )}
         </div>
-        <nav className={`header-nav ${isMenuOpen ? 'active' : ''}`}>
+
+        {/* Menu de navegação - aparece quando o menu hamburguer é clicado */}
+        <nav className={`header-nav ${isMenuOpen ? 'show' : ''}`}>
           <Link href="/" className="header-nav-item">Home</Link>
           <Link href="/estoque" className="header-nav-item">Estoque</Link>
           <Link href="/sobre" className="header-nav-item">Sobre Nós</Link>
           <Link href="/contato" className="header-nav-item">Contato</Link>
         </nav>
+
         <div className="header-lines">
           <div className="white-line"></div>
           <div className="orange-line"></div>
@@ -79,5 +91,3 @@ export default function Header() {
     </header>
   );
 }
-
-

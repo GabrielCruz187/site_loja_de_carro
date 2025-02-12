@@ -1,4 +1,3 @@
-// src/components/AdminFooter.tsx
 const AdminFooter = () => {
     return (
       <footer className="admin-footer">
