@@ -4,6 +4,7 @@ import CardCarro from "../components/Card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ChevronDown, ChevronUp, Check } from "lucide-react";
+import Image from 'next/image';
 
 // Defina um tipo para os carros
 interface Carro {
@@ -12,6 +13,7 @@ interface Carro {
   marca: string;
   ano: number;
   foto: string;
+  preco: number;
 }
 
 export default function Estoque() {
@@ -194,11 +196,13 @@ export default function Estoque() {
           {carrosExibidos.map((carro: Carro) => (
             <CardCarro
               key={carro._id}
+              _id={carro._id} // Aqui garantimos que _id seja passado
               modelo={carro.modelo}
               marca={carro.marca}
               ano={carro.ano}
-              foto={`http://localhost:3001/${carro.foto}`} // Ajuste o caminho se necessário
-            />
+              foto={`http://localhost:3000${carro.foto}`}  // Usando URL absoluta  // Caminho relativo à pasta public
+              preco={carro.preco}
+              />
           ))}
         </div>
       )}
@@ -225,5 +229,4 @@ export default function Estoque() {
     </div>
   );
 }
-
 

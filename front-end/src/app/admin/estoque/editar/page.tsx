@@ -10,6 +10,7 @@ interface Car {
   ano: number;
   foto: string;
   destaque: boolean;
+  preco: number | string; // Garantir que o preço possa ser número ou string
 }
 
 export default function EditarCarro() {
@@ -36,7 +37,7 @@ export default function EditarCarro() {
       const { name, type, value, checked } = e.target;
       setCarroSelecionado({
         ...carroSelecionado,
-        [name]: type === "checkbox" ? checked : value,
+        [name]: type === "checkbox" ? checked : type === "number" ? parseFloat(value) : value,
       });
     }
   };
@@ -44,7 +45,7 @@ export default function EditarCarro() {
   const handleSave = async () => {
     if (!carroSelecionado) return;
 
-    await fetch(`http://localhost:3001/api/carros/${carroSelecionado._id}`, {
+    const response = await fetch(`http://localhost:3001/api/carros/${carroSelecionado._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(carroSelecionado),
@@ -103,6 +104,14 @@ export default function EditarCarro() {
             value={carroSelecionado.ano}
             onChange={handleChange}
             className="Numero"
+          />
+          <input
+            type="number"
+            name="preco"
+            value={carroSelecionado.preco || ""} // Garantir que o valor seja uma string ou número
+            onChange={handleChange}
+            className="block w-full p-2 border mb-2"
+            step="0.01" // Permite preços decimais
           />
 
           {/* Checkbox para destacar carro */}

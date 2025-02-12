@@ -11,6 +11,7 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve arquivos estáticos da pasta "public/uploads"
 app.use('/uploads', express.static(path.join(__dirname, 'public', 'uploads')));
