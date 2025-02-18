@@ -6,28 +6,38 @@ import Link from 'next/link';
 import '../styles/Header.css';
 import { Search } from "lucide-react";
 
+interface Car {
+  _id: string;
+  modelo: string;
+  marca: string;
+  ano: number;
+  foto: string;
+}
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState<Car[]>([]);
 
   useEffect(() => {
     const fetchCars = async () => {
-      if (searchTerm.length > 2) { // Só busca se tiver mais de 2 caracteres
-        try {
-          const response = await fetch(`http://localhost:3001/api/carros?search=${searchTerm}`);
-          const data = await response.json();
-          setSearchResults(data);
-        } catch (error) {
-          console.error('Erro ao buscar carros:', error);
-        }
-      } else {
-        setSearchResults([]); // Limpa a busca se o usuário apagar
+      if (searchTerm.trim() === '') {
+        setSearchResults([]); // Se o campo estiver vazio, limpa a busca
+        return;
+      }
+
+      try {
+        const response = await fetch(`http://localhost:3001/api/carros?search=${searchTerm}`);
+        if (!response.ok) throw new Error('Erro ao buscar carros');
+        const data: Car[] = await response.json(); // Definindo o tipo explicitamente
+        setSearchResults(data);
+      } catch (error) {
+        console.error(error);
+        setSearchResults([]); // Garante que os resultados não fiquem travados se houver erro
       }
     };
 
-    // Delay para evitar requisições em excesso
-    const timeout = setTimeout(fetchCars, 500);
+    const timeout = setTimeout(fetchCars, 500); // Debounce de 500ms
 
     return () => clearTimeout(timeout);
   }, [searchTerm]);
@@ -49,15 +59,15 @@ export default function Header() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <button className="search-button" aria-label="Pesquisar">
-            <span className="search-icon"><Search></Search></span>
+            <span className="search-icon"><Search /></span>
           </button>
           {/* Resultados da pesquisa */}
-          {searchTerm.length > 2 && searchResults.length > 0 && (
+          {searchResults.length > 0 && (
             <ul className="search-results">
               {searchResults.map((carro) => (
                 <li key={carro._id}>
-                  <Link href={`/estoque/${carro._id}`}>
-                    <Image src={`http://localhost:3001/${carro.foto}`} alt={carro.modelo} width={50} height={50} />
+                  <Link href={`/venda/${carro._id}`}>
+                    <Image src={`http://localhost:3000/${carro.foto}`} alt={carro.modelo} width={50} height={50} />
                     <span>{carro.modelo} - {carro.marca} ({carro.ano})</span>
                   </Link>
                 </li>
@@ -79,5 +89,3 @@ export default function Header() {
     </header>
   );
 }
-
-

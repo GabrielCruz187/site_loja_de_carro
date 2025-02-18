@@ -16,7 +16,7 @@ router.get('/carros', async (req, res) => {
 // Rota para adicionar um carro
 router.post('/carros', async (req, res) => {
     try {
-      const { modelo, marca, ano, foto, destaque, preco, quilometragem, cor, combustivel, placa, cambio, fotos    } = req.body;
+      const { modelo, marca, ano, foto, destaque, preco, quilometragem, cor, combustivel, placa, cambio, fotos, descricao    } = req.body;
   
       // Certifique-se de que a URL começa com "/" (relativo à pasta public)
       if (!foto.startsWith("/")) {
@@ -41,6 +41,7 @@ router.post('/carros', async (req, res) => {
         placa,
         cambio,
         fotos,
+        descricao,
 
       });
   
