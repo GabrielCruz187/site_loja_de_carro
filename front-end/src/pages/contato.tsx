@@ -1,10 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/Contato.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { MapPin, Building, Mail, Phone } from "lucide-react";
 
 const Contato = () => {
+  useEffect(() => {
+    const elements = document.querySelectorAll('.info-contato, .map-container, .social-icons, .pagina-title, .info-title');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Se for um título, adiciona a classe .title-visible
+          if (entry.target.classList.contains('pagina-title') || entry.target.classList.contains('info-title')) {
+            entry.target.classList.add('title-visible');
+          } else {
+            // Para os outros elementos, adiciona a classe .content-visible
+            entry.target.classList.add('content-visible');
+          }
+        }
+      });
+    }, {
+      threshold: 0.1  // Aciona quando 50% do elemento estiver visível
+    });
+
+    elements.forEach(element => {
+      observer.observe(element);
+    });
+
+    // Limpeza do observer quando o componente for desmontado
+    return () => {
+      elements.forEach(element => {
+        observer.unobserve(element);
+      });
+    };
+  }, []);
+
   return (
     <div>
       {/* Aqui está o Header */}
@@ -27,20 +58,19 @@ const Contato = () => {
               <Mail size={24} />
               <p>contato@empresa.com</p>
             </div>
-            <div className="info-item">
-              <MapPin size={24} />
-              <p>R. Pedro Augustin, 464 - Centro, Não-Me-Toque - RS</p>
+            <div className="info-item2">
+              <p><MapPin size={24} /> R. Pedro Augustin, 464 - Centro, Não-Me-Toque - RS</p>
             </div>
-            <div className="info-item">
+            <div className="info-item2">
               <Building size={24} />
               <p>Seg-Sex: 08h - 18h | Sáb: 08h - 12h</p>
             </div>
           </div>
-          
+
           {/* Mapa da localização */}
           <div className="map-container">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.6466974407077!2d-49.46786858513275!3d-28.494404657118315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951adcb98f79ad09%3A0x6e10b450ccf8da31!2sNão%20Me%20Toque%2C%20RS!5e0!3m2!1spt-BR!2sbr!4v1672898532284!5m2!1spt-BR!2sbr"
+              src="https://www.google.com/maps/embed?pb=..."
               width="100%"
               height="400"
               style={{ border: 0 }}
@@ -54,25 +84,13 @@ const Contato = () => {
         <div className="redes-contato-externo">
           <h2 className="redes-title">Acesse nossas redes sociais</h2>
           <div className="social-icons">
-            <a
-              href="https://www.instagram.com/ala.automoveis/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.instagram.com/ala.automoveis/" target="_blank" rel="noopener noreferrer">
               <img src="/instagram.png" alt="Instagram" className="social-icon" />
             </a>
-            <a
-              href="https://www.facebook.com/ala.automoveis/?locale=pt_BR"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.facebook.com/ala.automoveis/?locale=pt_BR" target="_blank" rel="noopener noreferrer">
               <img src="/facebook.png" alt="Facebook" className="social-icon" />
             </a>
-            <a
-              href="https://wa.me/5554996357891"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://wa.me/5554996357891" target="_blank" rel="noopener noreferrer">
               <img src="/whatsapp.png" alt="WhatsApp" className="social-icon" />
             </a>
           </div>

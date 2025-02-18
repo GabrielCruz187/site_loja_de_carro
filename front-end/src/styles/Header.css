@@ -62,6 +62,10 @@ header {
   color: white;
 }
 
+.hamburger {
+  display: none;
+}
+
 /* Logo totalmente à esquerda */
 .logo {
   position: absolute;

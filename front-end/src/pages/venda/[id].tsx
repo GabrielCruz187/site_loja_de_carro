@@ -1,4 +1,3 @@
-// venda.tsx
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Header from "@/components/Header";
@@ -24,7 +23,7 @@ interface Carro {
 
 export default function Venda() {
   const router = useRouter();
-  const { id } = router.query;  // Obtém o ID do carro da URL
+  const { id } = router.query;
   const [carro, setCarro] = useState<Carro | null>(null);
 
   useEffect(() => {
@@ -43,9 +42,10 @@ export default function Venda() {
     return <p>Carregando detalhes do carro...</p>;
   }
 
-  const precoFormatado = carro.preco && !isNaN(carro.preco)
-    ? `R$ ${(carro.preco).toFixed(2)}`
-    : "Preço indisponível";
+  const precoFormatado =
+    carro.preco && !isNaN(carro.preco)
+      ? `R$ ${carro.preco.toFixed(2)}`
+      : "Preço indisponível";
 
   return (
     <div className="Layout">
@@ -57,49 +57,56 @@ export default function Venda() {
             <h2 className="Modelo">{carro.modelo}</h2>
           </div>
 
-          <div className="Carrossel">
-            <div className="ImagemPrincipal">
-              <Image
-                src={`http://localhost:3000/${carro.foto}`}
-                alt={carro.modelo}
-                width={720}
-                height={420}
-                className="ImagemPrincipal"
-              />
-            </div>
-            <div className="Miniaturas">
-              {carro.fotos && carro.fotos.map((foto, index) => (
+          {/* Seção que alinha o carrossel de imagens e os detalhes */}
+          <div className="CarroDetalhes">
+            {/* Carrossel - Miniaturas à esquerda, Imagem Principal à direita */}
+            <div className="Carrossel">
+              <div className="Miniaturas">
+                {carro.fotos &&
+                  carro.fotos.map((foto, index) => (
+                    <Image
+                      key={index}
+                      src={`http://localhost:3000/${foto}`}
+                      alt={`Imagem ${index + 1}`}
+                      width={115}
+                      height={70}
+                      className="MiniaturaImagem"
+                    />
+                  ))}
+              </div>
+
+              <div className="ImagemPrincipal">
                 <Image
-                  key={index}
-                  src={`http://localhost:3000/${foto}`}
-                  alt={`Imagem ${index + 1}`}
-                  width={115}
-                  height={70}
-                  className="MiniaturaImagem"
+                  src={`http://localhost:3000/${carro.foto}`}
+                  alt={carro.modelo}
+                  width={720}
+                  height={420}
+                  className="ImagemPrincipal"
                 />
-              ))}
+              </div>
             </div>
-          </div>
 
-          <div className="Titulo2">
-            <h3 className="Detalhes">Detalhes do Carro</h3>
-          </div>
+            {/* Detalhes do carro à direita */}
+            <div className="DetalhesContainer">
+              <h3 className="Detalhes">Detalhes do Carro</h3>
 
-          <div className="Descricao">
-            <p><strong>Descrição:</strong> {carro.descricao}</p>
-            <p><strong>Quilometragem:</strong> {carro.quilometragem} km</p>
-            <p><strong>Cor:</strong> {carro.cor}</p>
-            <p><strong>Combustível:</strong> {carro.combustivel}</p>
-            <p><strong>Placa:</strong> {carro.placa}</p>
-            <p><strong>Câmbio:</strong> {carro.cambio}</p>
-          </div>
+              <div className="Descricao">
+                <p>{carro.descricao}</p>
+                <p><strong>Quilometragem:</strong> {carro.quilometragem} km</p>
+                <p><strong>Cor:</strong> {carro.cor}</p>
+                <p><strong>Combustível:</strong> {carro.combustivel}</p>
+                <p><strong>Placa:</strong> {carro.placa}</p>
+                <p><strong>Câmbio:</strong> {carro.cambio}</p>
+              </div>
 
-          <div className="Preco">
-            <h2>{precoFormatado}</h2>
-          </div>
+              <div className="Preco">
+                <h2>{precoFormatado}</h2>
+              </div>
 
-          <div className="BotaoCompra">
-            <button className="veiculos-destaque-button">Comprar</button>
+              <div className="BotaoCompra">
+                <button className="veiculos-destaque-button">Estou Interessado</button>
+              </div>
+            </div>
           </div>
         </div>
       </main>
@@ -107,6 +114,3 @@ export default function Venda() {
     </div>
   );
 }
-
-
-

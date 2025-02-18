@@ -1,41 +1,58 @@
-// routes.js (ou o arquivo onde você configura suas rotas)
+
 const express = require('express');
-const Carro = require('../models/Carro');  // Importando o modelo Carro
-const multer = require('multer');
-const path = require('path');
+const Carro = require('../models/Carro');
 const router = express.Router();
 
-// Configuração do multer para armazenar as imagens no diretório "uploads"
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'public/uploads'); // Pasta onde as imagens serão salvas
-  },
-  filename: (req, file, cb) => {
-    const uniqueName = Date.now() + path.extname(file.originalname); // Nome único da imagem
-    cb(null, uniqueName); // Salva com o nome gerado
-  }
-});
-
-const upload = multer({ storage });
-
-// Rota para adicionar um novo carro
-router.post('/carros', async (req, res) => {
+// Rota para listar todos os carros
+router.get('/carros', async (req, res) => {
     try {
-        console.log("Dados recebidos:", req.body); // Log dos dados recebidos
-
-        
-
-
-        const novoCarro = new Carro(req.body);
-        await novoCarro.save(); // Tentando salvar no banco
-        console.log("Carro salvo com sucesso:", novoCarro); // Log após salvar
-        res.status(201).json(novoCarro);
+        const carros = await Carro.find();
+        res.json(carros);
     } catch (err) {
-        console.error("Erro ao salvar carro:", err); // Log de erro
-        res.status(400).send('Erro ao adicionar carro.');
+        res.status(500).send('Erro ao buscar carros.');
     }
 });
 
+// Rota para adicionar um carro
+router.post('/carros', async (req, res) => {
+    try {
+      const { modelo, marca, ano, foto, destaque, preco, quilometragem, cor, combustivel, placa, cambio, fotos    } = req.body;
+  
+      // Certifique-se de que a URL começa com "/" (relativo à pasta public)
+      if (!foto.startsWith("/")) {
+        return res.status(400).json({ error: "Caminho da imagem inválido" });
+      }
+
+       // Certifique-se de que o preco seja um número válido
+       if (isNaN(preco) || preco < 0) {
+        return res.status(400).json({ error: "Preço inválido" });
+    }
+  
+      const novoCarro = new Carro({
+        modelo,
+        marca,
+        ano,
+        foto,  // Aqui salva a URL da imagem fornecida
+        destaque,
+        preco,
+        quilometragem,
+        cor,
+        combustivel,
+        placa,
+        cambio,
+        fotos,
+
+      });
+  
+      await novoCarro.save();
+      console.log("Novo carro salvo:", novoCarro);  // Adiciona este log
+      res.status(201).json({ message: 'Carro salvo com sucesso', carro: novoCarro });
+  
+    } catch (error) {
+      console.error("Erro ao salvar carro:", error);
+      res.status(500).json({ error: 'Erro ao salvar o carro' });
+    }
+  });
 // Rota para atualizar um carro existente
 router.put('/carros/:id', async (req, res) => {
     try {
@@ -77,5 +94,18 @@ router.put('/carros/:id/destaque', async (req, res) => {
         res.status(400).send({ error: 'Erro ao atualizar destaque do carro.' });
     }   
 }); // <-- Aqui estava o erro! Essa chave estava faltando.
+// Rota para buscar um carro pelo ID
+router.get("/carros/:id", async (req, res) => {
+    try {
+        const carro = await Carro.findById(req.params.id); // Busca pelo ID no banco
+        if (!carro) {
+            return res.status(404).json({ message: "Carro não encontrado" });
+        }
+        res.json(carro); // Retorna os detalhes do carro
+    } catch (error) {
+        res.status(500).json({ message: "Erro ao buscar carro", error });
+    }
+});
+
 
 module.exports = router;

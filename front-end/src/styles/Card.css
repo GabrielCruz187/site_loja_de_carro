@@ -79,6 +79,36 @@
     box-sizing: border-box;
   }
   
+  /* Responsivo: Em telas menores, mostrar apenas um card por vez */
 
+  @media (max-width: 834px) {
+    .CardCarro-wrapper {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      gap: 0; /* Removendo o espaçamento lateral */
+      justify-content: flex-start;
+    }
   
+    .card-carro {
+      flex: 0 0 50%; /* Agora exibe dois cards por vez */
+      scroll-snap-align: center;
+    }
+  }
   
+  @media (max-width: 620px) {
+    .CardCarro-wrapper {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      gap: 0; /* Removendo o espaçamento lateral */
+      justify-content: flex-start;
+    }
+
+    .card-carro {
+      flex: 0 0 100%; /* Faz cada card ocupar 100% da largura da tela */
+      scroll-snap-align: center;
+    }
+}

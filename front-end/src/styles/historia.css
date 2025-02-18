@@ -14,7 +14,7 @@
   margin: 0 auto;
   width: 97%; /* Reduzido para dar mais margem nas laterais */
   height: 42rem;
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
 }
 
 .historia-image {
@@ -60,7 +60,68 @@
   padding: 0.75rem 5rem; /* Botão menor */
 }
 
-
 .historia-button:hover {
   background-color: #cf4e08; /* Cor de hover mais escura */
+}
+
+@media (max-width: 834px) {
+  .historia-container {
+    flex-direction: column; /* Alterando para layout vertical */
+    height: auto; /* Remove a altura fixa para o layout ficar adaptável */
+  }
+
+  .historia-image {
+    width: 100%; /* A imagem ocupa toda a largura disponível */
+    height: 40rem; /* Altura fixa para a imagem */
+  }
+
+  .historia-content {
+    width: 100%; /* O conteúdo ocupa toda a largura disponível */
+    padding: 2rem; /* Ajustando padding */
+  }
+
+  .historia-content h2 {
+    font-size: 2.5rem; /* Reduzindo o tamanho da fonte do título */
+    margin-bottom: 2rem; /* Menos espaçamento abaixo do título */
+  }
+
+  .historia-content h3 {
+    font-size: 1.4rem; /* Reduzindo o tamanho do texto */
+    margin-bottom: 2rem; /* Ajuste no espaçamento inferior */
+  }
+
+  .historia-button {
+    padding: 0.7rem 4rem; /* Ajuste no tamanho do botão */
+  }
+}
+
+@media (max-width: 620px) {
+  .historia-container {
+    flex-direction: column; /* Alterando para layout vertical */
+    height: auto; /* Remove a altura fixa para o layout ficar adaptável */
+  }
+
+  .historia-image {
+    width: 100%; /* A imagem ocupa toda a largura disponível */
+    height: 23rem; /* Altura fixa para a imagem */
+  }
+
+  .historia-content {
+    width: 100%; /* O conteúdo ocupa toda a largura disponível */
+    padding: 2rem; /* Ajustando padding */
+  }
+
+  .historia-content h2 {
+    font-size: 2.5rem; /* Reduzindo o tamanho da fonte do título */
+    margin-bottom: 2rem; /* Menos espaçamento abaixo do título */
+  }
+
+  .historia-content h3 {
+    font-size: 1.4rem; /* Reduzindo o tamanho do texto */
+    margin-bottom: 2rem; /* Ajuste no espaçamento inferior */
+  }
+
+  .historia-button {
+    padding: 0.7rem 4rem; /* Ajuste no tamanho do botão */
+  }
 }

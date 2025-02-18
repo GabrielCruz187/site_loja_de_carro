@@ -1,5 +1,4 @@
 .redes {
-  margin: 4rem 2rem;
   color: white;
   text-align: center; /* Alinha o conteúdo à esquerda */
 }
@@ -28,3 +27,28 @@
   transform: scale(1.1);
 }
 
+@media (max-width: 834px) {
+  .redes-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .social-icon {
+    width: 75px;
+    height: 75px;
+    margin: 1.5rem;
+  }
+}
+
+@media (max-width: 440px) {
+  .redes-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .social-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0.5rem;
+  }
+}

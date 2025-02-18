@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import AdminLayout from "../../layout"; // Layout administrativo
+import '@/styles/adicionar.css';
 
 const AdicionarCarro = () => {
   const [marca, setMarca] = useState("");
@@ -19,13 +19,10 @@ const AdicionarCarro = () => {
   const [fotos, setFotos] = useState(""); // Novo campo para mais fotos
   const router = useRouter(); // Hook para navegação
 
-  // Função para lidar com o envio do formulário
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    
-
-    // Enviar dados para o backend (exemplo de requisição POST)
+    // Enviar dados para o backend com os novos campos
     const res = await fetch('http://localhost:3001/api/carros', {
       method: "POST",
       headers: {
@@ -60,26 +57,38 @@ const AdicionarCarro = () => {
       <form onSubmit={handleSubmit}>
         <div>
           <label className="Texto">Marca</label>
-          <input type="text" value={marca} onChange={(e) => setMarca(e.target.value)} />
+          <input
+            type="text"
+            value={marca}
+            onChange={(e) => setMarca(e.target.value)}
+          />
         </div>
         <div>
           <label className="Texto">Modelo</label>
-          <input type="text" value={modelo} onChange={(e) => setModelo(e.target.value)} />
+          <input
+            type="text"
+            value={modelo}
+            onChange={(e) => setModelo(e.target.value)}
+          />
         </div>
         <div>
           <label className="Texto">Ano</label>
-          <input type="text" value={ano} onChange={(e) => setAno(e.target.value)} />
+          <input
+            type="text"
+            value={ano}
+            onChange={(e) => setAno(e.target.value)}
+          />
         </div>
         <div>
           <label className="Texto">Foto</label>
-          <input 
-            type="file" 
-            accept="image/*" 
-            onChange={(e) => setFoto(e.target.files ? e.target.files[0] : null)} // Alterado para aceitar arquivos
+          <input
+            type="text"
+            value={foto}
+            onChange={(e) => setFoto(e.target.value)}
           />
         </div>
         <div>
-          <label>Preço</label>
+          <label className="Texto">Preço</label>
           <input
             type="text"
             value={preco}
@@ -87,14 +96,15 @@ const AdicionarCarro = () => {
           />
         </div>
         <div>
-          <label>Descrição</label> {/* Novo campo para descrição */}
+          <label htmlFor="descricao" className="Texto">Descrição</label>
           <textarea
-            value={descricao}
-            onChange={(e) => setDescricao(e.target.value)}
+          id="descricao"
+          value={descricao}
+          onChange={(e) => setDescricao(e.target.value)}
           />
         </div>
         <div>
-          <label>Quilometragem</label> {/* Novo campo para quilometragem */}
+          <label className="Texto">Quilometragem</label> {/* Novo campo para quilometragem */}
           <input
             type="text"
             value={quilometragem}
@@ -102,7 +112,7 @@ const AdicionarCarro = () => {
           />
         </div>
         <div>
-          <label>Cor</label> {/* Novo campo para cor */}
+          <label className="Texto">Cor</label> {/* Novo campo para cor */}
           <input
             type="text"
             value={cor}
@@ -110,7 +120,7 @@ const AdicionarCarro = () => {
           />
         </div>
         <div>
-          <label>Combustível</label> {/* Novo campo para combustível */}
+          <label className="Texto">Combustível</label> {/* Novo campo para combustível */}
           <input
             type="text"
             value={combustivel}
@@ -118,7 +128,7 @@ const AdicionarCarro = () => {
           />
         </div>
         <div>
-          <label>Placa</label> {/* Novo campo para placa */}
+          <label className="Texto">Placa</label> {/* Novo campo para placa */}
           <input
             type="text"
             value={placa}
@@ -126,7 +136,7 @@ const AdicionarCarro = () => {
           />
         </div>
         <div>
-          <label>Câmbio</label> {/* Novo campo para câmbio */}
+          <label className="Texto">Câmbio</label> {/* Novo campo para câmbio */}
           <input
             type="text"
             value={cambio}
@@ -134,70 +144,7 @@ const AdicionarCarro = () => {
           />
         </div>
         <div>
-          <label>Fotos (separe por vírgula)</label> {/* Novo campo para mais fotos */}
-          <input
-            type="text"
-            value={fotos}
-            onChange={(e) => setFotos(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Preço</label>
-          <input
-            type="text"
-            value={preco}
-            onChange={(e) => setPreco(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Descrição</label> {/* Novo campo para descrição */}
-          <textarea
-            value={descricao}
-            onChange={(e) => setDescricao(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Quilometragem</label> {/* Novo campo para quilometragem */}
-          <input
-            type="text"
-            value={quilometragem}
-            onChange={(e) => setQuilometragem(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Cor</label> {/* Novo campo para cor */}
-          <input
-            type="text"
-            value={cor}
-            onChange={(e) => setCor(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Combustível</label> {/* Novo campo para combustível */}
-          <input
-            type="text"
-            value={combustivel}
-            onChange={(e) => setCombustivel(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Placa</label> {/* Novo campo para placa */}
-          <input
-            type="text"
-            value={placa}
-            onChange={(e) => setPlaca(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Câmbio</label> {/* Novo campo para câmbio */}
-          <input
-            type="text"
-            value={cambio}
-            onChange={(e) => setCambio(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Fotos (separe por vírgula)</label> {/* Novo campo para mais fotos */}
+          <label className="Texto">Fotos (Separe as URLs por vírgula)</label> {/* Novo campo para mais fotos */}
           <input
             type="text"
             value={fotos}
