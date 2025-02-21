@@ -1,15 +1,33 @@
+/* Container Principal - Ajuste para centralizar e manter a estrutura flex */
+.ContainerWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Definindo largura máxima para o conteúdo */
+.Container {
+    width: 100%;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* Titulo */
 .Titulo {
     display: flex;
     align-items: center;
     gap: 13px;
     margin-bottom: 2rem;
-    margin-left: 4rem;
 }
 
 .Marca {
     color: #FC6700;
     font-size: 42px;
-    margin-left: 4rem;
 }
 
 .Modelo {
@@ -21,31 +39,325 @@
     margin-top: 2rem;
 }
 
+/* Ajustando CarroDetalhes */
 .CarroDetalhes {
     display: flex;
-    align-items: flex-start;
-    margin-top: 1rem;
+    gap: 10px;
     width: 100%;
-    margin-left: 4rem;
 }
 
+/* Ajustando o Carrossel */
 .Carrossel {
     display: flex;
-    flex-direction: row;
-    align-items: center;
     gap: 10px;
-    margin-left: 4rem;
 }
 
 /* Ajuste das miniaturas */
 .Miniaturas {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 14px;
+    z-index: 2;
 }
 
 .MiniaturaImagem {
-    width: 145px;
+    width: 149px;
+    height: auto;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    pointer-events: auto !important;
+    z-index: 15;
+
+}
+
+.MiniaturaImagem:hover {
+    transform: scale(1.1);
+}
+
+.AgrupamentoMiniaturas {
+    cursor: pointer;
+    width: 149px;
+    height: 149px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.101);
+}
+
+.AgrupamentoMiniaturas span {
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Ajuste na Imagem Principal */
+.ImagemPrincipal {
+    position: relative;
+    width: 800px;
+    max-width: 100%;
+    height: auto;
+}
+
+.ImagemPrincipal img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Container dos Detalhes */
+.DetalhesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #252529;
+    height: 800.4px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.Detalhes {
+    font-size: 38px;
+    margin-top: 2rem;
+    margin-left: 3rem;
+    color: #FC6700;
+}
+
+.Descricao p {
+    margin-bottom: 1.25rem;
+    margin-left: 3rem;
+    color: #fff;
+    font-size: 30px;
+}
+
+.Preco h2 {
+    color: white;
+    font-size: 38px;
+    margin-left: 3rem;
+    margin-top: 4rem;
+}
+
+.BotaoCompra {
+    width: 100%;
+    margin-left: 3rem;
+}
+
+.botao {
+    background-color: #FC6700;
+    color: white;
+    padding: 0.9rem 3.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1.5rem;
+}
+
+.botao:hover {
+    background-color: #cf4e08;
+}
+
+.DescricaoTitulo {
+    background-color: #252529;
+    padding: 15px;
+    width: 100%;
+    max-width: 1760px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    border-radius: 0.5rem;
+}
+
+.DescricaoTitulo:hover {
+    background-color: #3a3a3a;
+}
+
+.DescricaoTitulo h2 {
+    color: white;
+    font-size: 36px;
+    margin: 0;
+    text-align: center;
+}
+
+.DescricaoTitulo svg {
+    transition: transform 0.3s ease;
+}
+
+.DescricaoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #252529;
+    padding: 20px;
+    width: 1760px;
+    max-width: 10200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    border-radius: 0.5rem;
+}
+
+.DescricaoContainer p {
+    color: #fff;
+    font-size: 26px;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+    text-align: center;
+    word-spacing: 3px;
+}
+
+.redes {
+    color: white;
+    text-align: center;
+}
+
+.redes-title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.social-icon {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
+
+@media (max-width: 1850px) {
+.DescricaoTitulo {
+    width: 94%;
+}
+
+.DescricaoContainer {
+    width: 1430px;
+    max-width: 10200px; /* A largura máxima agora segue o padrão */
+}
+
+.DescricaoContainer p {
+    font-size: 24px;
+    line-height: 1.7;
+}
+
+.Detalhes {
+    margin-left: 2rem;
+}
+
+.Descricao p {
+    margin-left: 2rem;
+}
+
+.Preco h2 {
+    margin-left: 2rem;
+}
+    
+.BotaoCompra {
+    margin-left: 2rem;
+}
+}
+
+@media (max-width: 1480px) {
+    /* Ajuste na largura da imagem */
+    .ImagemPrincipal img {
+        width: 581px;
+    }
+
+    .Carrossel {
+        gap: 5px;
+    }
+
+    .Miniaturas {
+        gap: 8px;
+    }
+
+    .MiniaturaImagem {
+        width: 110px;
+    }
+
+    .AgrupamentoMiniaturas {
+        width: 110px;
+        height: 110px;
+    }
+
+    /* Ajustando a altura e largura do container de detalhes */
+    .DetalhesContainer {
+        gap: 0.3rem;
+        height: 582px;
+        width: 700px;  /* Ajuste de largura para ocupar o espaço disponível */
+        margin-left: -230px;  /* Ajuste para não ficar afastado */
+        box-sizing: border-box; /* Garante que a largura e o espaçamento sejam calculados corretamente */
+    }
+
+    /* Ajustando o tamanho da fonte dos detalhes */
+    .Detalhes {
+        font-size: 42px;
+        margin-top: 1rem;
+    }
+
+    .Descricao p {
+        margin-bottom: 1rem;
+        font-size: 28px;
+    }
+
+    .Preco h2 {
+        font-size: 36px;
+        margin-top: 0rem;
+    }
+
+    .DescricaoTitulo {
+        width: 94%;
+    }
+
+    /* Ajuste na largura do container de descrição */
+    .DescricaoContainer {
+        width: 94%; /* Alterado para 100% para garantir que ocupe toda a largura disponível */
+        max-width: 10200px;
+    }
+
+    .DescricaoContainer p {
+        font-size: 24px;
+        line-height: 1.6;
+    }
+}
+
+
+@media (max-width: 1130px) {
+.ImagemPrincipal img {
+    width: 530px;
+}
+
+.Carrossel {
+    gap: 5px;
+}
+
+.Miniaturas {
+    display: flex;
+    flex-direction: column;
+    gap: 7.5px;
+}
+
+.MiniaturaImagem {
+    width: 100px;
     height: auto;
     object-fit: cover;
     cursor: pointer;
@@ -56,65 +368,434 @@
     transform: scale(1.1);
 }
 
-/* Imagem Principal */
-.ImagemPrincipal img {
-    width: 800px;
-    max-width: 10000px;
-    height: auto;
-    object-fit: cover;
-}
-
-/* Container dos detalhes do carro */
-.DetalhesContainer {
+.AgrupamentoMiniaturas {
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    background-color: #252529;
-    height: 800.4px;
-    width: 680px;
-    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.101);
 }
 
+.DetalhesContainer {
+    gap: 0.3rem;
+    height: 530.4px;
+    gap: 0.3rem;
+    width: 500px;  /* Ajuste de largura para ocupar o espaço disponível */
+    margin-left: -280px;  /* Ajuste para não ficar afastado */
+    box-sizing: border-box; /* Garante que a largura e o espaçamento sejam calculados corretamente */
+}
 
 .Detalhes {
-    font-size: 42px;
-    margin-top: 2rem;
-    margin-left: 3rem;
-    color: #FC6700;
+    font-size: 36px;
+    margin-top: 0.5rem;
 }
 
 .Descricao p {
-    margin-bottom: 1.25rem;
-    margin-left: 3rem;
-    color: #fff;
-    font-size: 34px;
+    margin-bottom: 1rem;
+    font-size: 24px;
 }
 
 .Preco h2 {
-    color: white;
-    font-size: 42px;
-    margin-left: 3rem;
-    margin-top: 6rem;
+    font-size: 30px;
+    margin-top: 0rem;
 }
 
-.BotaoCompra {
+.botao {
+    padding: 0.7rem 3rem;
+    font-size: 1rem;
+}
     
-    width: 700px;
+.DescricaoTitulo {
+    width: 93%;
+}
+    
+.DescricaoContainer {
+    width: 950px;
+    max-width: 10200px; /* A largura máxima agora segue o padrão */
+}
+    
+.DescricaoContainer p {
+    font-size: 22px;
+    line-height: 1.5;
+}
+} 
+
+@media screen and (max-width: 1011px) {
+.Titulo {
+    justify-content: center;
+}
+
+.CarroDetalhes {
+    flex-direction: column;
+}
+
+.ImagemPrincipal img {
+    width: 100%;
+    max-width: 650px;
+    height: auto;
+    display: block; /* Torna a imagem um bloco */
+}
+
+.Carrossel {
+    display: flex;
+    gap: 10px;
+    margin-left: 1.5rem;
+}
+    
+.Miniaturas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     margin-left: 3rem;
-
 }
-
-.veiculos-destaque-button {
-    background-color: #FC6700;
-    color: white;
-    padding: 0.7rem 3.5rem;
-    border-radius: 0.5rem;
-    border: none;
+    
+.MiniaturaImagem {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: 1.5rem;
+    transition: transform 0.3s ease;
 }
 
-.veiculos-destaque-button:hover {
-    background-color: #cf4e08;
+.AgrupamentoMiniaturas {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.101);
+}
+
+.DetalhesContainer {
+    width: 100%;
+    max-width: 100%;
+    height: 650px;
+    margin-top: 1rem;
+    padding: 20px;
+    margin-left: auto; /* Alinha à esquerda automaticamente */
+    margin-right: auto; /* Alinha à direita automaticamente */
+    text-align: center;
+}
+.Detalhes {
+    font-size: 48px;
+    margin-top: 0.5rem;
+}
+    
+.Descricao p {
+    margin-bottom: 1rem;
+    font-size: 32px;
+}
+    
+.Preco h2 {
+    font-size: 44px;
+    margin-top: 0rem;
+}
+    
+.botao {
+    padding: 0.7rem 3rem;
+    font-size: 1.5rem;
+    margin-left: 0rem;
+}
+        
+.DescricaoTitulo {
+    width: 93%;
+}
+.DescricaoTitulo h2 {
+    color: white;
+    font-size: 36px;
+    margin: 0;
+    text-align: center;
+}
+
+.DescricaoTitulo svg {
+    transition: transform 0.3s ease;
+}
+
+.DescricaoContainer {
+    padding: 20px;
+    width: 93%;
+}
+
+.DescricaoContainer p {
+    font-size: 22px;
+    line-height: 1.7;
+    word-spacing: 2px;
+}
+}
+
+
+@media (max-width: 834px) {
+.Titulo {
+    justify-content: center;
+}
+
+.Marca {
+    font-size: 56px;
+}
+
+.Modelo {
+    font-size: 56px;
+}
+    
+.CarroDetalhes {
+    flex-direction: column;
+}
+    
+.ImagemPrincipal img {
+    width: 100%;
+    max-width: 605px;
+    height: auto;
+    display: block; /* Torna a imagem um bloco */
+}
+    
+.Carrossel {
+    display: flex;
+    gap: 10px;
+    margin-left: 0;
+}
+        
+.Miniaturas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 1rem;
+}
+    
+.MiniaturaImagem {
+    width: 112px;
+    height: auto;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+    
+.AgrupamentoMiniaturas {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.101);
+}
+    
+.DetalhesContainer {
+    width: 95%;
+    max-width: 100%;
+    height: 700px;
+    margin-top: 1rem;
+    padding: 20px;
+    margin-left: auto; /* Alinha à esquerda automaticamente */
+    margin-right: auto; /* Alinha à direita automaticamente */
+    text-align: center;
+}
+.Detalhes {
+    font-size: 48px;
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+}
+        
+.Descricao p {
+    margin-bottom: 1rem;
+    font-size: 36px;
+    margin-left: 1rem;
+}
+        
+.Preco h2 {
+    font-size: 44px;
+    margin-top: 0rem;
+    margin-left: 1rem;
+}
+    
+.botao {
+    padding: 1rem 4rem;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-right: 3rem;
+}
+    
+.DescricaoTitulo {
+    width: 93%;
+}
+
+.DescricaoContainer p {
+    font-size: 24px;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    text-align: center;
+    word-spacing: 3px;
+}
+
+.redes-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.social-icon {
+    width: 75px;
+    height: 75px;
+    margin: 1.5rem;
+    margin-bottom: 0rem;
+}
+}
+
+@media (max-width: 440px) {
+.Titulo {
+    margin-bottom: 1rem;
+}
+
+.Marca {
+    font-size: 29px;
+    margin-top: 1rem;
+}
+    
+.Modelo {
+    font-size: 29px;
+    margin-top: 1rem;
+}
+        
+.CarroDetalhes {
+    flex-direction: column;
+}
+        
+.ImagemPrincipal img {
+    width: 110%;
+    max-width: 110%;
+    height: auto;
+    display: block; /* Torna a imagem um bloco */
+    margin-left: 0;
+}
+        
+.Carrossel {
+    display: flex;
+    gap: 0px;
+    margin-left: 0;
+}
+            
+.Miniaturas {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: 0rem;
+}
+    
+.MiniaturaImagem {
+    width: 150%;
+    max-width: 150%;
+    height: auto;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    margin-left: -1.5rem;
+}
+    
+.AgrupamentoMiniaturas {
+    cursor: pointer;
+    width: 150%;
+    height: 130%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.101);
+    margin-left: -1.5rem;
+}
+    
+.DetalhesContainer {
+    width: 117%;
+    max-width: 120%;
+    height: 680px;
+    margin-top: 1rem;
+    padding: 20px;
+    margin-left: -1.5rem; /* Alinha à esquerda automaticamente */
+    margin-right: 90%; /* Alinha à direita automaticamente */
+    text-align: center;
+}
+.Detalhes {
+    font-size: 34px;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    margin-left: 0rem;
+}
+    
+.Descricao p {
+    margin-bottom: 1rem;
+    font-size: 28px;
+    margin-left: 0rem;
+}
+    
+.Preco h2 {
+    font-size: 32px;
+    margin-top: 0rem;
+    margin-left: 0rem;
+}
+    
+.botao {
+    padding: 0.5rem 4rem;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-right: 4rem;
+}
+    
+.DescricaoTitulo {
+    width: 93%;
+}
+    
+.DescricaoContainer p {
+    font-size: 22px;
+    line-height: 1.3;
+    margin-bottom: 1.25rem;
+    text-align: center;
+    word-spacing: 3px;
+}
+
+.redes-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.social-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0.5rem;
+    margin-bottom: 0rem;
+}
+}
+
+@media (max-width: 360px) {
+.Titulo {
+    margin-bottom: 1rem;
+}
+    
+.Marca {
+    font-size: 26px;
+    margin-top: 1rem;
+}
+    
+.Modelo {
+    font-size: 26px;
+    margin-top: 1rem;
+}
+    
+.DetalhesContainer {
+    height: 770px;
+}
+    
+.botao {
+    margin-left: -1rem;
+}
+
+.redes-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .social-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0.5rem;
+    margin-bottom: 0rem;
+  }
 }

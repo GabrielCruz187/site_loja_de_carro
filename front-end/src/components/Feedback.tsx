@@ -1,15 +1,36 @@
 "use client";
 
+import { useEffect } from 'react';
 import '../styles/Feedback.css';
 
 export function Feedback() {
+  useEffect(() => {
+    const elements = document.querySelectorAll('.feedback-title, .feedback-title-text, .feedback-container');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (entry.target.classList.contains('feedback-title')) {
+            entry.target.classList.add('title-visible');
+          } else {
+            entry.target.classList.add('content-visible');
+          }
+        }
+      });
+    }, { threshold: 0.05 });
+
+    elements.forEach(element => observer.observe(element));
+
+    return () => elements.forEach(element => observer.unobserve(element));
+  }, []);
+
   return (
     <section className="feedback">
       <h1 className="feedback-title">Depoimento</h1>
-        <p className="feedback-title-text">
-          Este é um FeedBack sobre nossa loja. Nosso amigo cliente
-          têm elogiado muito nosso serviço em um depoimento incrível
-        </p>
+      <p className="feedback-title-text">
+        Este é um FeedBack sobre nossa loja. Nosso amigo cliente
+        têm elogiado muito nosso serviço em um depoimento incrível
+      </p>
       <div className="feedback-content">
         <div className="feedback-container">
           <div className="feedback-video-container">
@@ -29,8 +50,7 @@ export function Feedback() {
               <p>
                 "A Alã Automóveis é uma loja a qual eu confio,
                 não apenas pelos ótimos carros, mas pelo atendimento e tratamento ao cliente.
-                Com certeza uma experiência satisfatória, recomendo!
-                "
+                Com certeza uma experiência satisfatória, recomendo!"
               </p>
             </div>
           </div>

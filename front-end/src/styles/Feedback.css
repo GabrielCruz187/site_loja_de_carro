@@ -159,3 +159,25 @@
     max-width: 680px; /* Limite o tamanho máximo da imagem */
   }
 }
+
+/* Animação para fazer o conteúdo aparecer da esquerda */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Classe para o conteúdo que entrou na tela */
+.content-visible {
+  animation: slideIn 1s ease-out forwards;
+}
+
+/* Animação para os títulos */
+.title-visible {
+  animation: slideIn 1s ease-out forwards;
+}

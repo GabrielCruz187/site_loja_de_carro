@@ -6,13 +6,13 @@ import { MapPin, Building, Mail, Phone } from "lucide-react";
 
 const Contato = () => {
   useEffect(() => {
-    const elements = document.querySelectorAll('.info-contato, .map-container, .social-icons, .pagina-title, .info-title');
+    const elements = document.querySelectorAll('.info-contato, .map-container, .social-icons, .pagina-title, .info-title, .redes-title');
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           // Se for um título, adiciona a classe .title-visible
-          if (entry.target.classList.contains('pagina-title') || entry.target.classList.contains('info-title')) {
+          if (entry.target.classList.contains('pagina-title') || entry.target.classList.contains('info-title') || entry.target.classList.contains('redes-title')) {
             entry.target.classList.add('title-visible');
           } else {
             // Para os outros elementos, adiciona a classe .content-visible
@@ -21,11 +21,18 @@ const Contato = () => {
         }
       });
     }, {
-      threshold: 0.1  // Aciona quando 50% do elemento estiver visível
+      threshold: 0.1  // Aciona quando 10% do elemento estiver visível
     });
 
     elements.forEach(element => {
       observer.observe(element);
+    });
+
+    // Reiniciar o observer quando a página for montada
+    requestAnimationFrame(() => {
+      elements.forEach(element => {
+        observer.observe(element);
+      });
     });
 
     // Limpeza do observer quando o componente for desmontado
@@ -56,7 +63,7 @@ const Contato = () => {
             </div>
             <div className="info-item">
               <Mail size={24} />
-              <p>contato@empresa.com</p>
+              <p>ala318@hotmail.com</p>
             </div>
             <div className="info-item2">
               <p><MapPin size={24} /> R. Pedro Augustin, 464 - Centro, Não-Me-Toque - RS</p>
@@ -70,7 +77,7 @@ const Contato = () => {
           {/* Mapa da localização */}
           <div className="map-container">
             <iframe
-              src="https://www.google.com/maps/embed?pb=..."
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d28251.215027237173!2d-52.99783368564579!3d-27.735747945328974!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94fd491f6609f0d7%3A0x4fde85b25179a4ab!2zQWzDoyBBdXRvbcOzdmVpcw!5e0!3m2!1spt-BR!2sbr!4v1739843629130!5m2!1spt-BR!2sbr" 
               width="100%"
               height="400"
               style={{ border: 0 }}

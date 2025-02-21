@@ -1,19 +1,36 @@
+import { useEffect } from 'react';
 import Link from 'next/link';
 import '../styles/historia.css';
 
 export function Historia() {
+  useEffect(() => {
+    const elements = document.querySelectorAll('.historia-content, .historia-image, .historia-content h2');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (entry.target.tagName === 'H2') {
+            entry.target.classList.add('title-visible');
+          } else {
+            entry.target.classList.add('content-visible');
+          }
+        }
+      });
+    }, { threshold: 0.07 });
+
+    elements.forEach(element => observer.observe(element));
+
+    return () => elements.forEach(element => observer.unobserve(element));
+  }, []);
+
   return (
     <div className="historia">
-      {/* Retângulo com conteúdo */}
       <div className="historia-container">
-        {/* Foto da loja */}
         <img 
           src="/loja.jpg" 
           alt="Foto da Loja" 
           className="historia-image" 
         />
-
-        {/* Conteúdo à direita */}
         <div className="historia-content">
           <strong><h2>Conheça nossa história</h2></strong>
           <h3>

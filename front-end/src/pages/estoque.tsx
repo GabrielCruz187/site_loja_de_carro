@@ -22,11 +22,29 @@ export default function Estoque() {
   const [loading, setLoading] = useState<boolean>(true);
   
   const [currentPage, setCurrentPage] = useState(1);
-  const [dropdownOpen, setDropdownOpen] = useState<"filter" | "order" | null>(null);
+  const [dropdownOpen, setDropdownOpen] = useState<"filter" | null>(null);
   const [selectedFilter, setSelectedFilter] = useState<string>("Filtrar por:");
-  const [selectedOrder, setSelectedOrder] = useState<string>("Ordenar por:");
 
-  const carrosPorPagina = 12; 
+  const [carrosPorPagina, setCarrosPorPagina] = useState(12); // Estado para carros por página
+  
+  // Hook para monitorar a largura da tela e alterar o número de carros por página
+  useEffect(() => {
+    const updateCarrosPorPagina = () => {
+      if (window.innerWidth <= 440) {
+        setCarrosPorPagina(8); // 8 carros por página para telas <= 440px
+      } else {
+        setCarrosPorPagina(12); // Valor padrão para telas maiores
+      }
+    };
+
+    updateCarrosPorPagina(); // Inicializa com a largura atual
+    window.addEventListener("resize", updateCarrosPorPagina); // Adiciona evento para redimensionamento
+
+    return () => {
+      window.removeEventListener("resize", updateCarrosPorPagina); // Limpeza do evento
+    };
+  }, []); // O efeito roda apenas uma vez na montagem do componente
+
   const totalPages = Math.ceil(carros.length / carrosPorPagina);
 
   const carrosExibidos = carros.slice(
@@ -43,24 +61,17 @@ export default function Estoque() {
 
         const data: Carro[] = await response.json(); // Esperando um array de Carro
 
-        // Aplicar a filtragem e ordenação
-        let filteredAndSortedCars = [...data];
+        // Aplicar a filtragem
+        let filteredCars = [...data];
 
         // Filtro de "Menor Preço", "Maior Preço" etc. pode ser implementado aqui se necessário
         if (selectedFilter === "Menor Preço") {
-          filteredAndSortedCars = filteredAndSortedCars.sort((a, b) => a.ano - b.ano);
+          filteredCars = filteredCars.sort((a, b) => a.ano - b.ano);
         } else if (selectedFilter === "Maior Preço") {
-          filteredAndSortedCars = filteredAndSortedCars.sort((a, b) => b.ano - a.ano);
+          filteredCars = filteredCars.sort((a, b) => b.ano - a.ano);
         }
 
-        // Ordenação por "Marca", "Modelo", etc.
-        if (selectedOrder === "Marca") {
-          filteredAndSortedCars = filteredAndSortedCars.sort((a, b) => a.marca.localeCompare(b.marca));
-        } else if (selectedOrder === "Carro") {
-          filteredAndSortedCars = filteredAndSortedCars.sort((a, b) => a.modelo.localeCompare(b.modelo));
-        }
-
-        setCarros(filteredAndSortedCars); // Atualizando o estado com os dados filtrados e ordenados
+        setCarros(filteredCars); // Atualizando o estado com os dados filtrados
       } catch (error) {
         console.error(error);
       } finally {
@@ -69,18 +80,14 @@ export default function Estoque() {
     }
 
     fetchCarros();
-  }, [selectedFilter, selectedOrder]); // Recarregar os carros sempre que o filtro ou ordem mudar
+  }, [selectedFilter]); // Recarregar os carros sempre que o filtro mudar
 
-  const toggleDropdown = (dropdown: "filter" | "order") => {
+  const toggleDropdown = (dropdown: "filter") => {
     setDropdownOpen(dropdownOpen === dropdown ? null : dropdown);
   };
 
-  const handleSelectOption = (type: "filter" | "order", option: string) => {
-    if (type === "filter") {
-      setSelectedFilter(option);
-    } else {
-      setSelectedOrder(option);
-    }
+  const handleSelectOption = (option: string) => {
+    setSelectedFilter(option);
     setDropdownOpen(null);
   };
 
@@ -108,23 +115,23 @@ export default function Estoque() {
           <div id="select-button" onClick={() => toggleDropdown("filter")}>
             <div id="select-value">{selectedFilter}</div>
             <div id="chevrons">
-              <ChevronDown size={20} style={{ display: dropdownOpen === "filter" ? "none" : "block" }} />
-              <ChevronUp size={20} style={{ display: dropdownOpen === "filter" ? "block" : "none" }} />
+              <ChevronDown size={40} style={{ display: dropdownOpen === "filter" ? "none" : "block" }} />
+              <ChevronUp size={40} style={{ display: dropdownOpen === "filter" ? "block" : "none" }} />
             </div>
           </div>
           {dropdownOpen === "filter" && (
             <ul id="options">
-              <li className="option" onClick={() => handleSelectOption("filter", "Mais Relevantes")}>
+              <li className="option" onClick={() => handleSelectOption("Mais Relevantes")}>
                 <input type="radio" name="filter" value="Mais Relevantes" />
                 <span className="label">Mais Relevantes</span>
                 <Check size={20} />
               </li>
-              <li className="option" onClick={() => handleSelectOption("filter", "Menor Preço")}>
+              <li className="option" onClick={() => handleSelectOption("Menor Preço")}>
                 <input type="radio" name="filter" value="Menor Preço" />
                 <span className="label">Menor Preço</span>
                 <Check size={20} />
               </li>
-              <li className="option" onClick={() => handleSelectOption("filter", "Maior Preço")}>
+              <li className="option" onClick={() => handleSelectOption("Maior Preço")}>
                 <input type="radio" name="filter" value="Maior Preço" />
                 <span className="label">Maior Preço</span>
                 <Check size={20} />
@@ -132,46 +139,8 @@ export default function Estoque() {
             </ul>
           )}
         </div>
-
-        {/* Ordenação */}
-        <div id="category-selecionar">
-          <input
-            type="checkbox"
-            id="options-view-button2"
-            onChange={() => toggleDropdown("order")}
-            checked={dropdownOpen === "order"}
-          />
-          <div id="select-botão" onClick={() => toggleDropdown("order")}>
-            <div id="selecionar-value">{selectedOrder}</div>
-            <div id="chevrons2">
-              <ChevronDown size={20} style={{ display: dropdownOpen === "order" ? "none" : "block" }} />
-              <ChevronUp size={20} style={{ display: dropdownOpen === "order" ? "block" : "none" }} />
-            </div>
-          </div>
-          {dropdownOpen === "order" && (
-            <ul id="opcoes">
-              <li className="opcao" onClick={() => handleSelectOption("order", "Marca")}>
-                <input type="radio" name="order" value="Marca" />
-                <span className="label">Marca</span>
-                <Check size={20} />
-              </li>
-              <li className="opcao" onClick={() => handleSelectOption("order", "Carro")}>
-                <input type="radio" name="order" value="Carro" />
-                <span className="label">Carro</span>
-                <Check size={20} />
-              </li>
-              <li className="opcao" onClick={() => handleSelectOption("order", "Moto")}>
-                <input type="radio" name="order" value="Moto" />
-                <span className="label">Moto</span>
-                <Check size={20} />
-              </li>
-            </ul>
-          )}
-        </div>
-
-        {/* Barra de paginação à direita */}
-        <div className="pagination-right">
-          <div className="pagination-bottom">
+        <div className="pagination-top">
+          <div className="pagination-top-container">
             {[...Array(totalPages)].map((_, index) => (
               <button
                 key={index}
@@ -202,11 +171,11 @@ export default function Estoque() {
               ano={carro.ano}
               foto={`http://localhost:3000${carro.foto}`}  // Usando URL absoluta  // Caminho relativo à pasta public
               preco={carro.preco}
-              />
+            />
           ))}
         </div>
       )}
-
+      
       {/* Paginação */}
       <div className="pagination-right">
         <div className="pagination-bottom">

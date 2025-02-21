@@ -127,6 +127,8 @@
     z-index: 10;
     top: 95%;
     transform: translateY(-50%);
+    height: 70px;
+    width: 35px;
   }
   
   .prev { left: 0px; }
@@ -179,3 +181,47 @@
     display: block;
   }
 }
+
+@media (max-width: 620px) {
+  .veiculos-destaque-title {
+    font-size: 30px;
+  }
+}
+
+/* Animação para fazer o conteúdo aparecer da esquerda */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Classe para o conteúdo que entrou na tela */
+.content-visible {
+  animation: slideIn 1s ease-out forwards;
+}
+
+/* Animação para os títulos */
+.veiculos-destaque-title {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+.veiculos-destaque-title.content-visible {
+  animation: slideIn 1s ease-out forwards;
+}
+
+/* Animação para o carrossel */
+.carrossel-container {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+.carrossel-container.content-visible {
+  animation: slideIn 1s ease-out forwards;
+}
+

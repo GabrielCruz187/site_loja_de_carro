@@ -31,6 +31,7 @@ const CarroSchema = new mongoose.Schema({
       placa: String,              // Novo campo
       cambio: String,             // Novo campo
       fotos: [String],            // Novo campo para mais fotos
+      descricao: String,
     }); 
 
 module.exports = mongoose.model('Carro', CarroSchema);

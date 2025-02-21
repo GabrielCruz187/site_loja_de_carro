@@ -42,23 +42,17 @@ const VeiculosDestaque = () => {
         const scrollWidth = carrosselRef.current.scrollWidth;
         const clientWidth = carrosselRef.current.clientWidth;
 
-        // Se não está no começo, mostrar o botão "prev"
         setShowPrev(scrollLeft > 0);
-
-        // Se não está no final, mostrar o botão "next"
         setShowNext(scrollLeft < scrollWidth - clientWidth);
       }
     };
 
-    // Adicionar o listener de rolagem
     if (carrosselRef.current) {
       carrosselRef.current.addEventListener('scroll', handleScroll);
     }
 
-    // Verificar inicialmente os botões
     handleScroll();
 
-    // Limpar o listener quando o componente for desmontado
     return () => {
       if (carrosselRef.current) {
         carrosselRef.current.removeEventListener('scroll', handleScroll);
@@ -66,7 +60,22 @@ const VeiculosDestaque = () => {
     };
   }, [carros]);
 
-  // Função para navegar no carrossel
+  useEffect(() => {
+    const elements = document.querySelectorAll('.veiculos-destaque-title, .carrossel-container');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('content-visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    elements.forEach(element => observer.observe(element));
+
+    return () => elements.forEach(element => observer.unobserve(element));
+  }, []);
+
   const scrollLeft = () => {
     if (carrosselRef.current) {
       carrosselRef.current.scrollBy({ left: -carrosselRef.current.clientWidth, behavior: 'smooth' });

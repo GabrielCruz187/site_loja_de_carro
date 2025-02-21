@@ -40,7 +40,7 @@ const AdicionarCarro = () => {
         combustivel, // Enviando combustível
         placa, // Enviando placa
         cambio, // Enviando câmbio
-        fotos: fotos.split(",") // Supondo que o dono da loja informe as fotos separadas por vírgula
+        fotos: fotos.split(",").map(f => f.trim())
       }),
     });
 

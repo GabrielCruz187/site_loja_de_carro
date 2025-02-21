@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
@@ -25,6 +26,10 @@ export default function Venda() {
   const router = useRouter();
   const { id } = router.query;
   const [carro, setCarro] = useState<Carro | null>(null);
+  const [descricaoVisivel, setDescricaoVisivel] = useState(false);
+  const [imagemPrincipal, setImagemPrincipal] = useState<string | null>(null);
+  const [agrupadasVisiveis, setAgrupadasVisiveis] = useState(false);
+  const [indiceImagemCarrossel, setIndiceImagemCarrossel] = useState(0);
 
   useEffect(() => {
     async function fetchCarro() {
@@ -32,11 +37,41 @@ export default function Venda() {
         const response = await fetch(`http://localhost:3001/api/carros/${id}`);
         const data: Carro = await response.json();
         setCarro(data);
+        setImagemPrincipal(`http://localhost:3000/${data.foto}`); // Define a imagem principal como a foto principal do carro
       }
     }
-
     fetchCarro();
   }, [id]);
+
+  const toggleDescricao = () => {
+    setDescricaoVisivel(!descricaoVisivel);
+  };
+
+  const toggleAgrupadas = () => {
+    setAgrupadasVisiveis(!agrupadasVisiveis);
+  };
+
+  const irParaImagemAnterior = () => {
+    if (carro?.fotos?.length) {
+      setIndiceImagemCarrossel((prevIndex) =>
+        prevIndex === 0 ? carro.fotos.length - 1 : prevIndex - 1
+      );
+    }
+  };
+
+  const irParaImagemProxima = () => {
+    if (carro?.fotos?.length) {
+      setIndiceImagemCarrossel((prevIndex) =>
+        prevIndex === carro.fotos.length - 1 ? 0 : prevIndex + 1
+      );
+    }
+  };
+
+  useEffect(() => {
+    if (carro?.fotos && carro.fotos[indiceImagemCarrossel]) {
+      setImagemPrincipal(`http://localhost:3000/${carro.fotos[indiceImagemCarrossel]}`);
+    }
+  }, [indiceImagemCarrossel, carro]);
 
   if (!carro) {
     return <p>Carregando detalhes do carro...</p>;
@@ -48,22 +83,20 @@ export default function Venda() {
       : "Preço indisponível";
 
   return (
-    <div className="Layout">
+    <div>
       <Header />
-      <main className="ContainerWrapper">
+      <div className="ContainerWrapper">
         <div className="Container">
           <div className="Titulo">
             <h1 className="Marca">{carro.marca}</h1>
             <h2 className="Modelo">{carro.modelo}</h2>
           </div>
 
-          {/* Seção que alinha o carrossel de imagens e os detalhes */}
           <div className="CarroDetalhes">
-            {/* Carrossel - Miniaturas à esquerda, Imagem Principal à direita */}
             <div className="Carrossel">
               <div className="Miniaturas">
                 {carro.fotos &&
-                  carro.fotos.map((foto, index) => (
+                  carro.fotos.slice(0, 4).map((foto, index) => (
                     <Image
                       key={index}
                       src={`http://localhost:3000/${foto}`}
@@ -71,32 +104,71 @@ export default function Venda() {
                       width={115}
                       height={70}
                       className="MiniaturaImagem"
+                      onClick={() => setImagemPrincipal(`http://localhost:3000/${foto}`)} // Atualiza a imagem principal ao clicar
+                      style={{
+                        cursor: "pointer",
+                        border:
+                          imagemPrincipal === `http://localhost:3000/${foto}`
+                            ? "2px solid #FC6700"
+                            : "none",
+                      }}
+                    />
+                  ))}
+
+                {carro.fotos.length > 4 && (
+                  <div
+                    className="AgrupamentoMiniaturas"
+                    onClick={toggleAgrupadas}
+                  >
+                    <span>+{carro.fotos.length - 4}</span>
+                  </div>
+                )}
+
+                {agrupadasVisiveis &&
+                  carro.fotos.slice(4).map((foto, index) => (
+                    <Image
+                      key={index + 4}
+                      src={`http://localhost:3000/${foto}`}
+                      alt={`Imagem ${index + 5}`}
+                      width={115}
+                      height={70}
+                      className="MiniaturaImagem"
+                      onClick={() => setImagemPrincipal(`http://localhost:3000/${foto}`)}
+                      style={{
+                        cursor: "pointer",
+                        border:
+                          imagemPrincipal === `http://localhost:3000/${foto}`
+                            ? "2px solid #FC6700"
+                            : "none",
+                      }}
                     />
                   ))}
               </div>
 
+              {/* Imagem Principal */}
               <div className="ImagemPrincipal">
-                <Image
-                  src={`http://localhost:3000/${carro.foto}`}
-                  alt={carro.modelo}
-                  width={720}
-                  height={420}
-                  className="ImagemPrincipal"
-                />
+                {imagemPrincipal && (
+                  <Image
+                    src={imagemPrincipal}
+                    alt={carro.modelo}
+                    width={720}
+                    height={420}
+                    className="ImagemPrincipal"
+                  />
+                )}
               </div>
             </div>
 
-            {/* Detalhes do carro à direita */}
             <div className="DetalhesContainer">
               <h3 className="Detalhes">Detalhes do Carro</h3>
 
               <div className="Descricao">
-                <p>{carro.descricao}</p>
-                <p><strong>Quilometragem:</strong> {carro.quilometragem} km</p>
+                <p><strong>Quilometragem:</strong> {carro.quilometragem} KM</p>
                 <p><strong>Cor:</strong> {carro.cor}</p>
                 <p><strong>Combustível:</strong> {carro.combustivel}</p>
                 <p><strong>Placa:</strong> {carro.placa}</p>
                 <p><strong>Câmbio:</strong> {carro.cambio}</p>
+                <p><strong>Ano:</strong> {carro.ano}</p>
               </div>
 
               <div className="Preco">
@@ -104,12 +176,42 @@ export default function Venda() {
               </div>
 
               <div className="BotaoCompra">
-                <button className="veiculos-destaque-button">Estou Interessado</button>
+                <a href="https://wa.me/5554996357891" target="_blank" rel="noopener noreferrer">
+                  <button className="botao">Estou Interessado</button>
+                </a>
               </div>
             </div>
           </div>
         </div>
-      </main>
+      </div>
+
+      <div className="DescricaoTitulo" onClick={toggleDescricao}>
+        <h2>Descrição do veículo</h2>
+        {descricaoVisivel ? (
+          <ChevronUp size={24} color="#FC6700" />
+        ) : (
+          <ChevronDown size={24} color="#FC6700" />
+        )}
+      </div>
+
+      {descricaoVisivel && (
+        <div className="DescricaoContainer">
+          <p>{carro.descricao}</p>
+        </div>
+      )}
+
+      <h1 className="redes-title">Acesse nossas redes sociais</h1>
+      <div className="social-icons">
+        <a href="https://www.instagram.com/ala.automoveis/" target="_blank" rel="noopener noreferrer">
+          <img src="/instagram.png" alt="Instagram" className="social-icon" />
+        </a>
+        <a href="https://www.facebook.com/ala.automoveis/?locale=pt_BR" target="_blank" rel="noopener noreferrer">
+          <img src="/facebook.png" alt="Facebook" className="social-icon" />
+        </a>
+        <a href="https://wa.me/5554996357891" target="_blank" rel="noopener noreferrer">
+          <img src="/whatsapp.png" alt="WhatsApp" className="social-icon" />
+        </a>
+      </div>
       <Footer />
     </div>
   );
