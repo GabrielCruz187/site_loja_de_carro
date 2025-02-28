@@ -30,7 +30,13 @@ const CardCarro: React.FC<CardCarroProps> = ({ _id, modelo, marca, ano, foto, pr
       <div className="card-detalhes">
         <h3 className="titulo-carro">{modelo}</h3>
         <p className="descricao-carro">{marca} - {ano}</p>
-        <h4 className="preco">{`R$ ${(preco ?? 0).toFixed(2)}`}</h4>
+        <h4 className="preco">
+  {preco !== undefined && preco !== null 
+    ? `R$ ${preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}` 
+    : "Preço a consultar"}
+</h4>
+
+
 
 
       {/* Link para a página de venda com ID do carro */}
