@@ -1,0 +1,13 @@
+.Voltar {
+    position: absolute;
+    right: 20px; /* Mantém o botão no canto direito */
+    top: 50%;
+    transform: translateY(-50%); /* Centraliza verticalmente */
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px;
+    font-weight: bold;
+  }
+  

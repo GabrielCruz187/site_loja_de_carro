@@ -1,32 +1,32 @@
 .pagina-title {
-  text-align: center; /* Centraliza o título da página */
-  font-size: 3rem; /* Tamanho maior para o título */
+  text-align: center; 
+  font-size: 3rem; 
   font-weight: bold;
-  margin-top: 3rem; /* Espaçamento superior */
-  color: white; /* Cor do título */
+  margin-top: 2rem; 
+  color: white;
 }
 
 /* Container para redes sociais e mapa lado a lado */
 .main-container {
-  display: flex; /* Usando flexbox para alinhar os itens lado a lado */
-  margin: 3rem;
-  gap: 0; /* Remove o espaçamento entre os itens */
-  height: 21rem; /* Define a altura do container para garantir que o mapa e as redes sociais tenham a mesma altura */
-  justify-content: center; /* Centraliza os itens horizontalmente */
-  align-items: center; /* Centraliza os itens verticalmente */
+  display: flex;
+  margin: 2rem;
+  gap: 0; 
+  height: 21rem; 
+  justify-content: center; 
+  align-items: center; 
 }
 
 /* Container para informações de contato */
 .info-contato {
-  background-color: #252529; /* Cor de fundo */
-  padding: 2rem; /* Espaçamento interno */
-  text-align: left; /* Alinhamento do texto */
-  flex: 1; /* Faz a seção ocupar metade do espaço disponível */
-  max-width: 40%; /* Garante que o container tenha uma largura menor */
+  background-color: #252529; 
+  padding: 2rem; 
+  text-align: left; 
+  flex: 1; 
+  max-width: 40%; 
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centraliza o conteúdo verticalmente */
-  align-items: center; /* Centraliza os itens horizontalmente */
+  justify-content: center; 
+  align-items: center; 
   color: white;
 }
 
@@ -36,69 +36,218 @@
   margin-bottom: 2rem;
 }
 
-.info-item {
+.info-item, .info-item2 {
   display: flex;
   align-items: center;
   gap: 1rem;
   font-size: 1.2rem;
   margin-bottom: 1.2rem;
-  text-align: left; /* Garante que o texto dos itens de contato fique à esquerda */
+  text-align: center; 
 }
 
-.info-item svg {
+.info-item svg, .info-item2 svg {
   color: #FC6700;
 }
 
 /* Redes sociais */
 .redes-contato {
-  background-color: #252529; /* Cor de fundo */
-  padding: 2rem; /* Espaçamento interno */
-  text-align: center; /* Centraliza o conteúdo */
-  flex: 1; /* Faz a seção ocupar metade do espaço disponível */
+  background-color: #252529; 
+  padding: 2rem; 
+  text-align: center; 
+  flex: 1; 
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centraliza o conteúdo verticalmente */
-  align-items: center; /* Centraliza o conteúdo horizontalmente */
+  justify-content: center; 
+  align-items: center; 
 }
 
 .redes-title {
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: bold;
-  margin-bottom: 2rem; /* Ajusta o espaçamento entre o título e os ícones */
-  text-align: center; /* Centraliza o título dentro do container */
-  color: white; /* Cor do texto */
+  margin-bottom: 2rem; 
+  text-align: center; 
+  color: white; 
 }
 
 .social-icons {
   display: flex;
-  justify-content: center; /* Centraliza os ícones */
-  gap: 2rem; /* Espaçamento entre os ícones */
+  justify-content: center; 
+  gap: 2rem; 
 }
 
 .social-icon {
-  width: 45px;
-  height: 45px;
+  width: 55px;
+  height: 55px;
   object-fit: cover;
   transition: transform 0.3s ease;
   margin-bottom: 2rem;
 }
 
 .social-icon:hover {
-  transform: scale(1.1); /* Efeito de aumento ao passar o mouse */
+  transform: scale(1.1); 
 }
 
 /* Mapa da localização */
 .map-container {
-  flex: 1; /* Faz a seção do mapa ocupar metade do espaço disponível */
-  max-width: 40%; /* Garante que o mapa tenha uma largura menor */
-  height: 100%; /* Garante que o mapa ocupe toda a altura disponível do container */
+  flex: 1;
+  max-width: 40%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Faz o mapa ocupar todo o espaço disponível */
+  justify-content: space-between; 
   text-align: center;
 }
 
 .map-container iframe {
-  width: 100%; /* Ocupa toda a largura do container */
-  height: 100%; /* Garante que o mapa ocupe toda a altura disponível do container */
+  width: 100%;
+  height: 100%; 
 }
+
+@media (max-width: 1280px) {
+  .map-container {
+    max-width: 40%; 
+    height: 22.7rem; 
+  }
+}
+
+@media (max-width: 834px) {
+  .main-container {
+    flex-direction: column;
+    height: auto; 
+  }
+
+  .pagina-title {
+    text-align: center; 
+    font-size: 3rem; 
+    font-weight: bold;
+    margin-top: 2rem;
+  }
+
+  .info-item, .info-item2 {
+    font-size: 1.7rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .info-item svg, .info-item2 svg {
+    color: #FC6700;
+    width: 35px;
+    height: 35px;
+  }
+
+  .info-contato,
+  .redes-contato,
+  .map-container {
+    max-width: 100%;
+    width: 800px;
+    flex: none; 
+  }
+
+  .map-container {
+    height: 220px; 
+  }
+
+  .redes-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .social-icon {
+    width: 75px;
+    height: 75px;
+    margin: 1.5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 440px) {
+  .main-container {
+    flex-direction: column;
+    height: auto; 
+  }
+
+  .pagina-title {
+    font-size: 2.5rem; 
+  }
+
+  .info-title {
+    text-align: center;
+  }
+
+  .info-item, .info-item2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.7rem;
+    text-align: center;
+  }
+
+  .info-item2 svg {
+    display: none;
+  }
+
+  .info-item svg {
+    color: #FC6700;
+    width: 30px;
+    height: 30px;
+  }
+
+  .info-contato,
+  .redes-contato,
+  .map-container {
+    max-width: 100%;
+    width: 800px;
+    flex: none; 
+  }
+
+  .map-container {
+    height: 180px; 
+  }
+
+  .redes-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .social-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0.5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .redes-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .social-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0.5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Animação para fazer o conteúdo aparecer do lado */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Classe para o conteúdo que entrou na tela */
+.content-visible {
+  animation: slideIn 1s ease-out forwards; /* Acelerei para 0.5s */
+}
+
+/* Animação para os títulos também */
+.title-visible {
+  animation: slideIn 1s ease-out forwards; /* Mais rápida que a do conteúdo */
+}
+
+/* Outros estilos existentes continuam os mesmos */

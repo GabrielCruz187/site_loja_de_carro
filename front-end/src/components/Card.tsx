@@ -51,4 +51,3 @@ const CardCarro: React.FC<CardCarroProps> = ({ _id, modelo, marca, ano, foto, pr
 };
 
 export default CardCarro;
-

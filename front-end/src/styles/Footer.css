@@ -30,3 +30,31 @@ footer .footer-text {
 footer {
   height: 150px; /* Ajuste conforme necessário */
 }
+
+@media (max-width: 1280px) {
+  footer .logo {
+    top: 54%;
+  }
+}
+
+@media (max-width: 1130px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+    height: 14rem; /* Ajusta a altura automaticamente conforme o conteúdo */
+    padding: 20px;
+  }
+
+  footer .logo {
+    position: static; /* Remove o posicionamento absoluto */
+    transform: none; /* Remove o deslocamento */
+    margin-bottom: 20px; /* Adiciona um espaçamento entre a logo e o texto */
+  }
+
+  footer .footer-text {
+    position: static; /* Remove o posicionamento absoluto */
+    transform: none; /* Remove o deslocamento */
+    text-align: center; /* Mantém o texto centralizado */
+    margin-bottom: 8rem;
+  }
+}

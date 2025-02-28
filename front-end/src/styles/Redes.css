@@ -1,11 +1,10 @@
 .redes {
-  margin: 4rem 2rem;
   color: white;
   text-align: center; /* Alinha o conteúdo à esquerda */
 }
 
 .redes-title {
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: bold;
   margin-bottom: 2rem; /* Espaço entre o título e os ícones */
   text-align: center;
@@ -18,13 +17,55 @@
 }
 
 .social-icon {
-  width: 45px;
-  height: 45px;
+  width: 55px;
+  height: 55px;
   object-fit: cover;
   transition: transform 0.3s ease;
+  margin-bottom: 2rem;
 }
 
 .social-icon:hover {
   transform: scale(1.1);
 }
 
+@media (max-width: 834px) {
+  .redes-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .social-icon {
+    width: 75px;
+    height: 75px;
+    margin: 1.5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 440px) {
+  .redes-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .social-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0.5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .redes-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .social-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0.5rem;
+    margin-bottom: 2rem;
+  }
+}

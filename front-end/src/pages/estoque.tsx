@@ -25,7 +25,26 @@ export default function Estoque() {
   const [dropdownOpen, setDropdownOpen] = useState<"filter" | null>(null);
   const [selectedFilter, setSelectedFilter] = useState<string>("Filtrar por:");
 
-  const carrosPorPagina = 12; 
+  const [carrosPorPagina, setCarrosPorPagina] = useState(12); // Estado para carros por página
+  
+  // Hook para monitorar a largura da tela e alterar o número de carros por página
+  useEffect(() => {
+    const updateCarrosPorPagina = () => {
+      if (window.innerWidth <= 440) {
+        setCarrosPorPagina(8); // 8 carros por página para telas <= 440px
+      } else {
+        setCarrosPorPagina(12); // Valor padrão para telas maiores
+      }
+    };
+
+    updateCarrosPorPagina(); // Inicializa com a largura atual
+    window.addEventListener("resize", updateCarrosPorPagina); // Adiciona evento para redimensionamento
+
+    return () => {
+      window.removeEventListener("resize", updateCarrosPorPagina); // Limpeza do evento
+    };
+  }, []); // O efeito roda apenas uma vez na montagem do componente
+
   const totalPages = Math.ceil(carros.length / carrosPorPagina);
 
   const carrosExibidos = carros.slice(
@@ -96,8 +115,8 @@ export default function Estoque() {
           <div id="select-button" onClick={() => toggleDropdown("filter")}>
             <div id="select-value">{selectedFilter}</div>
             <div id="chevrons">
-              <ChevronDown size={20} style={{ display: dropdownOpen === "filter" ? "none" : "block" }} />
-              <ChevronUp size={20} style={{ display: dropdownOpen === "filter" ? "block" : "none" }} />
+              <ChevronDown size={40} style={{ display: dropdownOpen === "filter" ? "none" : "block" }} />
+              <ChevronUp size={40} style={{ display: dropdownOpen === "filter" ? "block" : "none" }} />
             </div>
           </div>
           {dropdownOpen === "filter" && (
@@ -120,6 +139,22 @@ export default function Estoque() {
             </ul>
           )}
         </div>
+        <div className="pagination-top">
+          <div className="pagination-top-container">
+            {[...Array(totalPages)].map((_, index) => (
+              <button
+                key={index}
+                className={`pagination-circle ${currentPage === index + 1 ? "active" : ""}`}
+                onClick={() => {
+                  setCurrentPage(index + 1);
+                  scrollToTop(); // Chama a função para rolar até o topo
+                }}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Exibindo os carros */}
@@ -140,7 +175,7 @@ export default function Estoque() {
           ))}
         </div>
       )}
-
+      
       {/* Paginação */}
       <div className="pagination-right">
         <div className="pagination-bottom">

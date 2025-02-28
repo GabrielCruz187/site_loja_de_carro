@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import '../styles/Header.css';
@@ -18,6 +18,14 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<Car[]>([]);
+  const searchRef = useRef<HTMLDivElement>(null); // Ref para a área de pesquisa
+
+  // Função para lidar com o clique fora da área de pesquisa
+  const handleOutsideClick = (event: MouseEvent) => {
+    if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+      setSearchResults([]); // Fecha os resultados
+    }
+  };
 
   useEffect(() => {
     const fetchCars = async () => {
@@ -42,15 +50,42 @@ export default function Header() {
     return () => clearTimeout(timeout);
   }, [searchTerm]);
 
+  // Adiciona o listener de clique fora da área de pesquisa
+  useEffect(() => {
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);
+
   return (
     <header className="header">
       <div className="container">
+        {/* Botão do menu hamburguer */}
+        <button className="hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <div className={`bar ${isMenuOpen ? 'open' : ''}`}></div>
+          <div className={`bar ${isMenuOpen ? 'open' : ''}`}></div>
+          <div className={`bar ${isMenuOpen ? 'open' : ''}`}></div>
+        </button>
+
         <div className="logo">
           <Link href="/"> 
             <Image src="/ala.jpg" alt="Logo" width={120} height={120} />
           </Link>
         </div>
-        <div className="search">
+        {/* Menu de navegação - aparece quando o menu hamburguer é clicado */}
+        <nav className={`header-nav ${isMenuOpen ? 'show' : ''}`}>
+          <Link href="/" className="header-nav-item">Home</Link>
+          <Link href="/estoque" className="header-nav-item">Estoque</Link>
+          <Link href="/sobre" className="header-nav-item">Sobre Nós</Link>
+          <Link href="/contato" className="header-nav-item">Contato</Link>
+        </nav>
+        <div className="header-lines">
+          <div className="white-line"></div>
+          <div className="orange-line"></div>
+        </div>
+      </div>
+      <div className="search" ref={searchRef}>
           <input
             type="text"
             placeholder="Pesquisar"
@@ -61,6 +96,7 @@ export default function Header() {
           <button className="search-button" aria-label="Pesquisar">
             <span className="search-icon"><Search /></span>
           </button>
+
           {/* Resultados da pesquisa */}
           {searchResults.length > 0 && (
             <ul className="search-results">
@@ -75,17 +111,6 @@ export default function Header() {
             </ul>
           )}
         </div>
-        <nav className={`header-nav ${isMenuOpen ? 'active' : ''}`}>
-          <Link href="/" className="header-nav-item">Home</Link>
-          <Link href="/estoque" className="header-nav-item">Estoque</Link>
-          <Link href="/sobre" className="header-nav-item">Sobre Nós</Link>
-          <Link href="/contato" className="header-nav-item">Contato</Link>
-        </nav>
-        <div className="header-lines">
-          <div className="white-line"></div>
-          <div className="orange-line"></div>
-        </div>
-      </div>
     </header>
   );
 }

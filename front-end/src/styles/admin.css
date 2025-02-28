@@ -1,0 +1,30 @@
+ul {
+    text-align: center;
+    padding: 0;
+    list-style: none;
+    margin-bottom: 10rem;
+    margin-top: 6.6rem;
+}
+
+.Gerenciamento {
+    display: inline-block; 
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    margin: 15px 0;
+    text-align: center;
+    background-color: #252529;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 30px;
+}
+  
+.Gerenciamento:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+  

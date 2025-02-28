@@ -1,0 +1,166 @@
+.main {
+    background-color: #252529;
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    margin: auto;
+    margin-top: 7rem;
+    margin-bottom: 16.8rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+.Titulo1 {
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.Texto {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    font-weight: normal; 
+    width: 100%;
+}
+
+
+.Selecionar {
+    background-color: white;
+    color: #252529;
+    border: 2px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 400px;
+    max-width: 500px;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.Selecionar:hover {
+    background-color: #FC6700;
+    color: black;
+    border: 2px solid #FC6700;
+}
+
+.Selecionar:focus {
+    outline: none;
+    border-color: #cf4e08;
+}
+
+.Editar {
+    color: white;
+    margin-top: 2rem;
+}
+
+input {
+    width: 400px;
+    max-width: 100%;
+    padding: 12px;
+    margin-bottom: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    color: #252529;
+    text-align: center;
+}
+
+input:focus {
+    outline: none;
+    border-color: #FC6700;
+    box-shadow: 0px 0px 5px rgba(252, 103, 0, 0.5);
+}
+
+.Checkbox {
+    display: flex;
+    align-items: center; /* Alinha verticalmente */
+    gap: 10px; /* Espaço entre a checkbox e o texto */
+    margin-top: 1rem;
+    cursor: pointer;
+    color: white; /* Ajuste para manter o texto visível */
+    font-size: 16px;
+    justify-content: center;
+}
+
+.Destaque {
+    width: 20px;
+    height: 20px;
+    appearance: none; /* Remove o estilo padrão */
+    
+    border-radius: 4px;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.Destaque:checked {
+    background-color: #FC6700;
+    border-color: #FC6700;
+}
+
+.Destaque:checked::after {
+    content: "✔";
+    color: white;
+    font-size: 18px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+}
+
+label {
+    cursor: pointer;
+}
+
+.Salvar {
+    background: #28a745; /* Verde para indicar ação positiva */
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 200px;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+    margin-right: 1rem;
+  }
+  
+  .Salvar:hover {
+    background: #218838;
+    transform: scale(1.05);
+  }
+  
+  .Cancelar {
+    background: #dc3545; /* Vermelho para indicar ação negativa */
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 200px;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .Cancelar:hover {
+    background: #c82333;
+    transform: scale(1.05);
+  }
+  

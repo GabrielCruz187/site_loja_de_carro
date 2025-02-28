@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../styles/Localizacao.css';
 
 export function Localizacao() {
+  useEffect(() => {
+    const elements = document.querySelectorAll('.localizacao-title, .map-container, .localizacao-address');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (entry.target.classList.contains('localizacao-title')) {
+            entry.target.classList.add('title-visible');
+          } else {
+            entry.target.classList.add('content-visible');
+          }
+        }
+      });
+    }, { threshold: 0.05 });
+
+    elements.forEach(element => observer.observe(element));
+
+    return () => elements.forEach(element => observer.unobserve(element));
+  }, []);
+
   return (
     <section className="localizacao">
       <h1 className="localizacao-title">Nossa Localização</h1>
-      
+
       {/* Mapa da localização */}
       <div className="map-container">
         <iframe

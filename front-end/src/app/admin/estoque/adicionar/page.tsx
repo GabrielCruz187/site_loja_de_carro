@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import AdminLayout from "../../layout"; // Layout administrativo
+import '@/styles/adicionar.css';
 
 const AdicionarCarro = () => {
   const [marca, setMarca] = useState("");
@@ -52,11 +52,11 @@ const AdicionarCarro = () => {
   };
 
   return (
-    <AdminLayout>
-      <h1>Adicionar Carro</h1>
+    <main className="main">
+      <h1 className="Titulo1">Adicionar Carro</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Marca</label>
+          <label className="Texto">Marca</label>
           <input
             type="text"
             value={marca}
@@ -64,7 +64,7 @@ const AdicionarCarro = () => {
           />
         </div>
         <div>
-          <label>Modelo</label>
+          <label className="Texto">Modelo</label>
           <input
             type="text"
             value={modelo}
@@ -72,7 +72,7 @@ const AdicionarCarro = () => {
           />
         </div>
         <div>
-          <label>Ano</label>
+          <label className="Texto">Ano</label>
           <input
             type="text"
             value={ano}
@@ -80,7 +80,7 @@ const AdicionarCarro = () => {
           />
         </div>
         <div>
-          <label>Foto</label>
+          <label className="Texto">Foto</label>
           <input
             type="text"
             value={foto}
@@ -88,7 +88,7 @@ const AdicionarCarro = () => {
           />
         </div>
         <div>
-          <label>Preço</label>
+          <label className="Texto">Preço</label>
           <input
             type="text"
             value={preco}
@@ -96,14 +96,15 @@ const AdicionarCarro = () => {
           />
         </div>
         <div>
-          <label>Descrição</label> {/* Novo campo para descrição */}
+          <label htmlFor="descricao" className="Texto">Descrição</label>
           <textarea
-            value={descricao}
-            onChange={(e) => setDescricao(e.target.value)}
+          id="descricao"
+          value={descricao}
+          onChange={(e) => setDescricao(e.target.value)}
           />
         </div>
         <div>
-          <label>Quilometragem</label> {/* Novo campo para quilometragem */}
+          <label className="Texto">Quilometragem</label> {/* Novo campo para quilometragem */}
           <input
             type="text"
             value={quilometragem}
@@ -111,7 +112,7 @@ const AdicionarCarro = () => {
           />
         </div>
         <div>
-          <label>Cor</label> {/* Novo campo para cor */}
+          <label className="Texto">Cor</label> {/* Novo campo para cor */}
           <input
             type="text"
             value={cor}
@@ -119,7 +120,7 @@ const AdicionarCarro = () => {
           />
         </div>
         <div>
-          <label>Combustível</label> {/* Novo campo para combustível */}
+          <label className="Texto">Combustível</label> {/* Novo campo para combustível */}
           <input
             type="text"
             value={combustivel}
@@ -127,7 +128,7 @@ const AdicionarCarro = () => {
           />
         </div>
         <div>
-          <label>Placa</label> {/* Novo campo para placa */}
+          <label className="Texto">Placa</label> {/* Novo campo para placa */}
           <input
             type="text"
             value={placa}
@@ -135,7 +136,7 @@ const AdicionarCarro = () => {
           />
         </div>
         <div>
-          <label>Câmbio</label> {/* Novo campo para câmbio */}
+          <label className="Texto">Câmbio</label> {/* Novo campo para câmbio */}
           <input
             type="text"
             value={cambio}
@@ -143,7 +144,7 @@ const AdicionarCarro = () => {
           />
         </div>
         <div>
-          <label>Fotos (separe por vírgula)</label> {/* Novo campo para mais fotos */}
+          <label className="Texto">Fotos (Separe as URLs por vírgula)</label> {/* Novo campo para mais fotos */}
           <input
             type="text"
             value={fotos}
@@ -152,7 +153,7 @@ const AdicionarCarro = () => {
         </div>
         <button type="submit">Salvar</button>
       </form>
-    </AdminLayout>
+    </main>
   );
 };
 

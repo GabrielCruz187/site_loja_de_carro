@@ -1,8 +1,7 @@
-
 'use client'
 
-
 import { useState, useEffect } from 'react';
+import '@/styles/deletar.css';
 
 interface Car {
   _id: string; // Identificador único do MongoDB
@@ -13,7 +12,7 @@ interface Car {
 }
 
 export default function DeletarCarro() {
-  const [carros, setCarros] = useState<Car[]>([]);
+  const [carros, setCarros] = useState<Car[]>([]); 
   const [carroSelecionado, setCarroSelecionado] = useState<string | null>(null);
 
   useEffect(() => {
@@ -47,12 +46,12 @@ export default function DeletarCarro() {
   };
 
   return (
-    <main className="p-4">
-      <h1 className="text-2xl font-bold">Deletar Carro</h1>
+    <main className="main">
+      <h1 className="Titulo1">Deletar Carro</h1>
       <p>Selecione um carro para deletar.</p>
 
       <select
-        className="mt-4 p-2 border border-gray-300 rounded"
+        className="selecionar"
         value={carroSelecionado ?? ''}
         onChange={e => setCarroSelecionado(e.target.value)}
       >
@@ -65,7 +64,7 @@ export default function DeletarCarro() {
       </select>
 
       <button
-        className="mt-4 p-2 bg-red-500 text-white rounded"
+        className="deletar"
         onClick={handleDeletarCarro}
       >
         Deletar

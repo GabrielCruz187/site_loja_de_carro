@@ -1,113 +1,171 @@
-.historia {
-    margin: 0; /* Remove margens externas */
-    padding: 0rem; /* Menor padding */
-    width: 100%;
-    max-width: none;
-    background-color: #1f1f1f;
+.titulo {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 3rem;
+}
+
+.historia-container, .historia-container2 {
+  background-color: #252529;
+  border-radius: 0.5rem;
+  display: flex;
+  overflow: hidden;
+  margin: 0 auto;
+  width: 90%;
+  height: 50rem;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+}
+
+.historia-image, .historia-image2 {
+  width: 40%;
+  height: auto;
+  object-fit: cover;
+}
+
+.historia-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.historia-content h2 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 3rem;
+}
+
+.historia-content p {
+  font-size: 1.6rem;
+  color: white;
+  margin-bottom: 3rem;
+  line-height: 2;
+}
+
+.redes {
+  color: white;
+  text-align: center; /* Alinha o conteúdo à esquerda */
+}
+
+.redes-title {
+  font-size: 2.25rem;
+  font-weight: bold;
+  margin-bottom: 2rem; /* Espaço entre o título e os ícones */
+  text-align: center;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem; /* Espaço entre os ícones */
+}
+
+.social-icon {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+/* ANIMAÇÕES IGUAIS À DA PÁGINA REDES */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title-visible {
+  animation: slideIn 1s ease-out forwards;
+}
+
+.content-visible {
+  animation: slideIn 1s ease-out forwards;
+}
+
+  @media (max-width: 834px) {
+    .historia-container, .historia-container2 {
+      flex-direction: column; /* Empilha os elementos verticalmente */
+      height: auto; /* Permite que o conteúdo defina a altura */
+    }
+  
+    .historia-image, .historia-image2 {
+      width: 100%; /* Ocupa toda a largura */
+      height: 30%; /* Mantém a proporção */
+      order: -1; /* Move a imagem para cima */
+    }
+  
+    .historia-content {
+      width: 100%; /* Ocupa toda a largura */
+      padding: 2rem; /* Adiciona espaçamento interno */
+    }
+  
+    .historia-content h2 {
+      font-size: 2.5rem; /* Reduz o tamanho do título */
+    }
+  
+    .historia-content p {
+      font-size: 1.7rem; /* Reduz um pouco o tamanho do texto */
+    }
+
+    .redes-title {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    .social-icon {
+      width: 75px;
+      height: 75px;
+      margin: 1.5rem;
+      margin-bottom: 2rem;
+    }
   }
   
-  .historia-container {
-    background-color: #252529;
-    border-radius: 0.5rem;
-    display: flex;
-    overflow: hidden;
-    margin: 0 auto;
-    width: 90%; /* Reduzido para dar mais margem nas laterais */
-    height: 50rem;
-    margin-bottom: 3rem;
-    margin-top: 3rem;
-  }
+  @media (max-width: 440px) {
+    .historia-content p {
+      font-size: 1.3rem; /* Reduz um pouco o tamanho do texto */
+    }
+
+    .redes-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
   
-  .titulo {
-    text-align: center;
-    margin-top: 3rem;
-    font-size: 3rem;
+    .social-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0.5rem;
+      margin-bottom: 2rem;
+    }
   }
+
+  @media (max-width: 360px) {
+    .redes-title {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
   
-  .historia-image {
-    width: 40%; /* Menor largura da imagem */
-    height: auto;
-    object-fit: cover;
+    .social-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0.5rem;
+      margin-bottom: 2rem;
+    }
   }
-  
-  .historia-content {
-    padding: 1.5rem; /* Menor padding */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; /* Centraliza o conteúdo horizontalmente */
-    text-align: center; /* Centraliza o texto */
-    width: 60%;
-    margin: 0 auto; /* Centraliza o container no eixo horizontal */
-  }
-  
-  .historia-content h2 {
-    font-size: 3.5rem; /* Tamanho do subtítulo */
-    font-weight: bold;
-    color: white;
-    margin-bottom: 3rem;
-  }
-  
-  .historia-content h3 {
-    font-size: 1.60rem; /* Texto menor */
-    color: rgb(255, 255, 255);
-    margin-bottom: 3rem; /* Ajusta o espaçamento inferior para dar mais espaço para o botão */
-    line-height: 1.3;
-  }
-  
-  .historia-container2 {
-    background-color: #252529;
-    border-radius: 0.5rem;
-    display: flex;
-    overflow: hidden;
-    margin: 0 auto;
-    width: 90%; /* Reduzido para dar mais margem nas laterais */
-    height: 50rem;
-    margin-bottom: 3rem;
-    margin-top: 3rem;
-  }
-  
-  .historia-image2 {
-    width: 40%; /* Ajuste a largura da imagem */
-    height: auto;
-    object-fit: cover; /* Para manter a proporção da imagem */
-    order: 2; /* Coloca a imagem à direita */
-  }
-  
-  /* Redes sociais */
-.redes-contato {
-    background-color: #252529; /* Cor de fundo */
-    padding: 2rem; /* Espaçamento interno */
-    text-align: center; /* Centraliza o conteúdo */
-    flex: 1; /* Faz a seção ocupar metade do espaço disponível */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centraliza o conteúdo verticalmente */
-    align-items: center; /* Centraliza o conteúdo horizontalmente */
-  }
-  
-  .redes-title {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 2rem; /* Ajusta o espaçamento entre o título e os ícones */
-    text-align: center; /* Centraliza o título dentro do container */
-    color: white; /* Cor do texto */
-  }
-  
-  .social-icons {
-    display: flex;
-    justify-content: center; /* Centraliza os ícones */
-    gap: 2rem; /* Espaçamento entre os ícones */
-  }
-  
-  .social-icon {
-    width: 45px;
-    height: 45px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-    margin-bottom: 2rem;
-  }
-  
-  .social-icon:hover {
-    transform: scale(1.1); /* Efeito de aumento ao passar o mouse */
-  }
+
+
+

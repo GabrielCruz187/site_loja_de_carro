@@ -1,80 +1,183 @@
 .feedback {
   text-align: center;
+  color: white;
+  padding: 2rem;
 }
 
 .feedback-title {
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 2rem;
-  color: white;
+  margin-bottom: 1rem;
 }
 
-.feedback-cards {
+.feedback-title-text {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.feedback-content {
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
+  background-color: #252529;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 0.5rem;
 }
 
-.feedback-card {
-  background: #252529;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 450px;
-  text-align: center;
-  transition: all 0.3s ease-in-out; /* Transição suave para o efeito de relevo */
+.feedback-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
 
-/* Animação de relevo (efeito de elevação ao passar o mouse) */
-.feedback-card:hover {
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Eleva o card */
-  transform: translateY(-5px); /* Move ligeiramente para cima */
+.feedback-video-container {
+  width: 40%;
 }
 
-.feedback-image {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
+.feedback-video {
+  width: 80%; /* Faz o vídeo ocupar toda a largura do container */
+  border-radius: 2.5rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.feedback-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+
+.feedback-photo {
+  margin-bottom: 1rem;
+}
+
+.feedback-photo img {
+  width: 780px; /* Ajuste o tamanho conforme necessário */
+  height: 550px;
   object-fit: cover;
-  margin-bottom: 10px;
-}
-
-.feedback-name {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: white;
-  margin-bottom: 5px;
+  border-radius: 2%;
+  margin-bottom: 2rem;
 }
 
 .feedback-text {
-  font-size: 1.1rem;
-  color: white;
-  margin-bottom: 10px;
+  font-size: 1.5rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
 }
 
-.feedback-city {
-  font-size: 1rem;
-  color: white;
+.titulo-text {
+  font-weight: bold;
+  margin-bottom: 2rem; /* Ajuste a margem conforme necessário */
+  margin-top: 2rem;
+  font-size: 1.5rem;
 }
 
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 10px;
+@media (max-width: 1280px) {
+  .feedback-video {
+    width: 90%; /* Faz o vídeo ocupar toda a largura do container */
+    border-radius: 2.5rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .feedback-photo img {
+    width: 580px; /* Ajuste o tamanho conforme necessário */
+    height: 400px;
+    object-fit: cover;
+    border-radius: 2%;
+    margin-bottom: 2rem;
+  }
 }
 
-.dot {
-  width: 12px;
-  height: 12px;
-  background-color: #252529;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+
+@media (max-width: 834px) {
+  .feedback-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feedback-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+
+  .feedback-video-container {
+    width: 90%; /* Ajuste a largura do vídeo */
+    margin-top: 1rem;
+  }
+
+  .feedback-video {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .feedback-text-container {
+    width: 80%;
+    text-align: center; /* Garante que o texto também fique centralizado */
+    font-size: 1.5rem;
+  }
+
+  .feedback-photo img {
+    width: 100%; /* Ajuste a imagem para que ela ocupe toda a largura possível */
+    height: auto; /* Mantém a proporção da imagem */
+    max-width: 680px; /* Limite o tamanho máximo da imagem */
+  }
+
+  .titulo-text {
+    font-weight: bold;
+    margin-bottom: 2rem; /* Ajuste a margem conforme necessário */
+    margin-top: 0rem;
+  }
+
+  .feedback-text {
+    font-size: 1.8rem;
+    line-height: 1.4;
+  }
 }
 
-.dot.active {
-  background-color: #FC6700;
+@media (max-width: 500px) {
+  .feedback-text {
+    font-size: 1.4rem;
+    line-height: 1.4;
+    font-size: 1.5rem;
+  }
+  
+  .titulo-text {
+    font-weight: bold;
+    margin-bottom: 2rem; /* Ajuste a margem conforme necessário */
+    margin-top: 0rem;
+    font-size: 1.33rem;
+  }
+
+  .feedback-photo img {
+    width: 100%; /* Ajuste a imagem para que ela ocupe toda a largura possível */
+    height: auto; /* Mantém a proporção da imagem */
+    max-width: 680px; /* Limite o tamanho máximo da imagem */
+  }
+}
+
+/* Animação para fazer o conteúdo aparecer da esquerda */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Classe para o conteúdo que entrou na tela */
+.content-visible {
+  animation: slideIn 1s ease-out forwards;
+}
+
+/* Animação para os títulos */
+.title-visible {
+  animation: slideIn 1s ease-out forwards;
 }

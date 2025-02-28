@@ -21,10 +21,11 @@
 .select {
   padding: 1rem;
   display: flex; /* Alinha os elementos horizontalmente */
-  justify-content: flex-start; /* Mantém os elementos alinhados à esquerda */
+  justify-content: space-between; /* Mantém os elementos alinhados à esquerda */
   align-items: center; /* Alinha verticalmente ao centro */
   gap: 1rem; /* Espaçamento entre os elementos */
-  margin-bottom: 1rem; /* Distância do próximo bloco */
+  margin-top: 1rem;
+  margin-left: 1.2%;
 }
 
 #category-select label {
@@ -68,12 +69,12 @@
 
 #options-view-button:focus + #select-button,
 #options-view-button:checked + #selected-button {
-  outline: 1px solid #AFABB6
+  outline: 1px solid #AFABB6;
 }
 
 #category-select :has(#options-view-button:checked) label,
 #options-view-button:checked + #select-button #chevrons {
-  color: #AFABB6
+  color: #AFABB6;
 }
 
 #options-view-button:checked + #select-button #chevrons
@@ -215,16 +216,7 @@ input:checked + label [data-lucide="check"] {
 }
 
 /* Distância dos filtros para o catálogo */
-.select {
-  display: flex; /* Alinha os elementos na mesma linha */
-  justify-content: flex-start; /* Alinha os elementos à esquerda */
-  align-items: center; /* Centraliza verticalmente */
-  gap: 1rem; /* Espaçamento horizontal entre os elementos */
-  margin-bottom: 1rem; /* Distância do próximo bloco */
-  margin-top: 0.7rem; /* Ajusta a margem superior */
-  flex-wrap: nowrap; /* Garante que os elementos não quebrem linha */
-  position: relative;
-}
+
 
 /* Distância dos botões redondos */
 .pagination-top,
@@ -237,12 +229,9 @@ input:checked + label [data-lucide="check"] {
 /* Botões redondos de navegação */
 
 .pagination-right {
-  position: absolute;
-  top: 0;
-  right: 10;
   display: flex;
   justify-content: flex-end;
-  padding: 10px;
+  margin-top: 1rem; /* Distância entre o filtro e a paginação */
 }
 
 .pagination-down {
@@ -288,14 +277,16 @@ input:checked + label [data-lucide="check"] {
 
 .pagination-bottom {
   display: flex;
-  justify-content: right;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 20px; /* Distância abaixo dos cards */
+  margin-bottom: 2rem;
+  margin-right: 2%;
 }
 
 .pagination-circle {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   margin: 0 5px;
   border: 1px solid #252529;
   border-radius: 50%;
@@ -310,4 +301,124 @@ input:checked + label [data-lucide="check"] {
   background-color: #FC6700;
   color: #fff;
   border-color: #252529;
+}
+
+.pagination-top {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px; /* Distância entre a paginação superior e os carros */
+  margin-right: 1%;
+  margin-top: 1rem;
+}
+
+.pagination-top-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+@media (max-width: 834px) {
+  .estoque-cards {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards por linha */
+  }
+
+  .pagination-top {
+    display: none;
+  }
+
+#select-button {
+  width: 300px; /* Aumenta a largura do container */
+  height: 80px; /* Aumenta a altura */
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+#select-value {
+  color: #AFABB6;
+  font-size: 1.6rem;
+  letter-spacing: 0.02625rem;
+}
+
+#options {
+  width: 300px; /* Ocupa a largura total do botão */
+  max-width: 1000%;
+  max-height: 260px;
+  font-size: 28px;
+  margin-left: 1rem;
+}
+
+.option {
+  margin-bottom: 1.5rem;
+}
+
+.pagination-circle {
+  width: 60px;
+  height: 60px;
+  margin: 0 10px;
+  border: 1px solid #252529;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #252529;
+}
+}
+
+@media (max-width: 440px) {
+.estoque-cards {
+  grid-template-columns: repeat(1, 1fr); /* 2 cards por linha */
+}
+
+.select {
+  margin-left: 0.5rem;
+}
+
+#select-button {
+  width: 310px; /* Aumenta a largura do container */
+  height: 60px; /* Aumenta a altura */
+}
+
+#options {
+  width: 315px; /* Ocupa a largura total do botão */
+}
+
+.pagination-circle {
+  width: 60px;
+  height: 60px;
+  margin: 0 10px;
+  border: 1px solid #252529;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #252529;
+}
+
+.pagination-top-container,
+.pagination-bottom {
+  display: flex;
+  justify-content: center; /* Centraliza a paginação */
+  align-items: center; /* Alinha os itens verticalmente */
+  width: 100%; /* Garante que ocupe toda a largura disponível */
+}
+
+.pagination-top-container {
+  margin-bottom: 20px; /* Espaçamento entre cards e paginação superior */
+}
+
+.pagination-bottom {
+  margin-top: 20px; /* Espaçamento entre cards e paginação inferior */
+}
+}
+
+@media (max-width: 834px) {
+  #select-button {
+    width: 280px; /* Aumenta a largura do container */
+    height: 60px; /* Aumenta a altura */
+  }
+  
+  #options {
+    width: 280px; /* Ocupa a largura total do botão */
+  }
 }
