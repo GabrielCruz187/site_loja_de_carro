@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 
 const Sobre = () => {
   useEffect(() => {
+    document.title = "Sobre Nós - Alã Automóveis";
     const elements = document.querySelectorAll('.titulo, .historia-container, .historia-container2');
 
     const observer = new IntersectionObserver((entries) => {
@@ -35,12 +36,11 @@ const Sobre = () => {
         <div className="historia-content">
           <h2><strong>Nossa história</strong></h2>
           <p>
-            Tudo começou em 2010, quando um grupo de empreendedores apaixonados por inovação decidiu transformar uma simples ideia em realidade. 
+            A paixão por automóveis nasce junto com o sócio proprietário e fundador Alã mari menegazzo, aos 11 anos de idade após a perda prematura de seu pai. 
             <br></br>
-            Com muita dedicação e foco, fundamos a [Nome da Empresa], com o propósito de oferecer soluções que realmente fazem a diferença. 
+            Iniciou o primeiro emprego como lavador, manobrista e ajudante geral em uma revenda de veiculos em sua cidade natal constantina-rs. Com o passar dos anos, sua paixão pelo setor automobilístico o levou a crescer dentro do ramo, adquirindo experiência e consolidando seu nome no mercado. 
             <br></br>
-            O caminho não foi fácil, mas cada desafio nos fortaleceu. Hoje, com anos de experiência e uma equipe altamente capacitada, 
-            seguimos crescendo e impactando vidas.
+            Assim, a loja se estabeleceu na cidade de Não-Me-Toque, onde segue atendendo com excelência e compromisso.
           </p>
         </div>
       </div>
@@ -50,13 +50,12 @@ const Sobre = () => {
         <div className="historia-content">
           <h2><strong>Nossos valores</strong></h2>
           <p>
-            ✅ Compromisso com a qualidade - Garantimos sempre o melhor para nossos clientes.
+            ✅ Qualidade: Trabalhamos com rigor na seleção de veículos e na prestação de serviços, garantindo a confiança dos nossos clientes.
             <br></br>
-            ✅ Inovação contínua - Buscamos novas ideias para evoluir constantemente.
+            ✅ Transparência: Nosso compromisso é com a honestidade e transparência em todas as etapas da negociação.
             <br></br>
-            ✅ Transparência e ética - Atuamos com honestidade e respeito em todas as relações.
-            <br></br>
-            ✅ Foco no cliente - Cada decisão que tomamos visa a melhor experiência para quem confia em nós.
+            ✅ Satisfação do Cliente: Nosso maior objetivo é garantir que cada cliente saia satisfeito e confiante com sua escolha de veículo.
+            
           </p>
         </div>
       </div>
@@ -66,11 +65,10 @@ const Sobre = () => {
         <div className="historia-content">
           <h2><strong>Missão e visão</strong></h2>
           <p>
-            🔹 Missão: Transformar desafios em soluções inovadoras, criando produtos e serviços que melhorem a vida das pessoas.
+            🔹 Missão: Nossa missão é proporcionar aos nossos clientes a melhor experiência de compra, com veículos que atendam às suas necessidades, orçamento e estilo de vida. Acreditamos na confiança e em um relacionamento duradouro com nossos clientes.
             <br></br>
-            🔹 Visão: Ser referência no mercado e impactar milhões de pessoas, tornando a tecnologia mais acessível e eficiente para todos.
-            <br></br>
-            Seguimos firmes nesse propósito, construindo um futuro onde cada inovação traga benefícios reais para nossos clientes e parceiros.
+            🔹 Visão: Ser referência no mercado de veículos, destacando-se pela excelência no atendimento, pela qualidade dos produtos e pelo compromisso com a satisfação total de nossos clientes.
+            
           </p>
         </div>
       </div>

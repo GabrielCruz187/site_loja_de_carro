@@ -64,6 +64,24 @@
     background-color: #252529;
     overflow-x: auto; /* Para rolagem horizontal */
   }
+
+  .detalhes-button{
+    background-color: #FC6700;
+  color: white;
+  padding: 0.7rem 3.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1.1rem;
+  }
+  .detalhes-button:hover{
+    background-color: #cf4e08;
+  }
+  .detalhes-button:active {
+    background-color: #FC6700;
+  transform: scale(0.98);
+  }
   
   /* Estilo para o contêiner com rolagem horizontal */
   .CardCarro-wrapper-horizontal {

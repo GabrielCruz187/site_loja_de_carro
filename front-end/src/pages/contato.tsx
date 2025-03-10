@@ -6,6 +6,7 @@ import { MapPin, Building, Mail, Phone } from "lucide-react";
 
 const Contato = () => {
   useEffect(() => {
+    document.title = "Contato - Alã Automóveis"
     const elements = document.querySelectorAll('.info-contato, .map-container, .social-icons, .pagina-title, .info-title, .redes-title');
 
     const observer = new IntersectionObserver((entries) => {

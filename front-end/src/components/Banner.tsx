@@ -6,8 +6,8 @@ import '../styles/Banner.css';
 
 const Banner = () => {
   const images = [
-    '/baner.webp', // Substitua com os caminhos das imagens
-    '/baner2.png',
+    '/banner-loja.png', // Substitua com os caminhos das imagens
+    
    
   ];
 

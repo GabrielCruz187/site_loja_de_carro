@@ -29,6 +29,7 @@ export default function Estoque() {
   
   // Hook para monitorar a largura da tela e alterar o número de carros por página
   useEffect(() => {
+    document.title = "Estoque - Alã Automóveis";
     const updateCarrosPorPagina = () => {
       if (window.innerWidth <= 440) {
         setCarrosPorPagina(8); // 8 carros por página para telas <= 440px
