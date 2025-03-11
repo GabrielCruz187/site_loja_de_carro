@@ -24,7 +24,7 @@ const VeiculosDestaque = () => {
   useEffect(() => {
     async function fetchDestaques() {
       try {
-        const response = await fetch('http://localhost:3001/api/carros');
+        const response = await fetch('https://site-loja-de-carro-backend.onrender.com/api/carros');
         const data = await response.json();
         const destaqueCarros = data.filter((carro: Carro) => carro.destaque);
         setCarros(destaqueCarros);

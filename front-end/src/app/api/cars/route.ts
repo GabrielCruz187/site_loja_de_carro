@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const response = await fetch("http://localhost:3001/api/carros"); // Ajuste a URL conforme necessário
+    const response = await fetch("https://site-loja-de-carro-backend.onrender.com/api/carros"); // Ajuste a URL conforme necessário
     if (!response.ok) throw new Error("Erro ao buscar carros");
     const data = await response.json();
     return NextResponse.json(data);

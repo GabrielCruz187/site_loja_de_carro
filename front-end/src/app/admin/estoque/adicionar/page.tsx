@@ -23,7 +23,7 @@ const AdicionarCarro = () => {
     e.preventDefault();
 
     // Enviar dados para o backend com os novos campos
-    const res = await fetch('http://localhost:3001/api/carros', {
+    const res = await fetch('https://site-loja-de-carro-backend.onrender.com/api/carros', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

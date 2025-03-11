@@ -57,7 +57,7 @@ export default function Estoque() {
     async function fetchCarros() {
       try {
         console.log("Buscando carros..."); // Adicione este log
-        const response = await fetch("http://localhost:3001/api/carros");
+        const response = await fetch("https://site-loja-de-carro-backend.onrender.com/api/carros");
         if (!response.ok) throw new Error("Erro ao buscar carros");
 
         const data: Carro[] = await response.json(); // Esperando um array de Carro

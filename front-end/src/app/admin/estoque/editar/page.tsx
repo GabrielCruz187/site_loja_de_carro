@@ -45,7 +45,7 @@ export default function EditarCarro() {
   const handleSave = async () => {
     if (!carroSelecionado) return;
 
-    const response = await fetch(`http://localhost:3001/api/carros/${carroSelecionado._id}`, {
+    const response = await fetch(`https://site-loja-de-carro-backend.onrender.com/api/carros/${carroSelecionado._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(carroSelecionado),

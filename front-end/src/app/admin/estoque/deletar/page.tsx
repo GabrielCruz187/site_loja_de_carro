@@ -18,7 +18,7 @@ export default function DeletarCarro() {
   useEffect(() => {
     // Aqui você deve buscar os carros no backend
     const fetchCarros = async () => {
-      const response = await fetch('http://localhost:3001/api/carros');
+      const response = await fetch('https://site-loja-de-carro-backend.onrender.com/api/carros');
       const data = await response.json();
       setCarros(data);
     };
@@ -32,7 +32,7 @@ export default function DeletarCarro() {
       return;
     }
 
-    const response = await fetch(`http://localhost:3001/api/carros/${carroSelecionado}`, {
+    const response = await fetch(`https://site-loja-de-carro-backend.onrender.com/api/carros/${carroSelecionado}`, {
       method: 'DELETE',
     });
 

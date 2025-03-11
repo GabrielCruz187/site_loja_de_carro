@@ -21,7 +21,7 @@ const AddCarro = () => {
     };
 
     try {
-      await axios.post('http://localhost:3001/carros', novoCarro);
+      await axios.post('https://site-loja-de-carro-backend.onrender.com/carros', novoCarro);
       alert('Carro adicionado com sucesso!');
       // Resetar os campos do formulário
       setModelo('');
