@@ -34,10 +34,10 @@ export default function Venda() {
   useEffect(() => {
     async function fetchCarro() {
       if (id) {
-        const response = await fetch(`http://localhost:3001/api/carros/${id}`);
+        const response = await fetch(`https://site-loja-de-carro-backend.onrender.com/api/carros/${id}`);
         const data: Carro = await response.json();
         setCarro(data);
-        setImagemPrincipal(`http://localhost:3000/${data.foto}`); // Define a imagem principal como a foto principal do carro
+        setImagemPrincipal(`https://site-loja-de-carro.vercel.app/${data.foto}`); // Define a imagem principal como a foto principal do carro
       }
     }
     fetchCarro();
@@ -69,7 +69,7 @@ export default function Venda() {
 
   useEffect(() => {
     if (carro?.fotos && carro.fotos[indiceImagemCarrossel]) {
-      setImagemPrincipal(`http://localhost:3000/${carro.fotos[indiceImagemCarrossel]}`);
+      setImagemPrincipal(`https://site-loja-de-carro.vercel.app/${carro.fotos[indiceImagemCarrossel]}`);
     }
   }, [indiceImagemCarrossel, carro]);
 
@@ -99,16 +99,16 @@ export default function Venda() {
                   carro.fotos.slice(0, 4).map((foto, index) => (
                     <Image
                       key={index}
-                      src={`http://localhost:3000/${foto}`}
+                      src={`https://site-loja-de-carro.vercel.app/${foto}`}
                       alt={`Imagem ${index + 1}`}
                       width={115}
                       height={70}
                       className="MiniaturaImagem"
-                      onClick={() => setImagemPrincipal(`http://localhost:3000/${foto}`)} // Atualiza a imagem principal ao clicar
+                      onClick={() => setImagemPrincipal(`https://site-loja-de-carro.vercel.app/${foto}`)} // Atualiza a imagem principal ao clicar
                       style={{
                         cursor: "pointer",
                         border:
-                          imagemPrincipal === `http://localhost:3000/${foto}`
+                          imagemPrincipal === `https://site-loja-de-carro.vercel.app/${foto}`
                             ? "2px solid #FC6700"
                             : "none",
                       }}
@@ -128,16 +128,16 @@ export default function Venda() {
                   carro.fotos.slice(4).map((foto, index) => (
                     <Image
                       key={index + 4}
-                      src={`http://localhost:3000/${foto}`}
+                      src={`https://site-loja-de-carro.vercel.app/${foto}`}
                       alt={`Imagem ${index + 5}`}
                       width={115}
                       height={70}
                       className="MiniaturaImagem"
-                      onClick={() => setImagemPrincipal(`http://localhost:3000/${foto}`)}
+                      onClick={() => setImagemPrincipal(`https://site-loja-de-carro.vercel.app/${foto}`)}
                       style={{
                         cursor: "pointer",
                         border:
-                          imagemPrincipal === `http://localhost:3000/${foto}`
+                          imagemPrincipal === `https://site-loja-de-carro.vercel.app/${foto}`
                             ? "2px solid #FC6700"
                             : "none",
                       }}

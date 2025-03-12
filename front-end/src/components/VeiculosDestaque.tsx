@@ -107,7 +107,7 @@ const VeiculosDestaque = () => {
               modelo={carro.modelo}
               marca={carro.marca}
               ano={carro.ano}
-              foto={`http://localhost:3000/${carro.foto}`}
+              foto={`https://site-loja-de-carro.vercel.app/${carro.foto}`}
               preco={carro.preco}
             />
           ))}
