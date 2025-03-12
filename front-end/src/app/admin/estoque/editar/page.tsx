@@ -19,7 +19,7 @@ export default function EditarCarro() {
 
   useEffect(() => {
     async function fetchCarros() {
-      const response = await fetch("http://localhost:3001/api/carros");
+      const response = await fetch("https://site-loja-de-carro-backend.onrender.com/api/carros");
       const data = await response.json();
       setCarros(data);
     }
