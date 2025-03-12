@@ -1,6 +1,6 @@
 
 import '@/styles/admin.css';
-import Header from '@/components/AdminHeader'
+
 
 export default function EstoquePage() {
     return (

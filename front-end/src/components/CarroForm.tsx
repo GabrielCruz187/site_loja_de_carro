@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 
 interface CarroFormProps {
-    carro?: { modelo: string, marca: string, ano: number, foto?: string };
+    carro?: {_id?: string; modelo: string, marca: string, ano: number, foto?: string };
     onSubmit: () => void;
 }
 
