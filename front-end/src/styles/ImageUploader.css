@@ -1,0 +1,105 @@
+.image-uploader {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Mantém alinhado à esquerda */
+    gap: 8px; /* Reduzi a distância entre os elementos */
+    padding: 5px;
+    width: 100%;
+    color: #0a9b2b;
+}
+
+/* Estilização profissional para o input de arquivo */
+.file-input {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 6px;
+    border: 2px solid #28a745;
+    background-color: #ffffff;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.file-input:hover {
+    background-color: #c5ecce;
+    color: #ffffff;
+}
+
+/* Container das imagens: alinhadas horizontalmente */
+.image-preview-container {
+    display: flex;
+    flex-wrap: nowrap; /* Mantém as imagens em linha */
+    overflow-x: auto; /* Adiciona rolagem horizontal caso necessário */
+    gap: 5px; /* Reduzi a distância entre as imagens */
+    margin-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* Ajuste proporcional das imagens */
+.image-preview {
+    position: relative;
+    width: 70px;
+    height: 70px;
+}
+
+/* Estilização da imagem */
+.preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Botão de remover */
+.remove-btn {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* Botão de enviar imagens */
+.upload-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-top: 5px;
+    margin-bottom: -3rem;
+}
+
+.upload-btn:hover {
+    background-color: #218838;
+    
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .file-input {
+        font-size: 14px; /* Reduz o tamanho da fonte */
+        padding: 10px 16px; /* Reduz o padding */
+        width: 100%; /* Faz o botão ocupar toda a largura do container */
+        text-align: center; /* Centraliza o texto */
+    }
+}
+
+@media (max-width: 480px) {
+    .file-input {
+        font-size: 12px; /* Fonte ainda menor para telas pequenas */
+        padding: 8px 12px; /* Ajuste do padding */
+    }
+}
+

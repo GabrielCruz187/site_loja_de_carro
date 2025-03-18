@@ -170,7 +170,7 @@ export default function Estoque() {
               modelo={carro.modelo}
               marca={carro.marca}
               ano={carro.ano}
-              foto={`https://site-loja-de-carro.vercel.app/${carro.foto}`}  // Usando URL absoluta  // Caminho relativo à pasta public
+              foto={carro.foto} // Usando URL absoluta  // Caminho relativo à pasta public
               preco={carro.preco}
             />
           ))}

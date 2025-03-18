@@ -34,6 +34,9 @@ form div {
   align-items: flex-start; /* Alinha os inputs e os rótulos à esquerda */
   width: 100%;
   margin-bottom: 2.5rem;
+  gap: 2px;
+ 
+  
 }
 
 form div label {
@@ -48,6 +51,7 @@ input[type="text"] {
   font-size: 26px;
   background: white;
   color: #252529;
+  
 }
 
 textarea {
