@@ -1,14 +1,14 @@
 .image-uploader {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Mantém alinhado à esquerda */
-    gap: 8px; /* Reduzi a distância entre os elementos */
+    align-items: flex-start;
+    gap: 8px;
     padding: 5px;
     width: 100%;
     color: #0a9b2b;
 }
 
-/* Estilização profissional para o input de arquivo */
+/* Estilização do input de arquivo */
 .file-input {
     display: inline-block;
     padding: 12px 20px;
@@ -26,28 +26,26 @@
     color: #ffffff;
 }
 
-/* Container das imagens: alinhadas horizontalmente */
+/* Container das imagens */
 .image-preview-container {
     display: flex;
-    flex-wrap: nowrap; /* Mantém as imagens em linha */
-    overflow-x: auto; /* Adiciona rolagem horizontal caso necessário */
-    gap: 5px; /* Reduzi a distância entre as imagens */
+    flex-wrap: nowrap;
+    overflow-x: auto; /* Adiciona rolagem horizontal */
+    gap: 5px;
     margin-top: 5px;
     padding-bottom: 5px;
 }
 
-/* Ajuste proporcional das imagens */
+/* Ajuste para as imagens */
 .image-preview {
     position: relative;
-    height: 70px;
-    width:70px;
-    
+    height: 70px; /* Definir uma altura máxima */
+    width: 70px;  /* Definir uma largura máxima */
 }
 
-/* Estilização da imagem */
 .preview-img {
-    width: 100%;
-    height: 100%;
+    max-width: 100%;  /* Ajusta para que a largura máxima seja do contêiner */
+    max-height: 100%; /* Ajusta para que a altura máxima seja do contêiner */
     object-fit: cover;
     border-radius: 6px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
@@ -67,13 +65,13 @@
     justify-content: center;
     align-items: center;
     padding: 0;
-    margin-left: 10px; /* Espaçamento entre o nome do arquivo e o botão */
+    margin-left: 10px;
 }
 
-file-preview {
+.file-preview {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Isso vai colocar o nome do arquivo e o botão de remover nas extremidades */
+    justify-content: space-between;
     background-color: #f1f1f1;
     padding: 8px;
     border-radius: 5px;
@@ -85,7 +83,7 @@ file-preview {
 .file-preview-container {
     display: flex;
     flex-direction: column;
-    gap: 8px; /* Espaçamento entre as linhas de arquivos */
+    gap: 8px;
 }
 
 /* Botão de enviar imagens */
@@ -104,23 +102,22 @@ file-preview {
 
 .upload-btn:hover {
     background-color: #218838;
-    
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
     .file-input {
-        font-size: 14px; /* Reduz o tamanho da fonte */
-        padding: 10px 16px; /* Reduz o padding */
-        width: 100%; /* Faz o botão ocupar toda a largura do container */
-        text-align: center; /* Centraliza o texto */
+        font-size: 14px;
+        padding: 10px 16px;
+        width: 100%;
+        text-align: center;
     }
 }
 
 @media (max-width: 480px) {
     .file-input {
-        font-size: 12px; /* Fonte ainda menor para telas pequenas */
-        padding: 8px 12px; /* Ajuste do padding */
+        font-size: 12px;
+        padding: 8px 12px;
     }
 }
 

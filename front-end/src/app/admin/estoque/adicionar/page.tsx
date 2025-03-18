@@ -9,8 +9,8 @@ const AdicionarCarro = () => {
   const [marca, setMarca] = useState("");
   const [modelo, setModelo] = useState("");
   const [ano, setAno] = useState("");
-  const [foto, setFoto] = useState("");
-  const [fotos, setFotos] = useState<string[]>([]);
+  const [foto, setFoto] = useState("");  // Foto principal
+  const [fotos, setFotos] = useState<string[]>([]);  // Fotos adicionais
   const [preco, setPreco] = useState("");
   const [descricao, setDescricao] = useState("");
   const [quilometragem, setQuilometragem] = useState("");
@@ -27,8 +27,8 @@ const AdicionarCarro = () => {
       marca,
       modelo,
       ano: parseInt(ano) || 0,
-      foto,
-      fotos,
+      foto,  // Foto principal
+      fotos,  // Fotos adicionais
       preco: parseFloat(preco) || 0,
       descricao,
       quilometragem: parseInt(quilometragem) || 0,
@@ -53,10 +53,16 @@ const AdicionarCarro = () => {
     }
   };
 
-  // Função que lida com o upload das imagens e limpa o estado das imagens
-  const handleImageUpload = (uploadedUrls: string[]) => {
-    setFoto(uploadedUrls[0]); // Foto principal
-    setFotos(uploadedUrls.slice(1)); // Fotos adicionais
+  // Função que lida com o upload da foto principal
+  const handleMainImageUpload = (urls: string[]) => {
+    if (urls.length > 0) {
+      setFoto(urls[0]);
+    }
+  };
+
+  // Função que lida com o upload das fotos adicionais
+  const handleAdditionalImagesUpload = (urls: string[]) => {
+    setFotos((prevFotos) => [...prevFotos, ...urls]);
   };
 
   return (
@@ -75,18 +81,16 @@ const AdicionarCarro = () => {
           <label className="Texto">Ano</label>
           <input type="text" value={ano} onChange={(e) => setAno(e.target.value)} />
         </div>
-        
+
         <div>
           <label className="Texto">Foto Principal</label>
-          <ImageUploader onUpload={handleImageUpload} />
+          <ImageUploader onUpload={handleMainImageUpload} multiple={false} />
         </div>
 
         <div>
           <label className="Texto">Fotos Adicionais</label>
-          <ImageUploader onUpload={handleImageUpload} multiple />
-          <div className="flex gap-2 mt-2">
-            {fotos.length > 0 && <span>{fotos.join(", ")}</span>}
-          </div>
+          <ImageUploader onUpload={handleAdditionalImagesUpload} multiple />
+         
         </div>
 
         <div>
@@ -117,7 +121,7 @@ const AdicionarCarro = () => {
           <label className="Texto">Câmbio</label>
           <input type="text" value={cambio} onChange={(e) => setCambio(e.target.value)} />
         </div>
-        
+
         <button type="submit">Salvar</button>
       </form>
     </main>
@@ -125,3 +129,4 @@ const AdicionarCarro = () => {
 };
 
 export default AdicionarCarro;
+
