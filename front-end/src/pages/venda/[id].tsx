@@ -43,6 +43,12 @@ export default function Venda() {
     fetchCarro();
   }, [id]);
 
+  useEffect(() => {
+    if (carro?.fotos && carro.fotos[indiceImagemCarrossel]) {
+      setImagemPrincipal(carro.fotos[indiceImagemCarrossel]); // Vai mudar para a imagem clicada no carrossel
+    }
+  }, [indiceImagemCarrossel, carro]);
+
   const toggleDescricao = () => {
     setDescricaoVisivel(!descricaoVisivel);
   };
