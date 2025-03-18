@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -53,6 +53,12 @@ const AdicionarCarro = () => {
     }
   };
 
+  // Função que lida com o upload das imagens e limpa o estado das imagens
+  const handleImageUpload = (uploadedUrls: string[]) => {
+    setFoto(uploadedUrls[0]); // Foto principal
+    setFotos(uploadedUrls.slice(1)); // Fotos adicionais
+  };
+
   return (
     <main className="main">
       <h1 className="Titulo1">Adicionar Carro</h1>
@@ -72,16 +78,14 @@ const AdicionarCarro = () => {
         
         <div>
           <label className="Texto">Foto Principal</label>
-          <ImageUploader onUpload={(urls) => setFoto(urls[0])} />
+          <ImageUploader onUpload={handleImageUpload} />
         </div>
 
         <div>
           <label className="Texto">Fotos Adicionais</label>
-          <ImageUploader onUpload={(urls) => setFotos(prevFotos => [...prevFotos, ...urls])} multiple />
+          <ImageUploader onUpload={handleImageUpload} multiple />
           <div className="flex gap-2 mt-2">
-            {fotos.map((url, index) => (
-              <img key={index} src={url} alt={`Foto ${index}`} className="w-16 h-16 object-cover rounded border" />
-            ))}
+            {fotos.length > 0 && <span>{fotos.join(", ")}</span>}
           </div>
         </div>
 
@@ -121,8 +125,3 @@ const AdicionarCarro = () => {
 };
 
 export default AdicionarCarro;
-
-
-
-
-

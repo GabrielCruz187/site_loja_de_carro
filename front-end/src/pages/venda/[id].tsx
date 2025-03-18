@@ -77,10 +77,9 @@ export default function Venda() {
     return <p>Carregando detalhes do carro...</p>;
   }
 
-  const precoFormatado =
-    carro.preco && !isNaN(carro.preco)
-      ? `R$ ${carro.preco.toFixed(2)}`
-      : "Preço indisponível";
+  const precoFormatado = carro.preco
+  ? `R$ ${carro.preco.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+  : "Preço indisponível";
 
   return (
     <div>

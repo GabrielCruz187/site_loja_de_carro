@@ -35,7 +35,7 @@ export default function Header() {
       }
 
       try {
-        const response = await fetch(`http://localhost:3001/api/carros?search=${searchTerm}`);
+        const response = await fetch(`https://site-loja-de-carro-backend.onrender.com/api/carros?search=${searchTerm}`);
         if (!response.ok) throw new Error('Erro ao buscar carros');
         const data: Car[] = await response.json(); // Definindo o tipo explicitamente
         setSearchResults(data);
@@ -103,7 +103,7 @@ export default function Header() {
               {searchResults.map((carro) => (
                 <li key={carro._id}>
                   <Link href={`/venda/${carro._id}`}>
-                    <Image src={`http://localhost:3000/${carro.foto}`} alt={carro.modelo} width={50} height={50} />
+                    <Image src={carro.foto} alt={carro.modelo} width={50} height={50} />
                     <span>{carro.modelo} - {carro.marca} ({carro.ano})</span>
                   </Link>
                 </li>

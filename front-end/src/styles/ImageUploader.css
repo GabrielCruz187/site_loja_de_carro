@@ -39,8 +39,9 @@
 /* Ajuste proporcional das imagens */
 .image-preview {
     position: relative;
-    width: 70px;
     height: 70px;
+    width:70px;
+    
 }
 
 /* Estilização da imagem */
@@ -54,9 +55,6 @@
 
 /* Botão de remover */
 .remove-btn {
-    position: absolute;
-    top: -5px;
-    right: -5px;
     background-color: red;
     color: white;
     border: none;
@@ -65,6 +63,29 @@
     height: 20px;
     font-size: 12px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin-left: 10px; /* Espaçamento entre o nome do arquivo e o botão */
+}
+
+file-preview {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Isso vai colocar o nome do arquivo e o botão de remover nas extremidades */
+    background-color: #f1f1f1;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Estilo para o contêiner de visualização de arquivos */
+.file-preview-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Espaçamento entre as linhas de arquivos */
 }
 
 /* Botão de enviar imagens */
