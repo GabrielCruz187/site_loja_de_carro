@@ -6,7 +6,7 @@ import '../styles/Banner.css';
 
 const Banner = () => {
   const images = [
-    '/banner-loja.png', // Substitua com os caminhos das imagens
+    '/BannerA.png', // Substitua com os caminhos das imagens
     
    
   ];
