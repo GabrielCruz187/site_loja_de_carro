@@ -5,16 +5,18 @@ import '../styles/globals.css';
 export const metadata = {
   title: 'Alã Automóveis',
   description: 'Explore o melhor catálogo de carros da região',
-  // Meta tag de verificação do Facebook
-  other: [
-    { name: 'facebook-domain-verification', content: 'h00hev5t5isgq80pmkn2l4d5k5tssg' }
-  ]
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
       <head>
+        {/* Meta tag de verificação do Facebook */}
+        <meta
+          name="facebook-domain-verification"
+          content="h00hev5t5isgq80pmkn2l4d5k5tssg"
+        />
+
         {/* Meta Pixel Code */}
         <script
           dangerouslySetInnerHTML={{
@@ -46,6 +48,29 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             src="https://www.facebook.com/tr?id=914176006941909&ev=PageView&noscript=1"
           />
         </noscript>
+
+        {/* Kommo Button Code */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(a,m,o,c,r,m){
+                a[m] = {
+                  id:"1054153",
+                  hash:"9b467ccd251e9232748b85c956ca474622c86ca48b6bee27a90018b4e9bce95f",
+                  locale:"pt",
+                  setMeta:function(p){this.params=(this.params||[]).concat([p])}
+                };
+                a[o] = a[o] || function(){(a[o].q=a[o].q||[]).push(arguments)};
+                var d = a.document,
+                    s = d.createElement('script');
+                s.async = true;
+                s.id = m + '_script';
+                s.src = 'https://gso.kommo.com/js/button.js';
+                d.head && d.head.appendChild(s)
+              }(window,0,'crmPlugin',0,0,'crm_plugin'));
+            `,
+          }}
+        />
       </head>
       <body className="bg-gray-100 text-gray-900">
         <LayoutWrapper>{children}</LayoutWrapper>
@@ -53,3 +78,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+
